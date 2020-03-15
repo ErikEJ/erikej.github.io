@@ -4,15 +4,13 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hi, my name is Erik Ejlskov Jensen.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+I am a Data Platform (and now Developer Technologies) MVP, .NET and Data Access Developer. 
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+I work as Cloud Data & DevOps Specialist at [Cloudeon.com](https://www.cloudeon.com) 
 
+You can learn more about my tools and libraries for EF Core on [my presentation web site](https://erikej.github.io/EFCorePowerTools/index.html)
 
-[jekyll-organization]: https://github.com/jekyll
+I also have a number of tools and libraries for working with SQLite and SQL Server Compact, get an [overview here](http://erikej.github.io/SqlCeToolbox/)
+
