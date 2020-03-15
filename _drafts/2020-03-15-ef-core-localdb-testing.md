@@ -1,25 +1,15 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "One approach to integration testing with EF Core, SQL Server LocalDb and a .dacpac (SQL Server database project)!"
 date:   2020-03-15 12:28:49 +0100
-categories: jekyll update
+categories: efcore
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+In this blog post, I will describe a possible approach to integration testing of EF Core queries against SQL Server LocalDb. The described approach works well on the developer machine with Visual Studio 2019, and also works in a CI scenario, for example using Azure DevOps.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+Many use the InMemory provider for testing their LINQ queries but it is not a relational provider, and will therefore not reflect the actual behavior of the SQL Server engine - see for example the discussion [here](https://twitter.com/jbogard/status/1235236773250437120).
 
-Jekyll also offers powerful support for code snippets:
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+``` csharp
+var x = new string[];
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+```
