@@ -24,6 +24,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: erikej
 github_username:  erikej
 stackoverflow_username: "183934"
+twitter:
+  username: erikej
+  card: summary
 
 # Build settings
 markdown: GFM
@@ -31,6 +34,7 @@ theme: minima
 google_analytics: UA-7366519-3
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
