@@ -8,7 +8,7 @@ If you use Entity Framework Core 3.1.x with SQL Server from a Linux machine, con
 
 ### Some background
 
-Microsoft.Data.SqlClient is the library used by EF Core 3 to connect to SQL Server and Azure SQL Database. EF Core 3.x currently depends on version 1.1.0 of this library. Recently, a  [hotfix release](https://github.com/dotnet/SqlClient/releases/tag/v1.1.1) was published to [NuGet](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.1), which included a bug fix for a deadlock issue introduced in [this PR](https://github.com/dotnet/corefx/pull/34184).
+Microsoft.Data.SqlClient is the library used by EF Core 3 to connect to SQL Server and Azure SQL Database. EF Core 3.x currently depends on version 1.0.19269.1 of this library. Recently, a [hotfix release](https://github.com/dotnet/SqlClient/releases/tag/v1.1.1) was published to [NuGet](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.1), which included a bug fix for a deadlock issue introduced in [this PR](https://github.com/dotnet/corefx/pull/34184).
 
 However, EF Core will not use the updated release version, **unless you tell it to do so**. 
 
