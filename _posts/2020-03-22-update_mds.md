@@ -31,6 +31,3 @@ Why the closed source component is still in use on Windows is presumably for per
 However, it looks like there could be [plans in motion](https://github.com/dotnet/SqlClient/pull/477) to also use the C# implementation on Windows eventually.
 
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/1)
-
-{% tweet_button %}
-{% tweet_link %}
