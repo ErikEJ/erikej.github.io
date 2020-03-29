@@ -123,6 +123,6 @@ Yes, so the In method "pads" the parameters - they are put into buckets of size 
 
 Hope you find this useful, and it will help you create better and more scalable solutions with EF Core and SQL Server.
 
-<script src="https://gist.github.com/6ab62e8b9c226ecacf02a5e5713ff7bd.js">
+<script src="https://gist.github.com/ErikEJ/6ab62e8b9c226ecacf02a5e5713ff7bd.js"></script>
  
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/2)
