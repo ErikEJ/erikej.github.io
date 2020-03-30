@@ -4,7 +4,7 @@ title:  "Avoiding SQL Server plan cache pollution with EF Core 3 and Enumerable.
 date: 2020-03-30 17:28:49 +0100
 categories: efcore sqlserver
 ---
-One of the many advantages of using a tool like Entity Framework Core is, that you are sure that the framework will generate properly parameterized SQL for you. This helps avoid SQL injection issues and avoids *plan cache pollution*. Unfortunately, EF Core currently falls short on that promise, when translating queries, where you supply a list of values to be matched against a column.
+One of the many advantages of using a tool like Entity Framework Core is, that you are sure that the framework will generate properly parameterized SQL for you. This helps avoid SQL injection issues and avoids *plan cache pollution*. Unfortunately, EF Core currently falls short on that promise, when translating queries, where you supply a list of values to be matched against a column - [Enumerable.Contains method](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.contains?view=netframework-4.8) - this is translated to a SQL Server [IN operator](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/in-transact-sql?view=sql-server-ver15)
 
 ### Why is cache pollution an issue?
 
