@@ -99,7 +99,7 @@ SELECT [d].[Id]
 
  Diego Vega, former member of the EF Core team, [looked into this issue](https://github.com/dotnet/efcore/issues/13617#issuecomment-447515393) some time ago, and created an [extension method](https://github.com/divega/ContainsOptimization/blob/master/ContainsOptimization/CollectionPredicateBuilder.cs) to rewrite the parameter for EF Core 2. Due to changes in EF Core, this stopped working in EF Core 3 (fixed values were generated).
 
-With the help from a very smart colleague, I have managed to rewrite the In extension method to work properly with EF Core 3, see the Gist below.
+With the help from a [very smart colleague](https://www.linkedin.com/in/julian-kopka-heerup-9914b386/), I have managed to rewrite the In extension method to work properly with EF Core 3, see the Gist below.
 
 So if you add the extension method to the test project, the test query can be changed to this:
 
