@@ -121,6 +121,8 @@ You may ask: But if the number of parameters changes, will that not cause indivi
 
 Yes, so the In method "pads" the parameters - they are put into buckets of size 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 and 2048. So for any given query, you will create a maximum of 12 plans. 2048 is the maximum number of parameters supported by SQL Server from ADO.NET and if you have more values than that, it will be up to you to split them in buckets of 2048 each.
 
+{% gist erikej/6ab62e8b9c226ecacf02a5e5713ff7bd %}
+
 [The Gist for the extension method](https://gist.github.com/ErikEJ/6ab62e8b9c226ecacf02a5e5713ff7bd)
 
 Hope you find this useful, and it will help you create better and more scalable solutions with EF Core and SQL Server.
