@@ -35,4 +35,5 @@ plugins:
   - jekyll-seo-tag
 gist:
   noscript: false
-
+future: true 
+jailed: false
