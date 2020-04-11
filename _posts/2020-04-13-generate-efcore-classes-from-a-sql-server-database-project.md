@@ -41,7 +41,7 @@ And that is basically it! Your selections (table list and options) are saved in 
 
 ### How to reverse engineer a .dacpac file from the command line?
 
-1. Install the [ErikEJ.EntityFrameworkCore.SqlServer.Dacpac](https://www.nuget.org/packages/ErikEJ.EntityFrameworkCore.SqlServer.Dacpac/) package in your project. 
+1. Install the [ErikEJ.EntityFrameworkCore.SqlServer.Dacpac](https://www.nuget.org/packages/ErikEJ.EntityFrameworkCore.SqlServer.Dacpac/) NuGet package in your project. 
 
 2. From the command line run:
 ```dos
