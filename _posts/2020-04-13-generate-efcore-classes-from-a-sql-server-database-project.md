@@ -54,6 +54,15 @@ Scaffold-DbContext '..\Db.dacpac' ErikEJ.EntityFrameworkCore.SqlServer.Dacpac
 
 With this approach, as you can guess, your customization options are limited, unless you add design time code to your project.
 
+### How does it work?
+
+After you click OK, this is an abbreviated description of what happens ([source code here](https://github.com/ErikEJ/EFCorePowerTools/blob/master/src/GUI/ReverseEngineer20/ReverseEngineer/SqlServerDacpacDatabaseModelFactory.cs#L42)):
+
+- If there are .dacpac references, all files are merged into a single .dacpac file.
+- A TSqlModel is loaded from the .dacpac file.
+- Based on the TSqlModel, an EF Core DatabaseModel is created.
+- EF Core generates code from the DatabaseModel.
+
 Hope you found this useful, if you have an support questions or issues regarding this feature, please contact me via [the GitHub repo.](https://github.com/ErikEJ/EFCorePowerTools/issues)
 
 [Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/4)
