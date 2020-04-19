@@ -6,7 +6,7 @@ categories: efcore sqlserver
 ---
 As a sort of follow up to my blog posts [here](https://erikej.github.io/efcore/sqlserver/2020/03/30/ef-core-cache-pollution.html) and [here](https://erikej.github.io/efcore/2020/04/06/query-non-table-classes-raw-sql.html) I will show how to use a dynamic list of values a parameters when using FromSqlRaw. The condition in this case that you may sometimes be calling your method with 5 parameters, sometimes with 20 etc. Keep in mind that the maximum number of parameters with SQL Server is [2098!](https://stackoverflow.com/questions/8050091/sqlcommand-maximum-parameters-exception-at-2099-parameters)
 
-The solution is to create both the SqlParameters and the raw SQL parameters placeholders at runtime, something similar to the following:
+The solution is to create both the SqlParameters and the raw SQL parameters placeholders at run time, something similar to the following:
 
 ```csharp
 var items = new int[] { 1, 2, 3 };
@@ -33,4 +33,4 @@ SELECT * from dbo.Shippers WHERE ShipperId IN (@p0, @p1, @p2)
 
 If you used this method a lot in your app, with a variable number of parameters, you could obviously consider parameter padding.
 
-[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/4)
+[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/5)
