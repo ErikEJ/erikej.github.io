@@ -31,6 +31,6 @@ The generated SQL statement ends up looking like this:
 SELECT * from dbo.Shippers WHERE ShipperId IN (@p0, @p1, @p2)
 ```
 
-If you used this method a lot in your app, with a variable number of parameters, you could obviously consider parameter padding.
+If you used this method a lot in your app, with a variable number of parameters, you could consider parameter padding to avoid plan cache solution, for example by using a method like [in the sample here.](https://gist.github.com/ErikEJ/6ab62e8b9c226ecacf02a5e5713ff7bd#file-iqueryableextensions-cs-L68)
 
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/5)
