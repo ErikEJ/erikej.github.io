@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "A look at Microsoft.Data.SqlClient 2.0 preview 2"
-date:   2020-04-xx 12:28:49 +0100
+title:  "A look at Microsoft.Data.SqlClient 2.0 preview 3"
+date:   2020-05-04 16:14:00 +0100
 categories: sqlclient
 ---
 Microsoft.Data.SqlClient is the .NET data provider for Microsoft SQL Server and Azure SQL Database. It is a union of the two legacy System.Data.SqlClient components which live independently in .NET Framework and .NET Core. Going forward, support for new SQL Server features will only be implemented in Microsoft.Data.SqlClient.
@@ -118,6 +118,6 @@ using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocald
 }
 ```
 
-You can find the [full release notes here.](https://github.com/dotnet/SqlClient/blob/master/release-notes/2.0/2.0.0-preview2.md)
+You can find the [full release notes for the version 2 changes  here.](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.0)
 
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/3)
