@@ -118,6 +118,14 @@ using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocald
 }
 ```
 
+---
+### Breaking changes
+
+Since this preview is version 2, there are also a few breaking changes included.
+
+- `SqlDataReader.GetSchemaTable()` has been changed to return an empty `DataTable` instead of returning null when there are no columns.
+- Decimal parameters were truncated by SqlClient when precision and scale are set - see [full explanation here](https://github.com/dotnet/SqlClient/issues/440)
+
 You can find the [full release notes for the version 2 changes  here.](https://github.com/dotnet/SqlClient/tree/master/release-notes/2.0)
 
-[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/3)
+[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/7)
