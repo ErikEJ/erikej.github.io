@@ -64,7 +64,7 @@ Microsoft.Data.SqlClient contains two implementations of the layer that communic
 Simply add the AppContext switch early in your application - before you use the SqlClient library. Keep in mind that this is currently for debug and development purposes only!
 
 ```` csharp
-AppContext.SetSwitch("Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true);
+AppContext.SetSwitch("Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows", true);
 ````
 
 Running PerfView with the AppContext switch enabled, we can now see a new Event Type: `Microsoft.Data.SqlClient.EventSource/SNITrace` with events similar to this:
@@ -80,7 +80,7 @@ On a side note, as you can see from the [performance measurements here](https://
 ---
 ### SqlBulkCopy - new RowsCopied property
 
-After a SqlBulkCopy you may want to let the user know how many records were transferred for reporting and troubleshooting purposes. Previously, you either attach an event handler for the SqlRowsCopied event, or use reflection. Now, you can simply use the new RowsCopied property. Sample code:
+After a SqlBulkCopy you may want to let the user the number of rows processed in the ongoing bulk copy operation for reporting and troubleshooting purposes. Previously, you either attach an event handler for the SqlRowsCopied event, or use reflection. Now, you can simply use the new RowsCopied property. 
 
 ```csharp
 using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Northwind;Integrated Security= true"))
@@ -91,6 +91,29 @@ using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocald
         bulkCopy.DestinationTableName = "Shippers";
         bulkCopy.WriteToServer(new DataTable());
         var rows = bulkCopy.RowsCopied;
+    }
+}
+```
+---
+### SqlConnection.Open() with fail fast option 
+
+You no longer need to change connection string to disable transient fault handling during the initial SqlConnection Open attempt.
+
+In .NET 4.5.1, the System.Data.SqlClient was updated with two new connection string options: [ConnectRetryCount](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretrycount?view=dotnet-plat-ext-3.1) and [ConnectRetryInterval](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretryinterval?view=dotnet-plat-ext-3.1). 
+
+The default value for connect retry count is 1, and the default value for connect retry interval is 10 seconds, meaining that in case a connection attempt fails, there will always be a 10 second delay until the first retry, unless the user explicitly specifies differently in the connection string. So using the default values for example to check if a user database exists by trying to connect to it will always cause a 10 second delay, something that [EF Core does](https://github.com/dotnet/efcore/issues/7283), and as described in the linked issue, connection string manipulation is not an option. 
+
+This problem has now been solved in preview 3, by addition of an OpenWithoutRetry option on the SqlConnection.Open method.
+
+```csharp
+using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Northwind;Integrated Security= true"))
+{
+    using (var sqlCommand = new SqlCommand("SELECT * FROM Shippers"))
+    {
+        sqlCommand.Connection = sqlConnection;
+        sqlConnection.Open(SqlConnectionOverrides.OpenWithoutRetry);
+
+        var reader = sqlCommand.ExecuteNonQuery();
     }
 }
 ```
