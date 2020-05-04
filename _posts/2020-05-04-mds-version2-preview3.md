@@ -11,7 +11,7 @@ Version 2.0 of this driver is currently in preview, and in this blog post, I wil
 In order to try the preview, simply add a reference to the preview version in your project file:
 
 ``` xml
-<PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0-preview2.20084.1" />
+<PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0-preview3.20122.2" />
 ```
 ---
 ### EventSource traces
@@ -29,7 +29,7 @@ Create a .NET Core Console app to try it out:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0-preview2.20084.1" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0-preview3.20122.2" />
   </ItemGroup>
 
 </Project>
@@ -99,9 +99,9 @@ using (var sqlConnection = new SqlConnection("Data Source=(localdb)\\mssqllocald
 
 You no longer need to change connection string to disable transient fault handling during the initial SqlConnection Open attempt.
 
-In .NET 4.5.1, the System.Data.SqlClient was updated with two new connection string options: [ConnectRetryCount](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretrycount?view=dotnet-plat-ext-3.1) and [ConnectRetryInterval](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretryinterval?view=dotnet-plat-ext-3.1). 
+In .NET 4.5.1, the System.Data.SqlClient was updated with two new connection string options: [ConnectRetryCount](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretrycount?view=dotnet-plat-ext-3.1) and [ConnectRetryInterval](https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.connectretryinterval?view=dotnet-plat-ext-3.1) to support the [idle connection resiliency](https://docs.microsoft.com/en-us/sql/connect/php/connection-resiliency?view=sql-server-ver15) feature available is SQL Server 2014 (and later) and Azure SQL DB.
 
-The default value for connect retry count is 1, and the default value for connect retry interval is 10 seconds, meaining that in case a connection attempt fails, there will always be a 10 second delay until the first retry, unless the user explicitly specifies differently in the connection string. So using the default values for example to check if a user database exists by trying to connect to it will always cause a 10 second delay, something that [EF Core does](https://github.com/dotnet/efcore/issues/7283), and as described in the linked issue, connection string manipulation is not an option. 
+The default value for connect retry count is 1, and the default value for connect retry interval is 10 seconds, meaning that in case a connection attempt fails, there will always be a 10 second delay until the first retry, unless the user explicitly specifies differently in the connection string. So using the default values for example to check if a user database exists by trying to connect to it will always cause a 10 second delay, something that [EF Core does](https://github.com/dotnet/efcore/issues/7283), and as described in the linked issue, connection string manipulation is not an option. 
 
 This problem has now been solved in preview 3, by addition of an OpenWithoutRetry option on the SqlConnection.Open method.
 
