@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A look at Microsoft.Data.SqlClient 2.0 preview 3"
+title:  "New features in Microsoft.Data.SqlClient 2.0 preview 3"
 date:   2020-05-04 16:14:00 +0100
 categories: sqlclient
 ---
@@ -54,7 +54,7 @@ Remember to add this using: `using Microsoft.Data.SqlClient;`
 
 We can now run this app from PerfView, and as you can see from the screenshot below, the collected information includes deep insights into for example the connection pool.
 
-![Perfview]({{ site.url }}/assets/image.png)
+![Perfview]({{ site.url }}/assets/perfview1.png)
 
 ---
 ### Managed networking layer enabled for Windows
