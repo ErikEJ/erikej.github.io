@@ -4,13 +4,14 @@ title:  "Build (and publish) a .dacpac (SQL Server database project) with .NET C
 date:   2020-03-15 12:28:49 +0100
 categories: efcore
 ---
+
 In this post, I will describe how you can build a SQL Server Database project in order to create a .dacpac file, using .NET Core only - `dotnet build`. 
 
-For a while now, it has been possible to publish a .dacpac (meaning apply it to an new or existing database) using the cross-platform version of [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download?OSview=sql-server-ver15) to publish your .dacpac file.
+For a while now, it has been possible to publish a .dacpac (meaning apply it to an new or existing database) using the cross-platform version of [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download?OSview=sql-server-ver15).
 
 But building a database project (.sqlproj) was only possible on Windows, as the .sqlproj project type is based on the classic .NET Framework .csproj project type.
 
-But thanks to a smart open source effort, you can now also build a .dacpac file, even on a Mac or Linux build agent.
+However, thanks to a smart open source effort, you can now also build a .dacpac file, even on a Mac or Linux build agent.
 
 ### What is a SQL Server Database project?
 
@@ -22,7 +23,7 @@ The underlying DacFx API is available as a [.NET Standard 2.0 library](https://w
 
 ### How to add a cross platform .dacpac build project to an existing solution
 
-Assuming that you already have an existing Visual Studio solution, with a Database project (.sqlproj file), these are the steps required to add a cross-platform "buddy" project for building your .dacpac.
+Assuming that you already have an existing Visual Studio solution, with a Database project (.sqlproj file), these are the steps required to add a cross-platform "buddy" project for building your .dacpac with `dotnet build`.
 
 Add a new ".NET Standard Class Library" and name it "Database.Build" - and remove the Class1.cs file.
 
@@ -68,7 +69,7 @@ Now build the project, and you will see output similar to this in the Visual Stu
 1>Database.Build -> C:\Users\Erik\Source\Repos\ConsoleApp7\Database.Build\bin\Debug\netstandard2.0\Database.Build.dacpac
 ```
 
-Now you have a project, that can produce your .dacpac in a cross-platform build pipeline!
+You now have a project that can create your .dacpac in a cross-platform build pipeline!
 
 If you want to target a different SQL Server version than the default of Sql150, you can add this line to the `<PropertyGroup>` section:
 
