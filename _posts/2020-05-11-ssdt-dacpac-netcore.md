@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Build (and publish) a .dacpac (SQL Server database project) with .NET Core - even on Linux or macOS!"
-date:   2020-03-15 12:28:49 +0100
+date:   2020-05-11 12:28:49 +0100
 categories: efcore
 ---
 
