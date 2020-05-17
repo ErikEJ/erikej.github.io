@@ -10,7 +10,7 @@ The fourth major version of EF Core, named EF Core 5, and currently in preview, 
 
 You can use this, if you simply want to consume the logs from EF in a console app or similar (Windows Service, WinForms, WPF etc). Let's have a closer look.
 
-Create a new .NET Core Console app. with a project file (.csproj) similar to this. The current preview version is preview 3, but I expect preview 4 to be out very soon. You can see the exact version number on [NuGet.Org](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer) 
+Create a new .NET Core Console app. with a project file (.csproj) similar to this. The current EF Core 5 preview version is preview 3, but I expect preview 4 to be out very soon. You can see the exact version number on [NuGet.Org](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer) 
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
