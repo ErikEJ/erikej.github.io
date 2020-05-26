@@ -59,4 +59,4 @@ using (var db = new NorthwindContext())
 
 Notice that this requires: `using Microsoft.EntityFrameworkCore;` - more [info here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw?view=efcore-3.1). 
 
-[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/3)
+[Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/10)
