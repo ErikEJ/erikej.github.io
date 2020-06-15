@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Walkthrough: Using an Entity Framework 6 EDMX file with .NET Core"
+title:  "Walk-through: Using an Entity Framework 6 EDMX file with .NET Core"
 date:   2020-06-15 18:00:49 +0100
 categories: ef dotnetcore
 ---
@@ -14,8 +14,7 @@ Reasons to choose .NET Core:
 * You need high-performance and scalable systems.
 * You need side-by-side .NET versions per application.
 
-I will walk you through enabling a .NET Core Console app to use an existing EDMX Model in a Windows form application in this blog post. You can download the starting point for this walkthrough [from here]({{ site.url }}/assets/WindowsFormsApplication1.zip).
-
+I will walk you through enabling a .NET Core Console app to use an existing EDMX Model in a Windows form application in this blog post. In order to work with the EDMX file in the designer, it must remain located on the original .NET Framework based project. You can download the starting point for this walk-through [from here]({{ site.url }}/assets/WindowsFormsApplication1.zip).
 
 ### Create .NET Core 3.1 (console) App
 
