@@ -5,7 +5,7 @@ date:   2020-06-22 12:28:49 +0100
 categories: sqlclient efcore
 ---
 
-Microsoft.Data.SqlClient version 2 has just been released. This library is the latest and greatest .NET client driver for SQL Server and Azure SQL Database. In addition to a number of new features (which [I blogged about earlier](https://erikej.github.io/sqlclient/2020/05/04/mds-version2-preview3.html)), this major version release also includes a number of breaking changes.
+Microsoft.Data.SqlClient version 2 has just been released. This library is the latest and greatest .NET client driver for SQL Server and Azure SQL Database - and will be used by EF Core 5. In addition to a number of new features (which [I blogged about earlier](https://erikej.github.io/sqlclient/2020/05/04/mds-version2-preview3.html)), this major version release also includes a number of breaking changes.
 
 ###  Server Certificate validation when TLS encryption is enforced by the target Server
 
