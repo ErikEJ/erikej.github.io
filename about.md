@@ -8,7 +8,7 @@ Hi, my name is Erik Ejlskov Jensen. My profile name on GitHub and Twitter is Eri
 
 I am a Developer Technologies (former Microsoft Data Platform) Microsoft MVP, .NET and Data Access Developer.
 
-I work as Tech Lead at [VenzoNXT.com](https://www.venzonxt.com) where I help customers create and improve cloud solutions.
+I work as Tech Lead at [VenzoNXT.com](https://venzo.com/nxt/) where I help customers create and improve cloud solutions.
 
 You can learn more about my open source tools and libraries for EF Core on [my presentation web site](https://erikej.github.io/EFCorePowerTools/index.html)
 
