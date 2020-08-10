@@ -11,7 +11,7 @@ With the [latest release](https://github.com/ErikEJ/EFCorePowerTools/wiki/Releas
 
 To include stored procedures, select "Generate stored procedure mappings (preview)" from the options dialog. 
 
-Doing that, all the required code to define result POCO classes, and calling your stored procedures will be automagically generated for you, and you will be able to call your procedure with a single line of code!
+If you do that, all the required code to define result POCO classes, and calling your stored procedures will be automagically generated for you, and you will be able to call your procedure with a single line of code!
 
 So for example you can write code like this to get results back from a stored procedure in the Northwind database:
 
@@ -36,7 +36,7 @@ foreach (var customer in customers)
     Console.WriteLine(customer.CustomerId);
 ```
 
-The result classes are not added to your DbContext, instead an adhoc DbContext is created for each query, as you can see in the [`DbContextExtensions`](https://github.com/ErikEJ/EFCorePowerTools/blob/master/src/GUI/RevEng.Core/DbContextExtensions) class, that is part of the generated code.
+The result classes are not added to your DbContext, instead a "temporary" DbContext is created for each query, as you can see in the [`DbContextExtensions`](https://github.com/ErikEJ/EFCorePowerTools/blob/master/src/GUI/RevEng.Core/DbContextExtensions) class, that is part of the generated code.
 
 Please try out the feature, and let me know any feedback you may have via the [GitHub issue tracker](https://github.com/ErikEJ/EFCorePowerTools/issues). 
 
