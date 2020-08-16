@@ -11,7 +11,7 @@ These are the high-level steps required to achieve this:
 
 - Install the SQL Server Compact 4.0 run-time (included in the repository linked below).
 
-- Create a new executable .NET Core 3.1 project (Console App, WinForm, WPF).
+- Create a new executable .NET Core 3.1 project (Console App, WinForm, WPF, Windows Service).
 
 - Set the project to Target x64:
 
