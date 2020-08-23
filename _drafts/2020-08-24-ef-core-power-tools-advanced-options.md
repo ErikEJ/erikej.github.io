@@ -1,18 +1,35 @@
 ---
 layout: post
-title:  "One approach to integration testing with xUnit, SQL Server LocalDb and a .dacpac (SQL Server database project)"
-date:   2020-03-15 12:28:49 +0100
+title:  "EF Core Power Tools reverse enginnering advanced options"
+date:   2020-08-24 20:28:49 +0100
 categories: efcore
 ---
-In this blog post, I will describe a possible approach to integration testing of EF Core queries against SQL Server LocalDb. The described approach works well on the developer machine with Visual Studio 2019, and also works in a CI scenario, for example using Azure DevOps.
 
-Many use the InMemory provider for testing their LINQ queries but it is not a relational provider, and will therefore not reflect the actual behavior of the SQL Server engine - see  the blog post from Jimmy Bogard ([@jbogard](https://twitter.com/jbogard)) [here](https://jimmybogard.com/avoid-in-memory-databases-for-tests/).
+The main feature of [Entity Framework Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) is the ability to reverse engineer a live database or a SQL Server Database project, and generate customized code with a derived DbContext and entity classes.
 
+Most of the the available options are available via the Options dialog in the tool, but due to limited audience and lack of space, a few options are "hidden" and therefore only discoverable via the [Wiki documentation](https://github.com/ErikEJ/EFCorePowerTools/wiki/Reverse-Engineering). I plan to [make the options more visible](https://github.com/ErikEJ/EFCorePowerTools/issues/447), but in the meantime this blog host aims to fix this. 
 
+### Pluralization
 
+By default the tool uses the [Humanizer](https://github.com/Humanizr/Humanizer) package for pluralization. You can optionally switch to use the Entity Framework 6 pluralizer by adding this line to efpt.config.json:
 
+`"UseLegacyPluralizer": true,`
 
-``` csharp
-var x = new string[];
+The legacy pluralizer is based on the NuGet package provided by EF Core team member Brice Lambson [here](https://github.com/bricelam/EFCore.Pluralizer), which is repackage of the original EF6 pluralizer.
 
-```
+### SQL Server and PostgreSQL spatial types
+
+You can enable support for mapping of spatial types, by adding this line to efpt.config.json:
+
+`"UseSpatial": true,`
+
+[More info](https://docs.microsoft.com/da-dk/ef/core/modeling/spatial)
+
+### NodaTime Instant types (PostgreSQL)
+
+You can enable support for NodaTime type mapping, by adding this line to efpt.config.json:
+
+`"UseNodaTime": true,`
+
+[More info](https://www.npgsql.org/efcore/mapping/nodatime.html)
+
