@@ -33,5 +33,5 @@ You can enable support for NodaTime type mapping, by adding this line to efpt.co
 
 `"UseNodaTime": true,`
 
-[More info about using NodaTime with PostgreSQL](https://www.npgsql.org/efcore/mapping/nodatime.html)
+[More info about using NodaTime with PostgreSQL and EF Core](https://www.npgsql.org/efcore/mapping/nodatime.html)
 
