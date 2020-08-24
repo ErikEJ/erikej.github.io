@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "EF Core Power Tools reverse enginnering advanced options"
+title:  "EF Core Power Tools reverse engineering advanced options"
 date:   2020-08-24 20:28:49 +0100
 categories: efcore
 ---
