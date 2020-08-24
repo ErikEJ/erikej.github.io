@@ -7,11 +7,13 @@ categories: efcore
 
 The main feature of [Entity Framework Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) is the ability to reverse engineer a live database or a SQL Server Database project, and generate customized code with a derived DbContext and entity classes.
 
-Most of the the available options are available via the Options dialog in the tool, but due to limited audience and lack of space, a few options are "hidden" and therefore only discoverable via the [Wiki documentation](https://github.com/ErikEJ/EFCorePowerTools/wiki/Reverse-Engineering). I plan to [make the options more visible](https://github.com/ErikEJ/EFCorePowerTools/issues/447), but in the meantime this blog host aims to fix this. 
+Most of the the available options are available via the Options dialog in the tool, but due to limited audience and lack of space, a few options are "hidden" and therefore only discoverable via the [Wiki documentation](https://github.com/ErikEJ/EFCorePowerTools/wiki/Reverse-Engineering). I plan to [make the options more visible](https://github.com/ErikEJ/EFCorePowerTools/issues/447), but in the meantime this blog post aims to fix this. 
 
 ### Pluralization
 
-By default the tool uses the [Humanizer](https://github.com/Humanizr/Humanizer) package for pluralization. You can optionally switch to use the Entity Framework 6 pluralizer by adding this line to efpt.config.json:
+By default the tool uses the [Humanizer](https://github.com/Humanizr/Humanizer) package for pluralization. 
+
+You can optionally switch to use the Entity Framework 6 pluralizer by adding this line to efpt.config.json:
 
 `"UseLegacyPluralizer": true,`
 
@@ -23,7 +25,7 @@ You can enable support for mapping of spatial types, by adding this line to efpt
 
 `"UseSpatial": true,`
 
-[More info](https://docs.microsoft.com/da-dk/ef/core/modeling/spatial)
+[More info about working with spatial types in EF Core](https://docs.microsoft.com/da-dk/ef/core/modeling/spatial)
 
 ### NodaTime Instant types (PostgreSQL)
 
@@ -31,5 +33,5 @@ You can enable support for NodaTime type mapping, by adding this line to efpt.co
 
 `"UseNodaTime": true,`
 
-[More info](https://www.npgsql.org/efcore/mapping/nodatime.html)
+[More info about using NodaTime with PostgreSQL](https://www.npgsql.org/efcore/mapping/nodatime.html)
 
