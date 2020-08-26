@@ -71,6 +71,8 @@ Now build the project, and you will see output similar to this in the Visual Stu
 
 You now have a project that can create your .dacpac in a cross-platform build pipeline!
 
+**UPDATE**: If you want to run `dotnet build --configuration Release` from a CI job step/pipeline, make sure to exclude the .sqlproj project from the build configuration (Release in this example).
+
 If you want to target a different SQL Server version than the default of Sql150, you can add this line to the `<PropertyGroup>` section:
 
 ```xml
