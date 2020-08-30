@@ -13,6 +13,8 @@ Now, thanks to the new Database Project extension in Azure Data Studio Insiders 
 
 And by using the new MsBuild.Sdk.SqlProj SDK and project type, is is also possible to build and publish a Database Project from a build agent (CI pipeline), without having to install the sqlpackage tool. Read on! 
 
+![]({{ site.url }}/assets/adssssdt2.png)
+
 ### What is a SQL Server Database project?
 
 A database project is a [Visual Studio project type](https://visualstudio.microsoft.com/vs/features/ssdt/), that allows you to develop, build, test and publish your database from a source controlled project, just like you develop your application code. You can start from scratch with a new Database project, or import an existing database.
@@ -36,6 +38,8 @@ Currently, you need the [Insiders build](https://github.com/microsoft/azuredatas
 In Azure Data Studio Insiders, go to View, Extensions, and search for the "SQL Database Projects" extension, then install it.
 
 Then from Explorer, select Projects.
+
+![]({{ site.url }}/assets/adssssdt1.png)
 
 You then get three options:
 
