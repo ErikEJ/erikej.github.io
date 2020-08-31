@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Creating, building and publishing SQL Server Database projects on non-Windows platforms"
+title:  "Creating, building and publishing Azure SQL Database projects on non-Windows platforms"
 date:   2020-08-31 15:30:49 +0100
 categories: efcore
 ---
@@ -13,9 +13,9 @@ Now, thanks to the new Database Project extension in Azure Data Studio Insiders 
 
 And by using the new MsBuild.Sdk.SqlProj SDK and project type, is is also possible to build and publish a Database Project from a build agent (CI pipeline), without having to install the sqlpackage tool. Read on! 
 
-![]({{ site.url }}/assets/adssssdt2.png)
+![]({{ site.url }}/assets/adsssdt2.png)
 
-### What is a SQL Server Database project?
+### What is a Azure SQL Database project?
 
 A database project is a [Visual Studio project type](https://visualstudio.microsoft.com/vs/features/ssdt/), that allows you to develop, build, test and publish your database from a source controlled project, just like you develop your application code. You can start from scratch with a new Database project, or import an existing database.
 
@@ -39,7 +39,7 @@ In Azure Data Studio Insiders, go to View, Extensions, and search for the "SQL D
 
 Then from Explorer, select Projects.
 
-![]({{ site.url }}/assets/adssssdt1.png)
+![]({{ site.url }}/assets/adsssdt1.png)
 
 You then get three options:
 
@@ -57,13 +57,13 @@ This will create a new project, and allow you to reverse engineer database objec
 
 Once the database project is ready to be deployed, you can Build and Publish it via the context menu.
 
-Build means create a .dacpac file from the scripts and settings in your project. A .dacpac file is a .zip file that conforms to a standard format.
+**Build** means create a .dacpac file from the scripts and settings in your project. A .dacpac file is a .zip file that conforms to a standard format.
 
-Publish means take the resulting .dacpac file, and apply it against a new or existing Azure SQL (or SQL Server) database.
+**Publish** means take the resulting .dacpac file, and apply it against a new or existing Azure SQL (or SQL Server) database, to change the schema of the target database to match the desired schema described in the .dacpac file.
 
 It is also possible to build the project from the command line using the .NET Core cross-platform SDK, but [there are some rough edges currently](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension-build-from-command-line?view=sql-server-ver15).
 
-There is no command line publish support, so to publish from the command line, sqlpackage must be installed, and run against the built .dacpac file.
+There is no command line publish support, so to publish from the command line, sqlpackage must be installed, and run against the built .dacpac file. (See below for a solution to that).
 
 Give the [extension a try](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension?view=sql-server-ver15), and provide feedback on the [GitHub repo](https://github.com/microsoft/azuredatastudio). 
 
@@ -78,8 +78,6 @@ dotnet publish /p:TargetUser=dbUser /p:TargetPassword=secret
 ```
 
 Read more details about using this package [in my blog post here](https://erikej.github.io/efcore/2020/05/11/ssdt-dacpac-netcore.html).
-
-
 
 
 [Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/18)
