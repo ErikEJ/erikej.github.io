@@ -50,7 +50,7 @@ and CourseOffering.cs with SubjectArea and Id string properties.
           {
             "Name": "identifier",
             "NewName": "Id"
-          },
+          }
         ]
       }
     ]
