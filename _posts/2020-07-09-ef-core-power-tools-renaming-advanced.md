@@ -5,13 +5,15 @@ date:   2020-09-07 20:28:49 +0100
 categories: efcore
 ---
 
-The Entity Framework Core Power tools (my free Visual Studio extension, that helps you be more productive with EF Core), includes a feature to rename entities and properties, useful if you have "legacy" table and columns names in your database, and would like to be able to use more readable names in your code.
+[Entity Framework Core Power Tools](https://github.com/ErikEJ/EFCorePowerTools) (my free, open source Visual Studio extension, that helps you be more productive with EF Core), includes a feature to rename entities and properties.
+
+This can be useful in several cases, for example if you have "legacy" table and columns names in your database, and would like to be able to use more readable names in your code.
 
 The implementation of this feature required changes to EF Core, but thanks to the open nature of the EF Core project, I got a [PR accepted](https://github.com/dotnet/efcore/pull/11207) to enable exactly that feature.
 
 The feature was implemented with great help from [GitHub user tomzre](https://github.com/tomzre) as you can [see here](https://github.com/ErikEJ/EFCorePowerTools/issues/14). 
 
-### Implementing renaming
+### Using the renaming feature
 
 To implement renaming of entities and properties, add a .json file named efpt.renaming.json at the root of your project.
 
@@ -24,7 +26,7 @@ CREATE TABLE dbo.course_sched
     subj_area_cd VARCHAR(30) NOT NULL
 )
 ```
-This efpt.renaming.json sample file will generate these names in the model:
+the efpt.renaming.json sample file below will generate these names in the model:
 
 ```csharp
 public virtual DbSet<CourseOffering> CourseOffering { get; set; }
