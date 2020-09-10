@@ -7,7 +7,7 @@ categories: efcore
 
 In this post, I will describe how you can build a SQL Server Database project in order to create a .dacpac file, using .NET Core only - `dotnet build`. 
 
-For a while now, it has been possible to publish a .dacpac (meaning apply it to an new or existing database) using the cross-platform version of [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download?OSview=sql-server-ver15).
+For a while now, it has been possible to publish a .dacpac (meaning apply it to an new or existing database) using the cross-platform version of [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage-download?WT.mc_id=DT-MVP-4025156).
 
 But building a database project (.sqlproj) was only possible on Windows, as the .sqlproj project type is based on the classic .NET Framework .csproj project type.
 
@@ -19,7 +19,7 @@ A database project is a [Visual Studio project type](https://visualstudio.micros
 
 The database project describes the "desired state" of your database schema, and the output from the project is a .dacpac file (a structured .zip file), that you can use various graphical and command line tools to compare or apply ("publish") to your production databases.
 
-The underlying DacFx API is available as a [.NET Standard 2.0 library](https://www.nuget.org/packages/Microsoft.SqlServer.DACFx/150.4573.2), and a command line tool, [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage?view=sql-server-ver15).
+The underlying DacFx API is available as a [.NET Standard 2.0 library](https://www.nuget.org/packages/Microsoft.SqlServer.DACFx/150.4573.2), and a command line tool, [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage?WT.mc_id=DT-MVP-4025156).
 
 ### How to add a cross platform .dacpac build project to an existing solution
 

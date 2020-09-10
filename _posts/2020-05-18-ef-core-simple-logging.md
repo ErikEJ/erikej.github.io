@@ -4,7 +4,7 @@ title:  "Simple logging with Entity Framework Core 5 and 'LogTo' (like Database.
 date:   2020-05-18 16:28:49 +0100
 categories: efcore
 ---
-Logging with .NET Core (and Entity Framework Core) requires some plumbing, and requires you to opt-in to the built-in Dependency Injection infrastructure, which you have to enable manually for application types that are not ASP.NET Core. As you can see [from the docs](https://docs.microsoft.com/en-us/ef/core/miscellaneous/logging?tabs=v3), it can quickly get quite complicated.
+Logging with .NET Core (and Entity Framework Core) requires some plumbing, and requires you to opt-in to the built-in Dependency Injection infrastructure, which you have to enable manually for application types that are not ASP.NET Core. As you can see [from the docs](https://docs.microsoft.com/en-us/ef/core/miscellaneous/logging?tabs=v3&WT.mc_id=DT-MVP-4025156), it can quickly get quite complicated.
 
 The fourth major version of EF Core, named EF Core 5, and currently in preview,  finally includes some nice sugar coating to make this much simpler, similar to the Database.Log method in Entity Framework 6.
 

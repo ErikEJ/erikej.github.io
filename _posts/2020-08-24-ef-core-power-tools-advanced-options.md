@@ -25,7 +25,7 @@ You can enable support for mapping of spatial types, by adding this line to efpt
 
 `"UseSpatial": true,`
 
-[More info about working with spatial types in EF Core](https://docs.microsoft.com/da-dk/ef/core/modeling/spatial)
+[More info about working with spatial types in EF Core](https://docs.microsoft.com/da-dk/ef/core/modeling/spatial?WT.mc_id=DT-MVP-4025156)
 
 ### NodaTime Instant types (PostgreSQL)
 

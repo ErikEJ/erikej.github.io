@@ -57,6 +57,6 @@ using (var db = new NorthwindContext())
 }
 ```
 
-Notice that this requires: `using Microsoft.EntityFrameworkCore;` - more [info here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw?view=efcore-3.1). 
+Notice that this requires: `using Microsoft.EntityFrameworkCore;` - more [info here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw?WT.mc_id=DT-MVP-4025156). 
 
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/10)

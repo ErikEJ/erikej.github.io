@@ -5,7 +5,7 @@ date:   2020-04-06 13:28:49 +0100
 categories: efcore
 ---
 
-Many Entity Framework Core users look for an implementation of something similar to [SqlQuery](https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.database.sqlquery?view=entity-framework-6.2.0) from Entity Framework 6 or even something like Dapper's strongly typed [Query extension method](https://github.com/StackExchange/Dapper#execute-a-query-and-map-the-results-to-a-strongly-typed-list). SqlQuery/Query translates a raw SQL query to a IEnumerable of the type referred. In this blog post, I will show, that with a single line of extra code, it is possible to achieve the same for complex types with EF Core 3.1.
+Many Entity Framework Core users look for an implementation of something similar to [SqlQuery](https://docs.microsoft.com/en-us/dotnet/api/system.data.entity.database.sqlquery?WT.mc_id=DT-MVP-4025156) from Entity Framework 6 or even something like Dapper's strongly typed [Query extension method](https://github.com/StackExchange/Dapper#execute-a-query-and-map-the-results-to-a-strongly-typed-list). SqlQuery/Query translates a raw SQL query to a IEnumerable of the type referred. In this blog post, I will show, that with a single line of extra code, it is possible to achieve the same for complex types with EF Core 3.1.
 
 First create a class to hold the query results:
 
@@ -45,6 +45,6 @@ using (var db = new NorthwindContext())
 }
 ```
 
-Notice that you can also add SqlParameters to the call to FromSqlRaw, and using it requires: `using Microsoft.EntityFrameworkCore;` - more [info here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw?view=efcore-3.1). There is no need to specify `.AsNoTracking()`, as the entity uses `.HasNoKey()`.
+Notice that you can also add SqlParameters to the call to FromSqlRaw, and using it requires: `using Microsoft.EntityFrameworkCore;` - more [info here](https://docs.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.relationalqueryableextensions.fromsqlraw?WT.mc_id=DT-MVP-4025156). There is no need to specify `.AsNoTracking()`, as the entity uses `.HasNoKey()`.
 
 [Comments or questions?](https://github.com/ErikEJ/erikej.github.io/issues/3)

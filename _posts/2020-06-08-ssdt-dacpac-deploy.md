@@ -9,7 +9,7 @@ I have previously blogged about [using a SQL Server Database Project together wi
 
 So the two blog posts above cover development and build. Then next step is deployment. 
 
-The main deployment mechanism for making changes to your database based on your recently built .dacpac file, is the cross-platform [sqlpackage](https://docs.microsoft.com/en-us/sql/tools/sqlpackage?view=sql-server-ver15) command line tool. 
+The main deployment mechanism for making changes to your database based on your recently built .dacpac file, is the cross-platform [sqlpackage](https://docs.microsoft.com/en-us/sql/tools/sqlpackage?WT.mc_id=DT-MVP-4025156) command line tool. 
 
 You can, depending on your requirements, take advantage of several of the available actions this tool provides.
 
@@ -81,7 +81,7 @@ sqlpackage /a Script /dsp Actions.sql /op script.sql /sf MyDatabase.dacpac /tcs 
 
 This will not apply any changes to the target database, but simply script any schema changes to be deployed. You can also script the full deployment script with the `/dsp` option (this includes any pre and post deployment scripts)
 
-After approval, you can then apply the script using for example the [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-ver15) command line tool:
+After approval, you can then apply the script using for example the [sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?WT.mc_id=DT-MVP-4025156) command line tool:
 
 ```dos
 sqlcmd -i script.sql -I -E -d MyDatabase -S MyServer

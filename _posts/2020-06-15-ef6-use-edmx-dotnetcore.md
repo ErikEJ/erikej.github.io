@@ -90,6 +90,6 @@ using (var db = new ChinookEntities())
 }
 ```
 
-[More information and a couple of gotchas here](https://docs.microsoft.com/en-us/ef/ef6/what-is-new/#ef-designer-support)
+[More information and a couple of gotchas here](https://docs.microsoft.com/en-us/ef/ef6/what-is-new/#ef-designer-support?WT.mc_id=DT-MVP-4025156)
 
 [Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/12)

@@ -21,11 +21,11 @@ A database project is a [Visual Studio project type](https://visualstudio.micros
 
 The database project describes the "desired state" of your database schema, and the output from the project is a .dacpac file (a structured .zip file), that you can use various graphical and command line tools to compare or apply ("publish") to your production databases.
 
-The underlying DacFx API is available as a [.NET Standard 2.0 library](https://www.nuget.org/packages/Microsoft.SqlServer.DACFx/150.4573.2), and a command line tool, [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage?view=sql-server-ver15).
+The underlying DacFx API is available as a [.NET Standard 2.0 library](https://www.nuget.org/packages/Microsoft.SqlServer.DACFx/150.4573.2), and a command line tool, [sqlpackage](https://docs.microsoft.com/sql/tools/sqlpackage?WT.mc_id=DT-MVP-4025156).
 
 ### What is Azure Data Studio
 
-[Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?view=sql-server-ver15) is a free, cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux.
+[Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/what-is?WT.mc_id=DT-MVP-4025156) is a free, cross-platform database tool for data professionals using the Microsoft family of on-premises and cloud data platforms on Windows, MacOS, and Linux.
 
 Azure Data Studio offers a modern editor experience with IntelliSense, code snippets, source control integration, and an integrated terminal.
 
@@ -61,11 +61,11 @@ Once the database project is ready to be deployed, you can Build and Publish it 
 
 **Publish** means take the resulting .dacpac file, and apply it against a new or existing Azure SQL (or SQL Server) database, to change the schema of the target database to match the desired schema described in the .dacpac file.
 
-It is also possible to build the project from the command line using the .NET Core cross-platform SDK, but [there are some rough edges currently](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension-build-from-command-line?view=sql-server-ver15).
+It is also possible to build the project from the command line using the .NET Core cross-platform SDK, but [there are some rough edges currently](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension-build-from-command-line?WT.mc_id=DT-MVP-4025156).
 
 There is no command line publish support, so to publish from the command line, sqlpackage must be installed, and run against the built .dacpac file. (See below for a solution to that).
 
-Give the [extension a try](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension?view=sql-server-ver15), and provide feedback on the [GitHub repo](https://github.com/microsoft/azuredatastudio). 
+Give the [extension a try](https://docs.microsoft.com/en-us/sql/azure-data-studio/sql-database-project-extension?WT.mc_id=DT-MVP-4025156), and provide feedback on the [GitHub repo](https://github.com/microsoft/azuredatastudio). 
 
 ### Running build and publish of a Database project on a cross-platform build server
 
