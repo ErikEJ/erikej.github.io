@@ -29,7 +29,7 @@ If you are connecting from .NET Framework with EF Core 2.x, use .NET 4.6.2 or la
 
 If you are using EF Core 3.x, update to 3.1.7 or newer to take advantage of bug fixes in the Microsoft.Data.SqlClient dependency, that has been updated to version 1.1.3. For older EF Core versions, you can opt-in to a newer version (ever 2.0.0 or higher) as described [in my blog post](https://erikej.github.io/efcore/sqlclient/2020/03/22/update_mds.html). 
 
-If you are using EF Core 5, you get the version 2.0.1. Microsoft.Data.SqlClient, which includes advanced AAD authentication options.
+If you are using EF Core 5, you get the version 2.0.1. Microsoft.Data.SqlClient, which includes advanced Azure Active Directory authentication options.
 
 ### Enable retry of commands
 
