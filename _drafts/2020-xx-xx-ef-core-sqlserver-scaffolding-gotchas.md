@@ -8,6 +8,10 @@ categories: efcore
 - Timeout of GetColumns()
 - Missing default values
 - Nullable boolean columns
+- Empty (blank) column names
+
+New defaults:
+ 
 - --no-onconfiguring
 - --no-pluralize
 
