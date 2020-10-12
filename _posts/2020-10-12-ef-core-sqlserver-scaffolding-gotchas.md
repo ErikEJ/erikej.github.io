@@ -75,3 +75,5 @@ The latest version of EF Core Power Tools relies on the presence of the .NET Cor
 **Workaround**
 
 [Download and install the run-time](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
+
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/21)
