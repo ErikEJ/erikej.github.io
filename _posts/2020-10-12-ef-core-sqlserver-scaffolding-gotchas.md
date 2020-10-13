@@ -5,7 +5,7 @@ date:   2020-10-12 12:28:49 +0100
 categories: efcore
 ---
 
-This post lists a number of known issues you may encounter with Entity Framework Core Power Tools SQL Server reverse engineering or when running the `dotnet ef dbcontext scaffold` command, and provides resolutions / workarounds for the issue.
+This post lists a number of known issues you may encounter with [Entity Framework Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) SQL Server reverse engineering or when running the `dotnet ef dbcontext scaffold` command, and provides resolutions / workarounds for the issue.
 
 ### Timeouts with GetIndexes method when reverse engineering database with many indexes
 
