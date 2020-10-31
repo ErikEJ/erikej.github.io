@@ -16,7 +16,7 @@ In this post, let's have a look at using RETURN values.
 First, create a stored procedure with a RETURN value:
 
 ```sql
-CREATE OR ALTER PROCEDURE [dbo].[ReturnValue]
+CREATE OR ALTER PROCEDURE [dbo].[TheAnswer]
 AS
 BEGIN
     RETURN 42
@@ -24,7 +24,7 @@ END
 GO
 ```
 
-Now define a parameter to hold the RETURN value:
+Now define a parameter to hold the RETURN value - notice the direction is set to "Output":
 
 ```csharp
 var parameterReturn = new SqlParameter
@@ -39,7 +39,7 @@ And finally execute the procedure and display the result. Since no result set is
 
 ```csharp
 var result = db.Database
-    .ExecuteSqlRaw("EXEC @returnValue = [dbo].[ReturnValue]", parameterReturn);
+    .ExecuteSqlRaw("EXEC @returnValue = [dbo].[TheAnswer]", parameterReturn);
 
 int returnValue = (int)parameterReturn.Value;
 
