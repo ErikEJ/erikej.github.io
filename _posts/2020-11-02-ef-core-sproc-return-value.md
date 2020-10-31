@@ -15,7 +15,6 @@ In this post, let's have a look at using RETURN values.
 
 First, create a stored procedure with a RETURN value:
 
-
 ```sql
 CREATE OR ALTER PROCEDURE [dbo].[ReturnValue]
 AS
@@ -26,7 +25,6 @@ GO
 ```
 
 Now define a parameter to hold the RETURN value:
-
 
 ```csharp
 var parameterReturn = new SqlParameter
@@ -51,8 +49,7 @@ Console.WriteLine($"Return value: {returnValue}");
 
 Notice that the parameterReturn.Value is of type "object" and must be cast to the desired type.
 
-
-If you use EF Core Power Tools to reverse engineer your stored procedures, you can instead use this code:
+If you use EF Core Power Tools to reverse engineer your stored procedures, you can use code like this, as each procedure signature has an optional parameter of type `OutputParameter<int>`.
 
 ```csharp
 var procs = new NorthwindContextProcedures(db);
@@ -61,5 +58,4 @@ await procs.ReturnValue(returned);
 Console.WriteLine(returned.Value);
 ```
 
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/21)
-
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/23)
