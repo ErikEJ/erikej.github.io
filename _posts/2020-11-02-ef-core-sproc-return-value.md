@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Using SQL Server stored procedure return values with EF Core"
+title:  "Get a SQL Server stored procedure return value with EF Core"
 date:   2020-11-02 16:38:49 +0100
 categories: efcore
 ---
 
-SQL Server stored procedures can return data in three different ways: Via result sets, OUTPUT parameters and RETURN values - see the docs [here](https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure??WT.mc_id=DT-MVP-4025156).
+SQL Server stored procedures can return data in three different ways: Via result sets, OUTPUT parameters and RETURN values - see the docs [here](https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/return-data-from-a-stored-procedure?WT.mc_id=DT-MVP-4025156).
 
 I have previously blogged about getting result sets with FromSqlRaw [here](https://erikej.github.io/efcore/2020/05/26/ef-core-fromsql-scalar.html) and [here](https://erikej.github.io/efcore/2020/04/06/query-non-table-classes-raw-sql.html).
 
@@ -24,7 +24,7 @@ END
 GO
 ```
 
-Now define a parameter to hold the RETURN value - notice the direction is set to "Output":
+Now define a parameter to hold the RETURN value - notice the direction is set to "Output" (despite the presence of a ["ReturnValue"](https://docs.microsoft.com/en-us/dotnet/api/system.data.parameterdirection?WT.mc_id=DT-MVP-4025156) parameter direction Enum value):
 
 ```csharp
 var parameterReturn = new SqlParameter
@@ -35,7 +35,7 @@ var parameterReturn = new SqlParameter
 };
 ```
 
-And finally execute the procedure and display the result. Since no result set is returned, we can use ExecuteSqlRaw. A special syntax for the `EXEC` call is used, that assigns the return value to the `@returnValue` parameter.
+And finally execute the procedure and display the result. Since no result set is returned, we can use ExecuteSqlRaw. If there had been a result set, FromSqlRaw could have been used. A special syntax for the `EXEC` call is used, that assigns the return value to the `@returnValue` parameter.
 
 ```csharp
 var result = db.Database
