@@ -4,3 +4,4 @@
 
 layout: home
 ---
+![]({{ site.url }}/assets/dotnet-bot_presenting.png)
