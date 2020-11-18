@@ -20,13 +20,13 @@ The publish action incrementally updates the schema of a target database to matc
 So your basic publish command like could look similar to this:
 
 ```dos
-sqlpackage /a Publish /sf MyDatabase.dacpac /tcs "Data Source=.\SQLEXPRESS; Initial Catalog=MyApp;Integrated Security=true"
+sqlpackage /a:Publish /sf:MyDatabase.dacpac /tcs:"Data Source=.\SQLEXPRESS; Initial Catalog=MyApp;Integrated Security=true"
 ```
 
 If you would like a permanent record of what actions was executed, you can add this to the command line:
 
 ```dos
-/dsp Actions.sql /drp Actions.xml
+/dsp:Actions.sql /drp:Actions.xml
 ```
 
 The Actions.sql file contains all the SQL statements executed during publish (including pre and post deployment scripts), and the Actions.xml file contains a XML report of the changes made by a publish action.
@@ -76,7 +76,7 @@ You may have requirements for a workflow, which is a multi steps process:
 For the first step, you can use the sqlpackage Script action, with a command line similar to this:
 
 ```dos
-sqlpackage /a Script /dsp Actions.sql /op script.sql /sf MyDatabase.dacpac /tcs "Data Source=.\SQLEXPRESS; Initial Catalog=MyApp;Integrated Security=true"
+sqlpackage /a:Script /dsp:Actions.sql /op:script.sql /sf:MyDatabase.dacpac /tcs:"Data Source=.\SQLEXPRESS; Initial Catalog=MyApp;Integrated Security=true"
 ```
 
 This will not apply any changes to the target database, but simply script any schema changes to be deployed. You can also script the full deployment script with the `/dsp` option (this includes any pre and post deployment scripts)
