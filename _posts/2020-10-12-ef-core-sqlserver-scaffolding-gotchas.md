@@ -17,14 +17,14 @@ If you have a SQL Server database with many thousands of index columns, you may 
 
 - Use EF Core Power Tools, which contains the fix in [this PR](https://github.com/dotnet/efcore/pull/22296), which may be included in EF Core 6.0.
 - Try [updating statistics on the sys tables](https://github.com/sjh37/EntityFramework-Reverse-POCO-Code-First-Generator/wiki/Speed-up-Reverse-generating-by-updating-statistic-on-sys-tables)
-- Try clearing the procedure cache with [`DBCC FREEPROCCACHE`](https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-freeproccache-transact-sql?view=sql-server-ver15)
+- Try clearing the procedure cache with [`DBCC FREEPROCCACHE`](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-freeproccache-transact-sql?WT.mc_id=DT-MVP-4025156)
 - Wait for the release of Microsoft.Data.SqlClient 2.1.0-preview2, take a direct dependency on this version, and add "Command Timeout=300" to your [connection string](https://github.com/dotnet/SqlClient/pull/722)
 
 ### SQL Server default values and computed column definitions are missing in the generated code
 
 **Issue**
 
-Expected values for HasDefaultValueSql and HasComputedColumnSql are not generated, this is caused by the account running the scaffolding commands having limited rights to view definitions, [as designed](https://docs.microsoft.com/sql/relational-databases/security/metadata-visibility-configuration?view=sql-server-ver15#benefits-and-limits-of-metadata-visibility-configuration). 
+Expected values for HasDefaultValueSql and HasComputedColumnSql are not generated, this is caused by the account running the scaffolding commands having limited rights to view definitions, [as designed](https://docs.microsoft.com/sql/relational-databases/security/metadata-visibility-configuration?view=sql-server-ver15#benefits-and-limits-of-metadata-visibility-configuration?WT.mc_id=DT-MVP-4025156). 
 
 **Workarounds**
 - Use EF Core Power Tools, and be warned if the user account used for scaffolding does not have the required rights.
