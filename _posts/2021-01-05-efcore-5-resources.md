@@ -5,7 +5,7 @@ date:   2021-01-05 18:28:49 +0100
 categories: efcore
 ---
 
-It is now alomost two months since EF Core 5 was launched at the [.NET Conf 2020](https://www.dotnetconf.net/) online event on November 10, 2020.
+It is now almost two months since EF Core 5 was launched at the [.NET Conf 2020](https://www.dotnetconf.net/) online event on November 10, 2020.
 
 In the meantime, an update to both .NET 5 and an updated [version 5.0.1](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/) of EF Core has been released.
 
