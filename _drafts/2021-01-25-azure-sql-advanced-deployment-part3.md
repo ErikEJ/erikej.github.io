@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Advanced automated deployment of Azure SQL Database with Azure DevOps (part 3 of 4)"
-date:   2020-01-25 17:28:49 +0100
+date:   2021-01-25 17:28:49 +0100
 categories: sqlserver
 ---
 
