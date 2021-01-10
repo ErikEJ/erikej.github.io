@@ -5,7 +5,9 @@ date:   2021-01-11 17:28:49 +0100
 categories: sqlserver
 ---
 
-In this blog post series, I will show how to implement various advanced requirements when deploying an Azure SQL Database using Azure DevOps yaml-based pipelines, and ARM templates. I assume you have some experience with these technologies in advance.
+In this blog post series, I will show how to implement various advanced requirements when deploying an Azure SQL Database using Azure DevOps .yml-based pipelines, and ARM templates. I assume you have some experience with these technologies in advance.
+
+There is obviously already a number of good resources available to help you with the challenge of automated SQL Database deployment, like  [this blog post](https://devblogs.microsoft.com/azure-sql/continuous-delivery-for-azure-sql-db-using-azure-devops-multi-stage-pipelines/), but for the requirements below, there was little and scattered documentation available, and in some cases even no documentation (part 3).
 
 The requirements are:
 
@@ -21,7 +23,7 @@ The requirements are:
 
 It is highly recommended to add an Azure Active Directory group as logical SQL Server administrator with Azure SQL Database, as [described here](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#provision-azure-ad-admin-sql-dtabase). I will show how to do the same, but via the ARM template used to deploy the logical server.
 
-Using the ARM deployment task, you can call your ARM template with the required parameters from your .yml pipeline file, as in the sample below:
+Using the Azure DevOps ARM deployment task, you can call your ARM template with the required parameters from your .yml pipeline file, as in the sample below:
 
 ```yaml
   - task: AzureResourceManagerTemplateDeployment@3
@@ -63,7 +65,7 @@ Name of the of the AD group for the logical server administrators.
 
 For the password of the logical server admin (SQL login), this can be reset on each deployment, as that login should not be used under normal circumstances.
 
-You can set a pipeline variable to a random value by adding a task like this before your ARM deployment task (in the same `job`)
+You can set a pipeline variable to a random password value by adding a task like this before your ARM deployment task (in the same pipeline `job`)
 
 ```yaml
 - task: PowerShell@2
