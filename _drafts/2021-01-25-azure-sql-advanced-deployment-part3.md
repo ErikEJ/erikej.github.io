@@ -19,7 +19,7 @@ The requirements are:
 
 ## Set pipeline identity as db_owner (when pipeline identity is not in AAD admin group)
 
-If the pipeline identity is used for managing the database, for example to deploy .dacpac files to the database (see below), and the pipeline identity is not member of the AAD admin group, you can use the following Azure PowerShell script to elevate the pipeline identity to db_owner for the user database. Use the script in a `AzurePowerShell@5` task (see above).
+If the pipeline identity is used for managing the database, for example to deploy .dacpac files to the database (see below), and the pipeline identity is not member of the AAD admin group, you can use the following Azure PowerShell script to elevate the pipeline identity to db_owner for the user database. Use the script in a `AzurePowerShell@5` task (see part 2 in this series).
 
 ```powershell
 function ConvertTo-Sid {

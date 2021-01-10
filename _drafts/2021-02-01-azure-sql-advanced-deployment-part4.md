@@ -19,7 +19,7 @@ The requirements are:
 
 ## Use pipeline identity AAD access token for .dacpac publishing
 
-Given that the pipeline identity is member of the db_owner role in the user database (for example by using the script above), you can then use an AAD access token when deploying a .dacpac (SQL Server Database project output file) with your pipeline. This avoids storing any user credentials as pipelines secrets or in Key Vault.
+Given that the pipeline identity is member of the db_owner role in the user database (for example by using the script from part 3 of this series), you can then use an AAD access token when deploying a .dacpac (SQL Server Database project output file) with your pipeline. This avoids storing any user credentials as pipelines secrets or in Key Vault.
 
 First create a task to get the access token using the pipeline identity, and assign the token value to a pipeline environment variable:
 

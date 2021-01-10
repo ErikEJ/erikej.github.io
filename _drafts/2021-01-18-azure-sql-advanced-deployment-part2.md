@@ -27,6 +27,8 @@ You can use an ARM template similar to the following to deploy a 'serverless' da
 
 `autoPauseDelay` is the autopause delay in minutes! Minimum value is 60 minutes.
 
+Notice the use of the **undocumented** `kind` and the special `sku` usage, that enables setting the max number of cores for the database. 
+
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -86,12 +88,11 @@ You can use an ARM template similar to the following to deploy a 'serverless' da
         "minimalTlsVersion": "1.2"
       },
       "resources": [
-        
         {
             "name": "[parameters('sqlDatabaseName')]",
             "type": "databases",
             "location": "[resourceGroup().location]",
-             "apiVersion": "2020-02-02-preview",          
+            "apiVersion": "2020-02-02-preview",          
             "sku": {
               "name": "GP_S_Gen5",
               "tier": "GeneralPurpose",
