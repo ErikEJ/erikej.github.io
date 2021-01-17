@@ -11,15 +11,17 @@ The requirements are:
 
 - Part 1: Enable AAD integration for the logical server and add the AAD DBA group as AAD admin.
 
-- Part 2 (this part): Deploy a "Serverless" user database, and allow the settings for it to be passed via ARM template parameters.
+- Part 2 (this part): Deploy a custom "Serverless" user database, and allow settings for it to be passed via ARM template parameters.
 
 - Part 3: Make the Azure DevOps pipeline service principal db_owner on the user database, while the pipeline identity is not a member of the DBA AAD group.
 
 - Part 4: Use the pipeline identity to deploy a .dacpac without storing any user credentials.
 
-## Deploy a 'Serverless' user database via ARM template
+## Deploy a custom 'Serverless' user database via ARM template
 
 Serverless is a compute tier for single databases in Azure SQL Database that automatically scales compute based on workload demand and bills for the amount of compute used per second. The serverless compute tier also automatically pauses databases during inactive periods when only storage is billed and automatically resumes databases when activity returns.
+
+The solution below allows you to adjust the autopause delay, the number of cores (from 0.5 - yes!) to 40, amount of memory (from 2 GB to 120 GB), and storage (from 5 GB to 4 TB), by passing these values as parameters to the template.  
 
 You can use an ARM template similar to the following to deploy a 'serverless' database, notice that the `minCores` value is supplied as a `string` and then converted to `float`, as 0.5 cores is also a valid value.
 
