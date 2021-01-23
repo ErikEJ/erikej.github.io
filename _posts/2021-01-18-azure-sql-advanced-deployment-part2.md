@@ -9,7 +9,7 @@ In this blog post series, I will show how to implement various advanced requirem
 
 The requirements are:
 
-- Part 1: Enable AAD integration for the logical server and add the AAD DBA group as AAD admin.
+- [Part 1](https://erikej.github.io/sqlserver/2021/01/11/azure-sql-advanced-deployment-part1.html): Enable AAD integration for the logical server and add the AAD DBA group as AAD admin.
 
 - Part 2 (this part): Deploy a custom "Serverless" user database, and allow settings for it to be passed via ARM template parameters.
 
