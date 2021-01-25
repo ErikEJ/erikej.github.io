@@ -13,13 +13,13 @@ The requirements are:
 
 - [Part 2](https://erikej.github.io/sqlserver/2021/01/18/azure-sql-advanced-deployment-part2.html): Deploy a "Serverless" user database, and allow the settings for it to be passed via ARM template parameters.
 
-- Part 3 (this part): Make the Azure DevOps pipeline service principal db_owner on the user database, while the pipeline identity is not a member of the DBA AAD group. Or: Add AAD users to a user database when not logged in as a AAD user!
+- Part 3 (this part): Make the Azure DevOps pipeline service principal db_owner on the user database, while the pipeline identity is not a member of the DBA AAD group. Or: Add a contained AAD user to a user database when not logged in as an AAD user.
 
 - Part 4: Deploy a .dacpac to Azure SQL DB without storing any user credentials.
 
 ## Set pipeline identity as db_owner (when pipeline identity is not in AAD admin group)
 
-If the pipeline identity is used for managing the database, for example to deploy .dacpac files to the database (see part 4), and the pipeline identity is not member of the AAD admin group, you can use the following Azure PowerShell script to elevate the pipeline identity to db_owner for the user database. Use the script in a `AzurePowerShell@5` task (see part 2 in this series).
+If the Azure DevOps pipeline identity is used for managing the database, for example to deploy .dacpac files to the database (see the coming part 4), and the pipeline identity is not member of the AAD admin group, you can use the following Azure PowerShell script to 'elevate' the pipeline identity to db_owner for the user database. Use the script in a `AzurePowerShell@5` task (see part 2 in this series).
 
 ```powershell
 function ConvertTo-Sid {
@@ -75,7 +75,7 @@ ConnectAndExecuteSql -Query $Query -sqlServerName $env:SQLSERVERNAME -sqlDatabas
 
 The script first gets the AAD context of the pipeline into the `$context` variable, then gets the service principal based on the object id, and uses display name and a derived  SID (security identifier) from those objects.
 
-The script then runs a SQL query using the SQL login of the logical server admin, and runs this against the user database.
+The script then runs a SQL query against the user database using the SQL login of the logical server admin.
 
 The **magic juice** is this SQL statement, which creates an "external user" using [the undocumented](https://stackoverflow.com/questions/53001874/cant-create-azure-sql-database-users-mapped-to-azure-ad-identities-using-servic) `TYPE = E` parameter, thus avoiding an AAD lookup!
 
