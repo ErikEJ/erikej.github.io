@@ -40,4 +40,4 @@ The result classes are not added to your DbContext, instead a "temporary" DbCont
 
 Please try out the feature, and let me know any feedback you may have via the [GitHub issue tracker](https://github.com/ErikEJ/EFCorePowerTools/issues). 
 
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/15)
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/28)
