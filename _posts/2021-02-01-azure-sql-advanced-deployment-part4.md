@@ -58,4 +58,4 @@ And then notice the `AdditionalArguments` input, that passes the sqlToken variab
 
 For more .dacpac deployment tips, see my [previous blog post here](https://erikej.github.io/efcore/2020/06/08/ssdt-dacpac-deploy.html).
 
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/28)
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/29)
