@@ -5,6 +5,8 @@ date:   2021-08-08 17:28:49 +0100
 categories: ef6 sqlserver
 ---
 
+Want to use Microsoft.Data.SqlClient with Entity Framework 6 - this is now possible! This blog post describes the why and how.
+
 ## What is Microsoft.Data.SqlClient
 
 Microsoft.Data.SqlClient is the current SQL Server ADO.NET driver, replacing System.Data.SqlClient, which ships as part of .NET Framework 4.8 and with .NET Core 3.1. All development except for critical bugs and security issues has stopped on System.Data.SqlClient.
