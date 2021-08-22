@@ -17,7 +17,7 @@ Microsoft.Data.SqlClient is [open source on GitHub](https://github.com/dotnet/sq
 
 Entity Framework 6 was originally designed for .NET Framework 4.x only, but was enhanced to support .NET Standard 2.1 (including .NET Core 3 and later) with the 6.3 release from September 2019.
 
-Entity Framework 6.3/6.4 uses the System.Data.SqlClient provider, not the current Microsoft.Data.SqlClient provider, and this causes [various challenges](https://github.com/dotnet/ef6/issues/823)  as time passes:
+Entity Framework 6.3/6.4 uses the System.Data.SqlClient provider, not the current Microsoft.Data.SqlClient provider, and this causes [various challenges](https://github.com/dotnet/ef6/issues/823) as time passes:
 
 - Bugs no longer being fixed in System.Data.SqlClient
 - New SQL Server feature not being supported
@@ -34,7 +34,7 @@ The Entity Framework team [does not rule out](https://github.com/ErikEJ/EntityFr
 To try out the provider, simply install the new  [ErikEJ.EntityFramework.SqlServer](https://www.nuget.org/packages/ErikEJ.EntityFramework.SqlServer) package available on NuGet. The package is currently in preview, but my plan is to release a supported version soon.
 
 ```plaintext
-Install-Package ErikEJ.EntityFramework.SqlServer -Version 0.1.1-alpha1
+Install-Package ErikEJ.EntityFramework.SqlServer -Version 1.0.0-rc5
 ```
 
 As the EntityFramework NuGet package already contains a SQL Server provider, you need to tell EF6 to use the new provider package. This can be done via DbConfiguration, for example using a `DbConfigurationType` attribute:
