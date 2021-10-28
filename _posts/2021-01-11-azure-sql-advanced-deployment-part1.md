@@ -13,11 +13,11 @@ The requirements are:
 
 - Part 1 (this part): Enable AAD integration for the logical server and add the AAD DBA group as AAD admin.
 
-- Part 2: Deploy a "Serverless" user database, and allow the settings for it to be passed via ARM template parameters.
+- [Part 2](https://erikej.github.io/sqlserver/2021/01/18/azure-sql-advanced-deployment-part2.html): Deploy a "Serverless" user database, and allow the settings for it to be passed via ARM template parameters.
 
-- Part 3: Make the Azure DevOps pipeline service principal db_owner on the user database, while the pipeline identity is not a member of the DBA AAD group.
+- [Part 3](https://erikej.github.io/sqlserver/2021/01/25/azure-sql-advanced-deployment-part3.html): Make the Azure DevOps pipeline service principal db_owner on the user database, while the pipeline identity is not a member of the DBA AAD group.
 
-- Part 4: Use the pipeline identity to deploy a .dacpac without storing any user credentials.
+- [Part 4](https://erikej.github.io/sqlserver/2021/02/01/azure-sql-advanced-deployment-part4.html): Use the pipeline identity to deploy a .dacpac without storing any user credentials.
 
 ## Add AAD administrator via ARM template
 
