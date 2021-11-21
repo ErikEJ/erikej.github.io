@@ -19,9 +19,9 @@ And despite bucketizing, the previous approach will generate a number of query p
 
 ## Alternate solution
 
-Below, I will demonstrate an alternative approach, using the [`STRING_SPLIT`](https://docs.microsoft.com/sql/t-sql/functions/string-split-transact-sql?WT.mc_id=DT-MVP-4025156) table valued function (TVF) which was introduced in SQL Server 2016. So obviously, this solution is for SQL Server only.
+Below, I will demonstrate an alternative approach, using the [`STRING_SPLIT`](https://docs.microsoft.com/sql/t-sql/functions/string-split-transact-sql?WT.mc_id=DT-MVP-4025156) table valued function (TVF) which was introduced in SQL Server 2016. So this solution is for SQL Server 2016 and later (including Azure SQL Database).
 
-I will take advantage of the ability to [map to a SQL Server TVF](https://docs.microsoft.com/ef/core/querying/user-defined-function-mapping#mapping-a-queryable-function-to-a-table-valued-function??WT.mc_id=DT-MVP-4025156) introduced in EF Core 5, so no raw SQL statements using FromSQL are required.
+I will take advantage of the ability to [map to a SQL Server TVF](https://docs.microsoft.com/ef/core/querying/user-defined-function-mapping#mapping-a-queryable-function-to-a-table-valued-function??WT.mc_id=DT-MVP-4025156) introduced in EF Core 5, so no raw SQL statements using the FromSql method are required.
 
 ## Sample code
 
