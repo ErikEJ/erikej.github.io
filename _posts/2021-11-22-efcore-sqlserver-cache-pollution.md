@@ -105,6 +105,8 @@ And as we can see from the query plan, SQL Server is able to use an existing ind
 
 ![]({{ site.url }}/assets/stringsplit.png)
 
+Thanks to [stevendarby](https://github.com/dotnet/efcore/issues/13617#issuecomment-716052091) and [smitpatel](https://github.com/dotnet/efcore/issues/25198#issuecomment-875049456) for inspiration to this solution!
+
 Happy coding!
 
 [Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/37)
