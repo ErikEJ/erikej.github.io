@@ -13,7 +13,9 @@ I proposed a solution for EF Core using STRING_SPLIT in my [blog post here](http
 
 This issue also affects the 'classic' Entity Framework 6, and a blog post reader asked if it was possible to implement a similar solution for Entity Framework 6 - and yes, it is possible :-) !
 
-This solution takes advantage of a library created by a former EF team member. To get started, add this NuGet package to your project:
+> This solution takes advantage of a library created by a former EF team member. 
+
+To get started, add this NuGet package to your project:
 
 ```dos
 Install-Package EntityFramework.CodeFirstStoreFunctions -Version 1.2.0
@@ -50,7 +52,7 @@ public partial class NorthwindContext
 {
     public DbSet<StringSplitResult> StringSplitResults { get; set; }
 
-    [DbFunction(nameof(NorthwindContext), "STRING_SPLIT")]
+    [DbFunction(nameof(NorthwindContext), nameof(String_split))]
     [DbFunctionDetails(IsBuiltIn = true)]
     public IQueryable<StringSplitResult> String_split(string source, string separator)
     {
@@ -65,9 +67,9 @@ public partial class NorthwindContext
 }
 ```
 
-First, a DbSet is added to the DbContext.
+First, a DbSet for the `StringSplitResult` class is added to the DbContext.
 
-Then the mapping for the built-in `STRING_SPLIT` Table Valued Function (TVF) is added, using the EF 6 `DbFunction` attribute, combined with `DbFunctionDetails` from the third party library.
+Then the mapping for the built-in `STRING_SPLIT` Table Valued Function (TVF) is added, using the EF 6 `DbFunction` attribute, combined with `DbFunctionDetails` from the third party `EntityFramework.CodeFirstStoreFunctions` library.
 
 Let's test the code and inspect the generated SQL!
 
@@ -93,7 +95,7 @@ using (var db = new NorthwindContext())
 }
 ```
 
-The first query generates this non-parameterized (hard-coded) query:
+The first query that uses plain `Contains` generates this non-parameterized (hard-coded) query, which will cause plan cache pollution:
 
 ```sql
 SELECT
@@ -104,7 +106,7 @@ SELECT
     WHERE ([Extent1].[CustomerID] IN (N'ALFKI', N'BERGS', N'VAFFE')) AND ([Extent1].[CustomerID] IS NOT NULL)
 ```
 
-The second query generates the following, properly parameterized SQL:
+The second query generates the following, properly parameterized SQL. (If someone can come up with a more elegant approach to calling the String_split function, please come forward!)
 
 ```sql
 SELECT
@@ -125,8 +127,8 @@ And as we can see from the query plan, SQL Server is able to use an existing ind
 
 ![]({{ site.url }}/assets/stringsplit.png)
 
-Thanks to [stevendarby](https://github.com/dotnet/efcore/issues/13617#issuecomment-716052091) and [smitpatel](https://github.com/dotnet/efcore/issues/25198#issuecomment-875049456) for inspiration to this solution!
+Thanks to [stevendarby](https://github.com/dotnet/efcore/issues/13617#issuecomment-716052091),  [smitpatel](https://github.com/dotnet/efcore/issues/25198#issuecomment-875049456) and [moozzyk](https://github.com/moozzyk/CodeFirstFunctions) for inspiration to this solution!
 
 Happy coding!
 
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/37)
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/38)
