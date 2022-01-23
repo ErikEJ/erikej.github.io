@@ -9,7 +9,7 @@ Sometimes, maybe in the early stages of the development of a new product/solutio
 
 One approach to this is to create an admin page for simple data entry for an existing database.
 
-In this post I will show how you can do this in few minutes with [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) and one of two community libraries.
+In this post I will show how you can do this in few minutes with [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) and an open soruce community libraries.
 
 ### Setting up the web app
 
