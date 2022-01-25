@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Add a CRUD web page to your ASP.NET Core web app in 5 minutes using EF Core Power Tools and CoreAdmin"
-date:   2022-01-24 17:28:49 +0100
+title:  "Add an admin CRUD web page to your ASP.NET Core web app in 5 minutes using EF Core Power Tools and CoreAdmin"
+date:   2022-01-25 17:28:49 +0100
 categories: efcore aspnet
 ---
 
@@ -9,7 +9,7 @@ Sometimes, maybe in the early stages of the development of a new product/solutio
 
 One approach to this is to create an admin page for simple data entry for an existing database.
 
-In this post I will show how you can do this in few minutes with [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) and an open soruce community libraries.
+In this post I will show how you can do this in few minutes with [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) and an open source community library.
 
 ### Setting up the web app
 
@@ -40,7 +40,11 @@ app.MapRazorPages();
 app.Run();
 ```
 
-Now  you can install and run [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) reverse engineering against an existing database, for this sample, generate the files in the `Models` folder, and make sure to install the EF Core provider in your project.
+Now  you can install and run [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) reverse engineering against an existing database.
+
+There is a guide on how to use that tool [available here](https://github.com/ErikEJ/EFCorePowerTools/wiki/Reverse-Engineering).
+
+For this sample, generate the files in the `Models` folder, and make sure to install the EF Core provider in your project.
 
 Now add a connection string to the `appsettings.Development.json` file (nested under `appsettings.json`):
 
@@ -98,6 +102,6 @@ Run the app and navigate to `/CoreAdmin` and you have it - a fully fledged admin
 
 ![]({{ site.url }}/assets/CoreAdmin.png)
 
-There are a number of configuration and security options described in the readme.
+There are a number of configuration and security options described in the read me.
 
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/38)
+[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/39)
