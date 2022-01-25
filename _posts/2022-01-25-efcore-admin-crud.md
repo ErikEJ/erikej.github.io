@@ -11,6 +11,8 @@ One approach to this is to create an admin page for simple data entry for an exi
 
 In this post I will show how you can do this in few minutes with [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) and an open source community library.
 
+> EF Core Power Tools let's you create all the code you need for data access against an existing database in a matter of minutes.
+
 ### Setting up the web app
 
 First, create a new ASP.NET Core 6 web app, if you use the default template, it will look similar to this:
