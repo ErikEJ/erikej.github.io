@@ -102,7 +102,7 @@ app.MapDefaultControllerRoute();
 
 Run the app and navigate to `/CoreAdmin` and you have it - a fully fledged admin web page!
 
-![]({{ site.url }}/assets/CoreAdmin.png)
+![]({{ site.url }}/assets/coreadmin.png)
 
 There are a number of configuration and security options described in the read me.
 
