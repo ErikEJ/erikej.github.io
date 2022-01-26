@@ -28,5 +28,16 @@ layout: default
 
   {% include share.html %}
 
+  {%- if jekyll.environment == "production" -%}
+  <script src="https://utteranc.es/client.js"
+        repo="ErikEJ/erikej.github.io"
+        issue-term="og:title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+  {%- endif -%}
+
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
