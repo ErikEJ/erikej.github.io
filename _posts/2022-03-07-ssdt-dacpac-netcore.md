@@ -49,5 +49,3 @@ dotnet build /p:NetCoreBuild=true
 ```
 
 If you encounter any issues with the SDK, you can post an [issue here](https://github.com/microsoft/DacFX/issues), but keep in mind that this feature is still in preview.
-
-[Comments or questions for this blog post?](https://github.com/ErikEJ/erikej.github.io/issues/8)
