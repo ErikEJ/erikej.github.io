@@ -25,13 +25,10 @@ The underlying DacFx API is available as a [.NET Standard 2.0 library](https://w
 
 Assuming that you already have an existing Visual Studio solution, with a Database project (.sqlproj file), these are the steps required to enable cross platform build:
 
-1: In Visual Studio, unload the project, and edit it by adding these lines inside the Project tag.
+In Visual Studio, unload the project, and edit it by adding this line inside the Project tag.
 
 ```xml
   <Sdk Name="Microsoft.Build.Sql" Version="0.1.3-preview" />
-  <PropertyGroup>
-    <NetCoreBuild>True</NetCoreBuild>
-  </PropertyGroup>		
 ```
 The first lines of your .sqlproj should now look similar to this:
 ```xml
