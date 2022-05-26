@@ -88,6 +88,7 @@ And finally update your connection string - use the object id / principal id of 
 ```plaintext
 Server=myserver.database.windows.net;Database=mydatabase;User Id=xxxx;Authentication=Active Directory Managed Identity;Connect Timeout=60
 ```
+> With SqlClient version 3 or later, application id must be used instead ($appId above)
 
 Notice the authentication setting: `Authentication=Active Directory Managed Identity`
 
