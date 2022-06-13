@@ -48,4 +48,6 @@ In order to build the project with `dotnet` use:
 dotnet build /p:NetCoreBuild=true
 ```
 
+Please note that using the SDK will no longer allow you to build and publish the Database project through Visual Studio. Please use the command line tools for this purpose.
+
 If you encounter any issues with the SDK, you can post an [issue here](https://github.com/microsoft/DacFX/issues), but keep in mind that this feature is still in preview.
