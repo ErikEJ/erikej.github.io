@@ -31,16 +31,6 @@ If you would like a permanent record of what actions was executed, you can add t
 
 The Actions.sql file contains all the SQL statements executed during publish (including pre and post deployment scripts), and the Actions.xml file contains a XML report of the changes made by a publish action.
 
-Sometimes you may have long run publish actions, and you may run into timeout errors.
-
-You can fix this be setting a registry key before running the publish action:
-
-```dos
-C:\Windows\System32\reg.exe add HKCU\Software\Microsoft\VisualStudio\10.0\SQLDB\Database /v LongRunningQueryTimeoutSeconds /t REG_DWORD /d 0 /f
-```
-
-[More information on this issue](https://github.com/Microsoft/azure-pipelines-tasks/issues/1441)
-
 Azure DevOps provides a built-in task for .dacpac deployment to Azure SQL Database. 
 
 ```plaintext
@@ -53,15 +43,20 @@ steps:
     DatabaseName: MyApp
     SqlUsername: sqladmin
     SqlPassword: '$(sqlpw)'
-    DacpacFile: '$(System.DefaultWorkingDirectory)/_MyApp_CI//drop/MyApp.Database.Build/MyDatabase.dacpac'
-    AdditionalArguments: ' /p:ScriptDatabaseCompatibility=true'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/_MyApp_CI/drop/MyApp.Database.Build/MyDatabase.dacpac'
+    AdditionalArguments: '/TargetTimeout:3600 /p:CommandTimeout=3600 /p:LongRunningCommandTimeout=3600 /p:ScriptDatabaseCompatibility=true'
 ```
+Sometimes you may have long run publish actions, and you may run into timeout errors.
+
+The `/TargetTimeout:3600 /p:CommandTimeout=3600 /p:LongRunningCommandTimeout=3600` options specified as additional arguments sets the timeout for all actions to 1 hour. Setting the timeout to 0 indicates no timeout / indefinetly.
 
 The `/p:ScriptDatabaseCompatibility=true` option forces the publish process to set the database compatibility level specified in the .dacpac. 
 
 Example: If you have 150 as the compatibility level in your .dacpac, but 140 on your target database, it will remain at 140 unless you specify this. Notice that for Azure SQL Database, the compatibility level default changes over time, so if your database was created some time ago, it may be a 130 or 140. 
 
 To take advantage of [new query processing features](https://techcommunity.microsoft.com/t5/azure-sql-database/general-availability-database-compatibility-level-150-in-azure/ba-p/1003458), you must be at the highest compatibility level.
+
+It is also possible to avoid user name and password, and instead use an AAD access token, via the `/AccessToken:` option, see my [blog post here](https://erikej.github.io/sqlserver/2021/02/01/azure-sql-advanced-deployment-part4.html)
 
 ## Script action combined with script deployment
 
