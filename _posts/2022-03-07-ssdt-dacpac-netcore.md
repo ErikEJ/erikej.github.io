@@ -48,4 +48,6 @@ In order to build the project with `dotnet` use:
 dotnet build /p:NetCoreBuild=true
 ```
 
+Please note that using the SDK may cause build and publish through Visual Studio to fail. Please use the command line tools for this. In a future update to Visual Studio, this will be fixed.
+
 If you encounter any issues with the SDK, you can post an [issue here](https://github.com/microsoft/DacFX/issues), but keep in mind that this feature is still in preview.
