@@ -16,7 +16,7 @@ twitter:
 markdown: GFM
 theme: minima
 show_excerpts: true
-google_analytics: UA-7366519-3
+google_analytics: G-C06Q1EHP49
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
