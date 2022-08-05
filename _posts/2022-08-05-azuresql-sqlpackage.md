@@ -1,11 +1,13 @@
 ---
 layout: post
 title:  "Tales from the trenches - moving an old and large offline database to Azure SQL Database with SqlPackage"
-date:   2022-07-14 17:28:49 +0100
-categories: efcore sqldb
+date:   2022-08-05 17:28:49 +0100
+categories: efcore sqldb sqlpackage
 ---
 
-Microsoft promotes using sqlpackage with a .bacpac file in their documentation for moving databases to Azure SQL Database, but mostly just share a couple of command line samples, and leave the gory details to the reader. Hopefully this post can help you be successful with this approach to moving databases in (and out) of Azure SQL Database.
+`sqlpackage` is a Microsoft provided [command-line utility](https://docs.microsoft.com/sql/tools/sqlpackage/sqlpackage??WT.mc_id=DT-MVP-402515) that automates a number of database development tasks by exposing some of the public .NET based Data-Tier Application Framework (DacFx) APIs.
+
+Microsoft promotes using `sqlpackage` with a .bacpac file in their documentation for moving databases to Azure SQL Database, but mostly just share a couple of command line samples, and leave the gory details to the reader. Hopefully this post can help you be successful with this approach to moving databases in (and out) of Azure SQL Database.
 
 ## Setting the stage
 
