@@ -62,5 +62,5 @@ And EF Core Power Tools recognizes connections made using this extension.
 
 If you have a Database Project `(.sqlproj)` in your Visual Studio solution, you can simply right click the project, and use the `Generate EF Core DbContext` menu item to very easily create a new DbContext and Model classes in your solution.
 
-![]({{ site.url }}/assets/efptnews3.png)
+![]({{ site.url }}/assets/efptnews4.png)
 
