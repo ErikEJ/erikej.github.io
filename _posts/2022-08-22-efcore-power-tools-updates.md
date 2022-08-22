@@ -56,6 +56,8 @@ Previously it was [really hard](https://github.com/ErikEJ/SqlCeToolbox/wiki/EF6-
 
 But thanks to a herculean effort from EF Core team member Brice Lambson, you can now install a small extension from [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=bricelam.VSDataSqlite&ssr=false#overview) that makes this simple/possible.
 
+![]({{ site.url }}/assets/efptnews5.png)
+
 And EF Core Power Tools recognizes connections made using this extension. 
 
 ### Create a DbContext from a Database project
