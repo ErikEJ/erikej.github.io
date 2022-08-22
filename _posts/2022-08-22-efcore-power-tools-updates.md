@@ -4,7 +4,7 @@ title:  "Entity Framework Core Power Tools- a visual guide to recent updates"
 date:   2022-08-22 17:28:49 +0100
 categories: efcore
 ---
-EF Core Power Tools can now celebrate close to 250.00 installs!
+[EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&ssr=false#overview) can now celebrate close to 250.00 installs!
 
 This blog post gives an overview of new features added to EF Core Power Tools during the last three months.
 
