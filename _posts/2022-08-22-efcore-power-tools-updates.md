@@ -4,7 +4,7 @@ title:  "Entity Framework Core Power Tools- a visual guide to recent updates"
 date:   2022-08-22 17:28:49 +0100
 categories: efcore
 ---
-[EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&ssr=false#overview) can now celebrate close to 250.00 installs!
+[EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&ssr=false#overview) can now celebrate close to 250.000 installs!
 
 This blog post gives an overview of new features added to EF Core Power Tools during the last three months.
 
@@ -20,7 +20,7 @@ The telemetry has been enhanced to include statistics based on the EF Core versi
 
 The advanced options dialog now has a link to the user guide to help understand the many options provided by the tool. 
 
-In addition, a `Rate` link has been provided that bring you to the Visual Studio Marketplace page for the extension. I really appreciate your reviews or rating as feedback to this free tool. 
+In addition, a `Rate` link has been provided that bring you to the Visual Studio Marketplace page for the extension. I really appreciate your review or rating as feedback to this free tool. 
 
 ![]({{ site.url }}/assets/efptnews2.png)
 
@@ -38,7 +38,7 @@ Read more about this feature [in the docs](https://github.com/ErikEJ/EFCorePower
 
 ### Map entity classes as stored procedure result class
 
-If some of your stored procedures returns a shape that is similar to your entity classes, it is now possible to override the XxResult class and use one of your entity classes instead.
+If some of your stored procedures returns a shape that is similar to your entity classes, it is now possible to override the default result class and use one of your entity classes instead.
 
 Modify your `efpt.config.json` with a `MappedType` entry to do that:
 
