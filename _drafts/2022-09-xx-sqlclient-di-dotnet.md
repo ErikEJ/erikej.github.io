@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Adding dependency injection and .NET logging to Microsoft.Data.SqlClient"
+title:  "Use dependency injection and .NET logging with Microsoft.Data.SqlClient"
 date:   2022-09-xx 18:28:49 +0100
 categories: dotnet sqlclient
 ---
 [`Microsoft.Data.SqlClient`](https://github.com/dotnet/SqlClient) is the open source .NET data provider for Microsoft SQL Server. It allows you to connect and interact with SQL Server and Azure SQL Database using .NET.
 
-Using modern [.NET dependency injection](https://docs.microsoft.com/dotnet/core/extensions/dependency-injection?WT.mc_id=DT-MVP-402515) in for example ASP.NET Core apps with SqlClient is poorly supported, and the logging mechanism used by SqlClient does not relate to the the .NET ILogger. 
+Using modern [.NET dependency injection](https://docs.microsoft.com/dotnet/core/extensions/dependency-injection?WT.mc_id=DT-MVP-402515) in for example ASP.NET Core apps with SqlClient is not supported in the driver, and the logging mechanism used by SqlClient does not relate to the .NET [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger?WT.mc_id=DT-MVP-402515) interface. 
 
 I have created [a library](https://www.nuget.org/packages/ErikEJ.SqlClient.Extensions/) that helps set up SqlClient in applications using dependency injection, notably ASP.NET Core and Worker Service applications. It allows easy configuration of your database connections and registers the appropriate services in your DI container. It also enables you to log events from Microsoft.Data.SqlClient using standard .NET logging (ILogger).
 
@@ -15,10 +15,10 @@ For example, if using the ASP.NET minimal web API, simply use the following to r
 ```csharp
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSqlDataSource("Server=.\\SQLEXPRESS;Database=Northwind;Integrated Security=true;Trust Server Certificate=true");
+builder.Services.AddSqlDataSource("Server=myserver.database.windows.net;Database=mydatabase;Authentication=Active Directory Managed Identity");
 ```
 
-> TIP: You can use the configuration system to read the connection string from a configuration provider:
+> TIP: You can use the configuration system to read the connection string from a configuration provider
 
 ```csharp
 builder.Services.AddSqlDataSource(builder.Configuration.GetConnectionString("Database");
@@ -58,7 +58,7 @@ app.MapGet("/", async (SqlDataSource dataSource) =>
 
 The AddSqlDataSource method also enables automatic logging of `Microsoft.Data.SqlClient` activity in your ASP.NET Core app.
 
-By default informational messages are logged, this can be configured via logging configuration:
+By default, informational messages are logged, this can be configured via logging configuration:
 
 ```json
 {
@@ -91,3 +91,5 @@ And you can turn on full logging like this:
 ```
 
 For more information, [see the SqlClient documentation](https://docs.microsoft.com/sql/connect/ado-net/introduction-microsoft-data-sqlclient-namespace?WT.mc_id=DT-MVP-402515).
+
+And a big thank you to [the Npgsql](https://github.com/npgsql/npgsql) project for inspiration for this library.
