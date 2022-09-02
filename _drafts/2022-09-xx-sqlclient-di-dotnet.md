@@ -8,6 +8,22 @@ categories: dotnet sqlclient
 
 Using modern [.NET dependency injection](https://docs.microsoft.com/dotnet/core/extensions/dependency-injection?WT.mc_id=DT-MVP-402515) in for example ASP.NET Core apps with SqlClient is not supported in the driver, and the logging mechanism used by SqlClient does not relate to the .NET [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger?WT.mc_id=DT-MVP-402515) interface. 
 
+This means you often can end up with code like this, where you are creating new `SqlConnection` instances in many places:
+
+```csharp
+public async Task<int> AddAsync(Product entity)
+{
+    entity.AddedOn = DateTime.Now;
+    var sql = "Insert into Products (Name,Description,Barcode,Rate,AddedOn) VALUES (@Name,@Description,@Barcode,@Rate,@AddedOn)";
+    using (var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection")))
+    {
+        connection.Open();
+        var result = await connection.ExecuteAsync(sql, entity);
+        return result;
+    }
+}
+```
+
 I have created [a library](https://www.nuget.org/packages/ErikEJ.SqlClient.Extensions/) that helps set up SqlClient in applications using dependency injection, notably ASP.NET Core and Worker Service applications. It allows easy configuration of your database connections and registers the appropriate services in your DI container. It also enables you to log events from Microsoft.Data.SqlClient using standard .NET logging (ILogger).
 
 For example, if using the ASP.NET minimal web API, simply use the following to register `Microsoft.Data.SqlClient`:
