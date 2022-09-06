@@ -1,14 +1,16 @@
 ---
 layout: post
 title:  "Use dependency injection and .NET logging with Microsoft.Data.SqlClient"
-date:   2022-09-xx 18:28:49 +0100
+date:   2022-09-06 18:28:49 +0100
 categories: dotnet sqlclient
 ---
 [`Microsoft.Data.SqlClient`](https://github.com/dotnet/SqlClient) is the open source .NET data provider for Microsoft SQL Server. It allows you to connect and interact with SQL Server and Azure SQL Database using .NET.
 
+For some applications, you do not need a full OR/M like Entity Framework Core, but just need to extecute some SQL statements.
+
 Using modern [.NET dependency injection](https://docs.microsoft.com/dotnet/core/extensions/dependency-injection?WT.mc_id=DT-MVP-402515) in for example ASP.NET Core apps with SqlClient is not supported in the driver, and the logging mechanism used by SqlClient does not relate to the .NET [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger?WT.mc_id=DT-MVP-402515) interface. 
 
-This means you often can end up with code like this, where you are creating new `SqlConnection` instances in many places:
+This means you often can end up with code like this, where you are creating new `SqlConnection` instances in many places and pass around connection strings:
 
 ```csharp
 public async Task<int> AddAsync(Product entity)
