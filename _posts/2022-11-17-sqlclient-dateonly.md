@@ -14,7 +14,7 @@ The new types map directly to the existing [date](https://learn.microsoft.com/en
 
 ## Trying out the new support in SqlClient
 
-Until recently trying to use these types against SQL Server/Azure SQL with [Microsoft.Data.SqlClient] failed, as SqlClient was not built for .NET 6. This  is no longer the case and thanks to a recent Pull Request[https://github.com/dotnet/SqlClient/pull/1813], you can now use DateOnly (and TimeOnly) with the latest SqlClient [preview (5.1)]
+Until recently trying to use these types against SQL Server/Azure SQL with [Microsoft.Data.SqlClient] failed, as SqlClient was not built for .NET 6. This  is no longer the case and thanks to a recent [Pull Request](https://github.com/dotnet/SqlClient/pull/1813), you can now use DateOnly (and TimeOnly) with the latest SqlClient [5.1 preview 2](https://www.nuget.org/packages/Microsoft.Data.SqlClient/5.1.0-preview2.22314.2)
 
 To try it out in your .NET 6 or later project, start by adding an explicit reference `Microsoft.Data.SqlClient` to version 5.1 (currrently in preview)
 
