@@ -8,7 +8,7 @@ The [DateOnly](https://learn.microsoft.com/dotnet/api/system.dateonly?WT.mc_id=D
 
 `DateOnly` can be useful to properly represent for example date of birth or invoice date.
 
-The map directly to the existing [date](https://learn.microsoft.com/en-us/sql/t-sql/data-types/date-transact-sql?WT.mc_id=DT-MVP-402515) and [time](https://learn.microsoft.com/en-us/sql/t-sql/data-types/time-transact-sql?WT.mc_id=DT-MVP-402515) data types that were added to SQL Server in 2008.
+The new types map directly to the existing [date](https://learn.microsoft.com/en-us/sql/t-sql/data-types/date-transact-sql?WT.mc_id=DT-MVP-402515) and [time](https://learn.microsoft.com/en-us/sql/t-sql/data-types/time-transact-sql?WT.mc_id=DT-MVP-402515) data types that were added to SQL Server in 2008.
 
 [Steve Gordon - MVP](https://twitter.com/stevejgordon) has a [nice blog post](https://www.stevejgordon.co.uk/using-dateonly-and-timeonly-in-dotnet-6) about using the types.
 
