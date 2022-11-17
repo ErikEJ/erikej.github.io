@@ -4,8 +4,6 @@ title:  "Using .NET 6 DateOnly (and TimeOnly) with SQL Server"
 date:   2022-11-17 18:28:49 +0100
 categories: dotnet sqlclient
 ---
-## Why use DateOnly and TimeOnly
-
 The [DateOnly](https://learn.microsoft.com/dotnet/api/system.dateonly?WT.mc_id=DT-MVP-402515) and [TimeOnly](https://learn.microsoft.com/en-us/dotnet/api/system.timeonly?WT.mc_id=DT-MVP-402515) types are new additions to .NET that were added in .NET 6 in 2021.
 
 `DateOnly` can be useful to properly represent for example date of birth or invoice date.
