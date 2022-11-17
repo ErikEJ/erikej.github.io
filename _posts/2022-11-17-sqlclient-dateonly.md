@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Using .NET 6 DateOnly (and TimeOnly) with SQL Server"
-date:   2022-17-11 18:28:49 +0100
+date:   2022-11-17 18:28:49 +0100
 categories: dotnet sqlclient
 ---
 ## Why use DateOnly and TimeOnly
