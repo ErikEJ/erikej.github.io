@@ -5,7 +5,7 @@ date:   2020-10-12 12:28:49 +0100
 categories: efcore
 ---
 
-This post lists a number of known issues you may encounter with [Entity Framework Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) SQL Server reverse engineering or when running the `dotnet ef dbcontext scaffold` command, and provides resolutions / workarounds for the issue.
+This post lists some of known issues you may encounter with [Entity Framework Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools) SQL Server reverse engineering or when running the `dotnet ef dbcontext scaffold` command, and provides resolutions / workarounds for the issue.
 
 ### Timeouts with GetIndexes method when reverse engineering database with many indexes
 
@@ -15,16 +15,18 @@ If you have a SQL Server database with many thousands of index columns, you may 
 
 **Workarounds**
 
-- Use EF Core Power Tools, which contains the fix in [this PR](https://github.com/dotnet/efcore/pull/22296), which may be included in EF Core 6.0.
+- Use EF Core Power Tools.
 - Try [updating statistics on the sys tables](https://github.com/sjh37/EntityFramework-Reverse-POCO-Code-First-Generator/wiki/Speed-up-Reverse-generating-by-updating-statistic-on-sys-tables)
 - Try clearing the procedure cache with [`DBCC FREEPROCCACHE`](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-freeproccache-transact-sql?WT.mc_id=DT-MVP-4025156)
-- Wait for the release of Microsoft.Data.SqlClient 2.1.0-preview2, take a direct dependency on this version, and add "Command Timeout=300" to your [connection string](https://github.com/dotnet/SqlClient/pull/722)
+- Add "Command Timeout=300" to your [connection string](https://github.com/dotnet/SqlClient/pull/722)
 
 ### SQL Server default values and computed column definitions are missing in the generated code
 
 **Issue**
 
 Expected values for HasDefaultValueSql and HasComputedColumnSql are not generated, this is caused by the account running the scaffolding commands having limited rights to view definitions, [as designed](https://docs.microsoft.com/sql/relational-databases/security/metadata-visibility-configuration?view=sql-server-ver15#benefits-and-limits-of-metadata-visibility-configuration?WT.mc_id=DT-MVP-4025156). 
+
+Run this [SQL statement](https://docs.microsoft.com/sql/t-sql/functions/has-perms-by-name-transact-sql) to confirm: `SELECT HAS_PERMS_BY_NAME(DB_NAME(), 'DATABASE', 'VIEW DEFINITION')`
 
 **Workarounds**
 - Use EF Core Power Tools, and be warned if the user account used for scaffolding does not have the required rights.
@@ -37,10 +39,10 @@ Expected values for HasDefaultValueSql and HasComputedColumnSql are not generate
 SQL Server allows blank column names in tables, but this causes the following error when scaffolding: `The string argument 'originalIdentifier' cannot be empty.` 
 
 **Workarounds**
-- Use EF Core Power Tools, which contains a fix for this. (Fix will also be in EF Core 6.0)
+- Use EF Core Power Tools, which contains a fix for this. (Fix is also in EF Core 6.0)
 - Rename the column :-) 
 
-### When using the EF Core 5 command line tools, pluralization is suddenly enabled
+### When using the EF Core 5 or later command line tools, pluralization is suddenly enabled
 
 **Issue**
 
