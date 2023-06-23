@@ -29,3 +29,5 @@ order by increasing impact.
 9: To take advantage of the new TDS8 protocol with SQL Server 2022, use version 5.1 or later
 
 10: SSMS, ADS, DacFX all uses Microsoft.Data.SqlClient
+
+11: explain difference between managed sni and native sni. how to enable managed on Windows
