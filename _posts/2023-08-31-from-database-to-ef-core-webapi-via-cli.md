@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "From Azure SQL DB to EF Core Web API using only cross platform CLI tools"
-date:   2023-xx-xx 18:28:49 +0100
+date:   2023-08-31 18:28:49 +0100
 categories: efcore dotnet azure dacfx
 ---
 
@@ -17,11 +17,11 @@ Finally we will add a method to expose an EF Core entity, and verify that the We
 
 ### Install SDKs & tools
 
-First, install the SDKs and tools needed for this:
+First, install the SDKs and tools needed for this, staring with the .NET 6 SDK:
 
 [.NET 6 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-Check that the SDK is installed by typing:
+Check that the .NET 6 SDK is installed by typing:
 
 ```bash
 dotnet --list-sdks
@@ -39,11 +39,12 @@ Install the database project template:
 dotnet new -i Microsoft.Build.Sql.Templates
 ```
 
-Install the `efcpt` dotnet global tool to generate C# DbContext and model code:
+Install the `efcpt` dotnet global tool for EF Core 7, used to generate C# DbContext and model code:
 
 ```bash
 dotnet tool install -g ErikEJ.EFCorePowerTools.Cli --version 7.0.*-*
 ```
+
 ### Create the database project - .dacpac package
 
 Use the `sqlproj` template to create a new SQL project:
@@ -55,7 +56,7 @@ dotnet new sqlproj -n AdventureWorks
 Run `sqlpackage` to create .sql scripts for all objects from the Azure SQL Database:
 
 ```bash
-sqlpackage /a:Extract /p:ExtractTarget=SchemaObjectType /tf:t.dacpac /scs:"data source=sqlservercentralpublic.database.windows.net;initial catalog=AdventureWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;" 
+sqlpackage /a:Extract /p:ExtractTarget=SchemaObjectType /tf:t.dacpac /scs:"data source=myserver.database.windows.net;initial catalog=AdWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;Connect Timeout=60" 
 ```
 
 For details on the sqlpackage extract action syntax, see [the documentation here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-extract?WT.mc_id=DT-MVP-4025156).
@@ -67,7 +68,7 @@ mv t.dacpac\* .\AdventureWorks
 rmdir t.dacpac
 ```
 
-Finally, you can build a .dacpac package, which can be used to publish the database schema and as the basis for code generation in the following steps.
+Finally, you can build a .dacpac package, which can be used to publish the database schema in your deployment scripts and as the basis for code generation in the following steps.
 
 ```bash
 dotnet build .\AdventureWorks\AdventureWorks.sqlproj
@@ -89,14 +90,14 @@ Add a new ASP.NET Core Web API using the webapi template:
 dotnet new webapi -f net6.0 -n Api
 ```
 
-Remove the WeatherForecast.cs class and the Controllers folder:
+Remove the WeatherForecast.cs class and the Controllers folder, part of the templates, but not needed:
 
 ```bash
 del Api/WeatherForecast.cs
-rmdir Api/Controllers
+rm -r Api/Controllers
 ```
 
-### Generate EF Core DbContext and entity classes
+### Generate EF Core DbContext and entity classes from the database project
 
 Run `efcpt` to generate DbContext and entity classes in a Models folder in the Api project:
 
@@ -119,23 +120,20 @@ Add the Entity Framework Core SQL Server/Azure SQL provider NuGet package to the
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-Now use your "favorite CLI based text editor" `:-)`  to update the `appsettings.Development.json` file to include the connection string used above, so it is possible to test the API endpoint via Swagger:
+Enable [user secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?WT.mc_id=DT-MVP-4025156) and add the connection string to them (so the connection string is not included in your source files).
 
-```json
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "ConnectionStrings": {
-    "DefaultConnection": "data source=sqlservercentralpublic.database.windows.net;initial catalog=AdventureWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;"
-  }
-}
+```bash
+dotnet user-secrets init
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "data source=myserver.database.windows.net;initial catalog=AdWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;Connect Timeout=60"
 ```
 
-And finally update `Program.cs` to use the EF Core DbContext and expose an API endpoint:
+And finally update `Program.cs` with your favorite CLI based text editor (or VS Code) to use the EF Core DbContext and expose an API endpoint:
+
+```bash
+code Program.cs
+```
+
+The complete `Program.cs` file:
 
 ```csharp
 // Added
@@ -182,7 +180,15 @@ You can now run the Web API app:
 ```bash
 dotnet run
 ```
+You should see output similar to 
 
-and open a browser and navigate to the Swagger UI `https://localhost:7225/swagger`
+```dos
+info: Microsoft.Hosting.Lifetime[14]
+    Now listening on: https://localhost:7038
+```
 
-Congratulations, a database project, EF Core DbConext and Web API all from the command line and cross platform!
+and open a web browser and navigate to the Swagger UI `https://localhost:7038/swagger` to test the API.
+
+![]({{ site.url }}/assets/cli2.png)
+
+Congratulations, a .dacpac database project, EF Core DbConext and Web API all from the command line and cross platform!
