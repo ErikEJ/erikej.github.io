@@ -187,7 +187,7 @@ info: Microsoft.Hosting.Lifetime[14]
     Now listening on: https://localhost:7038
 ```
 
-and open a web browser and navigate to the Swagger UI `https://localhost:7038/swagger` to test the API.
+Open a web browser and navigate to the Swagger UI `https://localhost:7038/swagger` to test the API.
 
 ![]({{ site.url }}/assets/cli2.png)
 
