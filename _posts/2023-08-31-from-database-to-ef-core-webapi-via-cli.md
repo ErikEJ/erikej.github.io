@@ -13,7 +13,7 @@ The we will create a Web API with Swagger support.
 
 Then we will generate C# code to interact with the database using EF Core Power Tools. 
 
-Finally we will add a method to expose an EF Core entity, and verify that the Web API works via Swagger UI.
+Finally, we will add a method to expose an EF Core entity, and verify that the Web API works via Swagger UI.
 
 ### Install SDKs & tools
 

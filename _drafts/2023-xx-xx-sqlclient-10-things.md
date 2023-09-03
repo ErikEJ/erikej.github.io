@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "10 things you didn't know about the .NET SQL Server / Azure SQL Database driver (but wish you had)"
+title:  "10 things you didn't know about SqlClient - the .NET SQL Server / Azure SQL Database driver (but wish you had)"
 date:   2023-xx-xx 18:28:49 +0100
 categories: dotnet sqlclient
 ---
 
 order by increasing impact.
 
-0: Open overload skips all timeouts 
+0: Open overload skips all timeouts
 
 1: The de facto driver is no longer System.Data.SqlClient
 
