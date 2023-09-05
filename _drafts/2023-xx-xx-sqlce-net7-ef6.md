@@ -45,5 +45,35 @@ I promise last blog post! :-D
 	<PackageReference Include="ErikEJ.EntityFramework.SqlServerCompact" Version="6.4.0-*" />
 </ItemGroup>
 
+- In SqlCeRuntime, add this constructor to your DbContext class (in a partial class, f.ex. Northwind.partial.cs:
+
+```csharp
+  public Model1(string connectionString)
+      : base(connectionString)
+  {
+  }
+```
+
 - In SqlCeRuntime, test your app in Program.cs:
 
+```csharp
+using System.Data.Entity.SqlServerCompact;
+using System.Data.Entity;
+using ClassLibrary1;
+
+DbConfiguration.SetConfiguration(new SqlCeDbConfiguration());
+
+var connectionString = "Data Source=C:\\Tests\\Northwind.sdf";
+
+using var ctx = new Model1(connectionString);
+
+ctx.Database.ExecuteSqlCommand("SELECT 1");
+
+var shippers = ctx.Shippers.Where(s =>  s.CompanyName == "Speedy Express").ToList();
+
+foreach (var shipper in shippers)
+{
+    Console.WriteLine(shipper.CompanyName);
+}
+
+```
