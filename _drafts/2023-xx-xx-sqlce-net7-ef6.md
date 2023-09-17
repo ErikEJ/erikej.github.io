@@ -2,64 +2,101 @@
 layout: post
 title:  "Use SQL Server Compact with .NET 7 and Entity Framework including Database First"
 date:   2022-10-12 12:28:49 +0100
-categories: sqlce
+categories: sqlce entityframework
 ---
 
-I promise last blog post! :-D
+I this blog post I will show how you can use SQL Server Compact 4.0 on a Windows desktop with .NET 7 (and later), with a Database First approach, assuming you already have a SQl Server Compact .sdf file.
 
-- Install SQL Compact 4.0 runtime
+Yes, I know SQL Server Compact is obsolete, but it still finds is uses in various scenarios, for example with the ability to have a simple solution for an encrypted database file on Windows.
 
-- Install Visual Studio with "Entity Framework 6 Tools" (screenshot)
+In the walkthough, there will be five stages: 
 
-- Install SQL Compact Toolbox
+- Installing any pre-requisites
+- Create solution and projects in Visual Studio
+- Generate Database First DbContext and entities
+- Refer to the generated code from the runtime project
+- Test functionality
 
-- Create blank solution
+## Install pre-requisites
 
-- Add ".NET Framework Class Library" project - name it SqlCeDesign, and delete Class1.cs
+- Install the SQL Server Compact 4.0 [runtime MSI](https://www.microsoft.com/en-US/download/details.aspx?id=30709)
 
-- Add ".NET Console App" - target .NET 7 (or .NET 8) - name it SqlCeRuntime
+- Install Visual Studio 2022 with `Entity Framework 6 Tools`
 
-- In SqlCeDesign: Add NuGet package: EntityFramework.SqlServerCompact
+![]({{ site.url }}/assets/net7sqlce1.png)
 
-- Build SqlCeDesign
+- Install the `SQLite / SQL Server Compact Toolbox Visual Studio` extension via Extension Manager in Visual Studio.
 
-- In SqlCeDesign: Add, New Item, ADO.NET Entity Data Model, Add
+## Create solution and projects
+
+- Open Visual Studio
+
+- Create a blank solution with the `Blank Solution` template
+
+- Add a `.NET Framework Class Library` project - name it SqlCeDesign, and delete Class1.cs
+
+- Add `.NET Console App` - target .NET 7 (or event .NET 8 and later) - name it SqlCeRuntime
+
+The .NET Console App represents the final app, the .NET Framework Library is used as a placeholder for code generation only.
+
+## Generate Database First DbContext in design project
+
+- In SqlCeDesign: Add the NuGet package `EntityFramework.SqlServerCompact`
+
+- Build the SqlCeDesign project
+
+- In SqlCeDesign right click the project and select Add, New Item, ADO.NET Entity Data Model, change name to Northwind, and click Add
 
 - Select Code First From Database
 
-- Choose your database, New connection, Use Data Source: "SQL Server Compact (Simple by ErikEJ)"
+![]({{ site.url }}/assets/net7sqlce2.png)
 
-- For Data Source, enter path to your SQL Server Compact .sdf file
+- Choose your database, New connection, use Data Source: `SQL Server Compact (Simple by ErikEJ)`
+
+- For the Data Source property, enter the path to your existing SQL Server Compact .sdf file
 
 - Next, pick objects, and Finish
 
-- In SqlCeRuntime, create a Models folder, and link files from design project to it in .csproj file:
+## Use generated code in runtime project
 
-  <ItemGroup>
-	<Compile Include="..\SqlCeDesign\*.cs" Link="Models\%(Filename)%(Extension)" />
-  </ItemGroup>
+- In SqlCeRuntime, create a Models folder, and link the generated files from the design project to it in the .csproj file:
 
-- In SqlCeRuntime, add .NET 7 compatible driver in .csproj file:
+```xml
+<ItemGroup>
+  <Compile Include="..\SqlCeDesign\*.cs" Link="Models\%(Filename)%(Extension)" />
+</ItemGroup>
 
+```
+- In SqlCeRuntime, add my .NET 7 compatible [SQL Server Compact Entity Framework 6 (Classic)](https://www.nuget.org/packages/ErikEJ.EntityFramework.SqlServerCompact/#readme-body-tab) driver (which is based on the officical .NET Framework driver from Micrsoft) in the .csproj file. 
+
+```xml
 <ItemGroup>
 	<PackageReference Include="ErikEJ.EntityFramework.SqlServerCompact" Version="6.4.0-*" />
 </ItemGroup>
+```
 
-- In SqlCeRuntime, add this constructor to your DbContext class (in a partial class, f.ex. Northwind.partial.cs:
+Please read through the readme details to understand usage and configuration.
+
+- In SqlCeRuntime, add this constructor to your DbContext in a partial class, f.ex. Northwind.partial.cs:
 
 ```csharp
-  public Model1(string connectionString)
+public partial class Northwind
+{
+  public Northwind(string connectionString)
       : base(connectionString)
   {
   }
+}
 ```
+
+## Verify that runtime app works
 
 - In SqlCeRuntime, test your app in Program.cs:
 
 ```csharp
 using System.Data.Entity.SqlServerCompact;
 using System.Data.Entity;
-using ClassLibrary1;
+using SqlCeDesign;
 
 DbConfiguration.SetConfiguration(new SqlCeDbConfiguration());
 
@@ -75,5 +112,6 @@ foreach (var shipper in shippers)
 {
     Console.WriteLine(shipper.CompanyName);
 }
-
 ```
+
+That's it, you can now query and update your SQL Server Compact Database with Entity Framework from a .NET 7 based Windows app.
