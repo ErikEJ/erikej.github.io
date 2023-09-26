@@ -7,9 +7,9 @@ categories: sqlce entityframework
 
 I this blog post I will show how you can use SQL Server Compact 4.0 on a Windows desktop with .NET 7 (and later), with a Database First approach, assuming you already have a SQl Server Compact .sdf file.
 
-Yes, I know SQL Server Compact is obsolete, but it still finds is uses in various scenarios, for example with the ability to have a simple solution for an encrypted database file on Windows.
+Yes, I know SQL Server Compact is obsolete, but it still finds is uses in various scenarios, for example with the ability to have a simple solution for an encrypted database file on Windows. (I promise this could be one of my final blog posts on SQL Server Compact!)
 
-In the walkthough, there will be five stages: 
+In the walkthrough, there will be five stages: 
 
 - Installing any pre-requisites
 - Create solution and projects in Visual Studio
@@ -77,7 +77,7 @@ The .NET Console App represents the final app, the .NET Framework Library is use
 
 Please read through the readme details to understand usage and configuration.
 
-- In SqlCeRuntime, add this constructor to your DbContext in a partial class, f.ex. Northwind.partial.cs:
+- In SqlCeRuntime, add this constructor to your DbContext in a partial class, for example Northwind.partial.cs:
 
 ```csharp
 public partial class Northwind
@@ -114,4 +114,4 @@ foreach (var shipper in shippers)
 }
 ```
 
-That's it, you can now query and update your SQL Server Compact Database with Entity Framework from a .NET 7 based Windows app.
+That's it, you can now query and update your SQL Server Compact Database with Entity Framework from a .NET 7 and later based Windows app.
