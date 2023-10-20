@@ -53,13 +53,13 @@ Run `sqlpackage` to create .sql scripts for all objects from the Azure SQL Datab
 sqlpackage /a:Extract /p:ExtractTarget=SchemaObjectType /tf:AdventureWorks /scs:"data source=myserver.database.windows.net;initial catalog=AdWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;Connect Timeout=60" 
 ```
 
+For details on the sqlpackage extract action syntax, see [the documentation here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-extract?WT.mc_id=DT-MVP-4025156).
+
 Use the `sqlproj` template to create a new SQL project:
 
 ```bash
 dotnet new sqlproj -n AdventureWorks
 ```
-
-For details on the sqlpackage extract action syntax, see [the documentation here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-extract?WT.mc_id=DT-MVP-4025156).
 
 Finally, you can build a .dacpac package, which can be used to publish the database schema in your deployment scripts and as the basis for code generation in the following steps.
 
