@@ -47,26 +47,19 @@ dotnet tool install -g ErikEJ.EFCorePowerTools.Cli --version 7.0.*-*
 
 ### Create the database project - .dacpac package
 
+Run `sqlpackage` to create .sql scripts for all objects from the Azure SQL Database in a folder:
+
+```bash
+sqlpackage /a:Extract /p:ExtractTarget=SchemaObjectType /tf:AdventureWorks /scs:"data source=myserver.database.windows.net;initial catalog=AdWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;Connect Timeout=60" 
+```
+
 Use the `sqlproj` template to create a new SQL project:
 
 ```bash
 dotnet new sqlproj -n AdventureWorks
 ```
 
-Run `sqlpackage` to create .sql scripts for all objects from the Azure SQL Database:
-
-```bash
-sqlpackage /a:Extract /p:ExtractTarget=SchemaObjectType /tf:t.dacpac /scs:"data source=myserver.database.windows.net;initial catalog=AdWorks;user id=sqlfamily;password=sqlf@m1ly;encrypt=True;Connect Timeout=60" 
-```
-
 For details on the sqlpackage extract action syntax, see [the documentation here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-extract?WT.mc_id=DT-MVP-4025156).
-
-Due to a [quirky sqlpackage bug](https://github.com/microsoft/DacFx/issues/128), all files must be created in a sub-folder that ends with `.dacpac`, so let's move them to the AdventureWorks folder:
-
-```bash
-mv t.dacpac\* .\AdventureWorks
-rmdir t.dacpac
-```
 
 Finally, you can build a .dacpac package, which can be used to publish the database schema in your deployment scripts and as the basis for code generation in the following steps.
 
