@@ -37,7 +37,7 @@ To create a Database Project based on you current EF Core DbContext model, perfo
 
 ![]({{ site.url }}/assets/dacfx2.png)
 
-Right click the new Database Project in Solution Explorer, select `Import and Script (*.sql)` and point to the .sql script generated above.
+Right click the new Database Project in Solution Explorer, select `Import`, then `Script (*.sql)...` and point to the .sql script generated above.
 
 ![]({{ site.url }}/assets/dacfx3.png)
 
