@@ -1,0 +1,133 @@
+---
+layout: post
+title:  "How to: Static code analysis against your T-SQL objects"
+date:   2024-04-02 18:28:49 +0100
+categories: dacfx codeanalysis
+---
+
+Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common potential bugs. 
+
+But did you know that is is also possible to apply analyzers against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
+
+In this blog post, I will show you how you can enable and configure code analysis, and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally / on your own build agent, or on Microsoft hosted agents in GitHub and Azure DevOps.
+
+The DacFX library (and .sqlproj) includes a number of built-in Microsoft authored code analysis rules, they are documented here:
+
+- [T-SQL Design Issues](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193411(v=vs.100))
+- [T-SQL Naming Issues](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193246(v=vs.100))
+- [T-SQL Performance Issues](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd172117(v=vs.100))
+
+You can also create your own rules. In a future blog post, I will show how you can create your own rules using modern .NET and C#. In the meantime there is a sample [walkthrough for .NET Framework here](https://learn.microsoft.com/sql/ssdt/walkthrough-author-custom-static-code-analysis-rule-assembly). 
+
+# Using MSBuild.SDK.Sqlproj
+
+To learn more about the cross platform SDK for building .dacpac files, read more in [my previous blog post](https://erikej.github.io/efcore/2020/05/11/ssdt-dacpac-netcore.html).
+
+## Enable analysis
+
+In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK includes the following rules:  
+
+- [SqlServer.Rules](https://github.com/tcartwright/SqlServer.Rules/blob/master/docs/table_of_contents.md)
+- [T-SQL Smells](https://github.com/davebally/TSQL-Smells)
+
+Static code analysis can be enabled by adding the `RunSqlCodeAnalysis` property to the project file:
+
+```xml
+<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+  <PropertyGroup>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+  </PropertyGroup>
+</Project>
+```
+The analysis will then include the rules from all of the rule sets listed above.
+
+The optional `CodeAnalysisRules` property allows you to disable individual rules or groups of rules.
+
+```xml
+<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+  <PropertyGroup>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+    <CodeAnalysisRules>-SqlServer.Rules.SRD0006;-Smells.*</CodeAnalysisRules>
+  </PropertyGroup>
+</Project>
+```
+
+## Run analysis
+
+To run the actual analysis against your database, you build your project.
+
+Any rule violations found during build are reported as build warnings.
+
+Individual rule violations can be configured to be reported as build errors as shown below.
+
+```xml
+<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+  <PropertyGroup>
+    <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
+    <CodeAnalysisRules>+!SqlServer.Rules.SRN0005</CodeAnalysisRules>
+  </PropertyGroup>
+</Project>
+```
+
+## Add additional rules
+
+To use custom rules, place the rule .dll files in a `Rules` folder in the project, and add them as Content items:
+
+```xml
+  <ItemGroup>
+    <Content Include="Rules\My.Own.Rules.dll" />
+  </ItemGroup>
+```
+
+The additional rules will automatically be discovered and run by the DacFX framework during analysis.
+
+With MSBuild.SDK.Sqlproj, you can easily use both the included and your own rules, both locally and in any cross-platform build agent.
+
+# Using a Visual Studio Database project (.sqlproj)
+
+You can learn more about this project type [here](https://visualstudio.microsoft.com/vs/features/ssdt/).
+
+## Enable analysis
+
+To enable and manage code analysis, you can use the project properties:
+
+![]({{ site.url }}/assets/ssdtrules.png)
+
+As you can see, enabling and managing the rules is quite simple.
+
+Out of the box, this project type includes the Microsoft rules listed above only.
+
+## Run analysis
+
+To run the actual analysis against your database, you build your project.
+
+Any rule violations found during build are reported as build warnings and can be marked as errors as seen in the screenshot above.
+
+## Add additional rules
+
+To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .ddl in the following read only location on your system:
+
+
+For you convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
+
+[SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/)
+
+[T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/)
+
+Once downloaded and unzipped, locate the rules .dll files in the `lib\net462` folder.
+
+Now copy the files to this location:
+
+`C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC`
+
+(Replace the word `Enterprise` with the Visual Studio product that you want the rules to work in and that you have installed)
+
+The additional rules will automatically be discovered and run by the DacFX framework during analysis (build).
+
+You can run the Microsoft rules during build on your own PC and any Windows build agent. You **can not** bring other rules when using a Microsoft hosted build agent, as the rules .dll must be placed in a read only folder on the agent.
+
+## Custom rules with Azure Data Studio
+
+You can also add .NET 6 based rule .dll files to your project in Azure Data Studio. The folder to place the rules in will vary for each update, so this may easily break - `C:\Users\<username>\.vscode\extensions\ms-mssql.mssql-1.22.1\sqltoolsservice\4.10.2.1\Windows\Extensions`. 
+
+> This will only work for the "classic" project type, not projects based on the Microsoft.Build.Sql SDK.
