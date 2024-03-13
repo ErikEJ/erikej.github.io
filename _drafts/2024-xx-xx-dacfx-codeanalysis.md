@@ -5,11 +5,11 @@ date:   2024-04-02 18:28:49 +0100
 categories: dacfx codeanalysis
 ---
 
-Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common potential bugs. 
+Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common mistakes and potential bugs. 
 
 But did you know that is is also possible to apply analyzers against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
 
-In this blog post, I will show you how you can enable and configure code analysis, and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally / on your own build agent, or on Microsoft hosted agents in GitHub and Azure DevOps.
+In this blog post, I will show you how you can enable and configure code analysis and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally / on your own build agent, or on Microsoft hosted agents in GitHub and Azure DevOps.
 
 The DacFX library (and .sqlproj) includes a number of built-in Microsoft authored code analysis rules, they are documented here:
 
@@ -108,7 +108,7 @@ Any rule violations found during build are reported as build warnings and can be
 To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .ddl in the following read only location on your system:
 
 
-For you convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
+For your convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
 
 [SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/)
 
@@ -124,10 +124,14 @@ Now copy the files to this location:
 
 The additional rules will automatically be discovered and run by the DacFX framework during analysis (build).
 
-You can run the Microsoft rules during build on your own PC and any Windows build agent. You **can not** bring other rules when using a Microsoft hosted build agent, as the rules .dll must be placed in a read only folder on the agent.
+You can run the Microsoft rules during build on your own PC and any Windows build agent. You **cannot** bring other rules when using a Microsoft hosted build agent, as the rules .dll must be placed in a read only folder on the agent.
 
 ## Custom rules with Azure Data Studio
 
-You can also add .NET 6 based rule .dll files to your project in Azure Data Studio. The folder to place the rules in will vary for each update, so this may easily break - `C:\Users\<username>\.vscode\extensions\ms-mssql.mssql-1.22.1\sqltoolsservice\4.10.2.1\Windows\Extensions`. 
+You can also add .NET 6 based rule .dll files to your project in Azure Data Studio. The folder to place the rules in will vary for each update, so this may easily break - `C:\Users\<username>\.vscode\extensions\ms-mssql.mssql-1.22.1\sqltoolsservice\4.10.2.1\Windows\Extensions`.
+
+You can use the rules I have published, locate the rules .dll files in the `lib\netstandard2.1` folder in the NuGet packages.
 
 > This will only work for the "classic" project type, not projects based on the Microsoft.Build.Sql SDK.
+
+I hope you will take advantage of this opportunity to improve your T-SQL code and objects - for free!
