@@ -1,13 +1,15 @@
 ---
 layout: post
-title:  "How to: Static code analysis against your T-SQL objects"
+title:  "How to: Code analysis against your T-SQL objects"
 date:   2024-04-02 18:28:49 +0100
 categories: dacfx codeanalysis
 ---
 
 Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common mistakes and potential bugs. 
 
-But did you know that is is also possible to run analyzer rules against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
+But did you know that is is also possible to run analyzer rules against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? 
+
+By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
 
 In this blog post, I will show you how you can enable and configure code analysis and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally / on your own build agent, and on Microsoft hosted agents in GitHub and Azure DevOps.
 
@@ -29,6 +31,8 @@ In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK inc
 
 - [SqlServer.Rules](https://github.com/tcartwright/SqlServer.Rules/blob/master/docs/table_of_contents.md)
 - [T-SQL Smells](https://github.com/davebally/TSQL-Smells)
+
+You can watch a "review" of the SqlServer.Rules rule set [here](https://www.youtube.com/watch?v=da5F1Yi9fFY)
 
 Static code analysis can be enabled by adding the `RunSqlCodeAnalysis` property to the project file:
 
@@ -125,11 +129,11 @@ The additional rules will automatically be discovered and run by the DacFX frame
 
 You can run the Microsoft rules during build on your own PC and any Windows build agent. You **cannot** bring other rules when using a Microsoft hosted build agent, as the rules .dll must be placed in a read only folder on the agent.
 
-## Custom rules with Azure Data Studio
+# Custom rules with Azure Data Studio/VS Code
 
-You can also add .NET 6 / .NET Standard based rule .dll files to your Database Project in Azure Data Studio.
+You can also add .NET 6 / .NET Standard based rule .dll files to your Database Project in Azure Data Studio and VS Code.
 
-> While this is possible, it ca easily break due to the version sepcific folder structure.
+> While this is possible, it can easily break due to the version sepecific folder structure.
 
 Azure Data Studio supports two flavors of Database Projects - the classic SDK project and a "SDK-style" project type (in preview).
 
@@ -141,7 +145,7 @@ Enable code analysis by editing the .sqlproj file, and add this to a PropertyGro
 
 You can use the rules .dll files I have published, locate the rules .dll files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
 
-### Classic .sqlproj
+## Classic .sqlproj
 
 > The folder to place the rules in will vary for each update, so this may easily break.
 
@@ -149,12 +153,12 @@ Place the extracted .dll files in this folder (you may have to create it):
 
 `C:\Users\<username>\.vscode\extensions\ms-mssql.mssql-1.22.1\sqltoolsservice\4.10.2.1\Windows\Extensions`
 
-### SDK style .sqlproj
+## SDK style .sqlproj
 
 > The folder to place the rules in will vary for each update, so this may easily break.
 
 `C:\Users\<username>\.nuget\packages\microsoft.build.sql\0.1.14-preview\tools\netstandard2.1`
 
-## Final words
+# Final words
 
 I hope you will take advantage of this opportunity to improve your T-SQL code and objects, and ensure a high quality of your T-SQL code both locally and in your build pipelines - for free!
