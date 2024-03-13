@@ -62,6 +62,8 @@ To run the actual analysis against your database, you build your project.
 
 Any rule violations found during build are reported as build warnings.
 
+![]({{ site.url }}/assets/ssdtbuild.png)
+
 Individual rule violations can be configured to be reported as build errors as shown below.
 
 ```xml
