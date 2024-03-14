@@ -25,7 +25,7 @@ You can also create your own rules. In a future blog post, I will show how you c
 
 To learn more about the cross platform SDK for building .dacpac files, read more in [my previous blog post](https://erikej.github.io/efcore/2020/05/11/ssdt-dacpac-netcore.html).
 
-# Enable analysis
+### Enable analysis
 
 In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK includes the following rule sets:  
 
@@ -56,7 +56,7 @@ The optional `CodeAnalysisRules` property allows you to disable individual rules
 </Project>
 ```
 
-# Run analysis
+### Run analysis
 
 To run the actual analysis against your database, you build your project.
 
@@ -75,7 +75,7 @@ Individual rule violations can be configured to be reported as build errors as s
 </Project>
 ```
 
-# Add additional rules
+### Add additional rules
 
 To use custom rules, place the rule .dll files in a `Rules` folder in the project, and add them as Content items:
 
@@ -93,7 +93,7 @@ With MSBuild.SDK.Sqlproj, you can easily use both the included and your own rule
 
 You can learn more about this project type [here](https://visualstudio.microsoft.com/vs/features/ssdt/).
 
-# Enable analysis
+### Enable analysis
 
 To enable and manage code analysis, you can use the project properties:
 
@@ -103,13 +103,13 @@ As you can see, enabling and managing the rules is quite simple.
 
 Out of the box, only the Microsoft rules listed above are available.
 
-# Run analysis
+### Run analysis
 
 To run the actual analysis against your database, you build your project.
 
 Any rule violations found during build are reported as build warnings and can be marked as errors as seen in the screenshot above.
 
-# Add additional rules
+### Add additional rules
 
 To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .ddl in a read only Visual Studio folder.
 
@@ -145,7 +145,7 @@ Enable code analysis by editing the .sqlproj file - add this to a PropertyGroup:
 
 You can use the rules .dll files I have published, locate the .NET compatible rules files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
 
-# Classic .sqlproj
+### Classic .sqlproj
 
 > The folder to place the rules in will vary for each update, so this may easily break.
 
@@ -153,7 +153,7 @@ Place the extracted .dll files in this folder (you may have to create it):
 
 `C:\Users\<username>\.vscode\extensions\ms-mssql.mssql-1.22.1\sqltoolsservice\4.10.2.1\Windows\Extensions`
 
-# SDK style .sqlproj
+### SDK style .sqlproj
 
 > The folder to place the rules in will vary for each update, so this may easily break.
 
