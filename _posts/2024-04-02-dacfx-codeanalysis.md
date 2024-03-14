@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to: Code analyze your SQL Server T-SQL scripts during build"
+title:  "How to: Code analyze your SQL Server T-SQL scripts in Visual Studio"
 date:   2024-04-02 18:28:49 +0100
 categories: dacfx codeanalysis sqlserver
 ---
