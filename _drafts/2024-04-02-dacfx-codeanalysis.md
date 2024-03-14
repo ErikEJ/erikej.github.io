@@ -11,7 +11,7 @@ But did you know that is is also possible to run analyzer rules against your SQL
 
 By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
 
-In this blog post, I will show you how you can enable and configure code analysis and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally / on your own build agent, and on Microsoft hosted agents in GitHub and Azure DevOps.
+In this blog post, I will show you how you can enable and configure code analysis and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally and on Microsoft hosted agents in GitHub and Azure DevOps.
 
 The DacFX library (and .sqlproj) includes a number of built-in Microsoft authored code analysis rules, they are documented here:
 
@@ -85,7 +85,7 @@ To use custom rules, place the rule .dll files in a `Rules` folder in the projec
   </ItemGroup>
 ```
 
-The additional rules will automatically be discovered and run by the DacFX framework during analysis.
+The additional rules will automatically be discovered and run during analysis.
 
 With MSBuild.SDK.Sqlproj, you can easily use both the included and your own rules, both locally and in any cross-platform build agent.
 
@@ -134,8 +134,6 @@ You can run the Microsoft rules during build on your own PC and any Windows buil
 # Custom rules with Azure Data Studio/VS Code
 
 You can also add .NET 6 / .NET Standard based rule .dll files to your Database Project in Azure Data Studio and VS Code.
-
-> While this is possible, it can easily break due to the version sepecific folder structure.
 
 Azure Data Studio supports two flavors of Database Projects - the classic SDK project and a "SDK-style" project type (in preview).
 
