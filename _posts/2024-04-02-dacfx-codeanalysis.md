@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "How to: Code analysis against your T-SQL objects"
+title:  "How to: Code analyze your SQL Server T-SQL scripts during build"
 date:   2024-04-02 18:28:49 +0100
-categories: dacfx codeanalysis
+categories: dacfx codeanalysis sqlserver
 ---
 
 Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common mistakes and potential bugs. 
 
 But did you know that is is also possible to run analyzer rules against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? 
 
-By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature.
+By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature. To learn more about Database Projects in general and how to use them with EF Core, see [my previous blog post](https://erikej.github.io/efcore/dacpac/2024/02/11/powertools-dacpac.html).
 
 In this blog post, I will show you how you can enable and configure code analysis and run it locally. We will also explore the possibilities of adding additional analysis rules to you project, and your options for running the rules both locally and on Microsoft hosted agents in GitHub and Azure DevOps.
 
@@ -101,7 +101,7 @@ To enable and manage code analysis, you can use the project properties:
 
 As you can see, enabling and managing the rules is quite simple.
 
-Out of the box, this project type includes the Microsoft rules listed above only.
+Out of the box, only the Microsoft rules listed above are available.
 
 ## Run analysis
 
@@ -127,23 +127,23 @@ Now copy the files to this location:
 
 (Replace the word `Enterprise` with the Visual Studio product that you want the rules to work in and that you have installed)
 
-The additional rules will automatically be discovered and run by the DacFX framework during analysis (build).
+The additional rules will automatically be discovered and run during analysis (build).
 
 You can run the Microsoft rules during build on your own PC and any Windows build agent. You **cannot** bring other rules when using a Microsoft hosted build agent, as the rules .dll must be placed in a read only folder on the agent.
 
 # Custom rules with Azure Data Studio/VS Code
 
-You can also add .NET 6 / .NET Standard based rule .dll files to your Database Project in Azure Data Studio and VS Code.
+It is also possible to add .NET 6 (or later) based rule .dll files to your Database Project in Azure Data Studio and VS Code.
 
 Azure Data Studio supports two flavors of Database Projects - the classic SDK project and a "SDK-style" project type (in preview).
 
-Enable code analysis by editing the .sqlproj file, and add this to a PropertyGroup:
+Enable code analysis by editing the .sqlproj file - add this to a PropertyGroup:
 
 ```xml
 <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
 ```
 
-You can use the rules .dll files I have published, locate the rules .dll files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
+You can use the rules .dll files I have published, locate the .NET compatible rules files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
 
 ## Classic .sqlproj
 
@@ -156,6 +156,8 @@ Place the extracted .dll files in this folder (you may have to create it):
 ## SDK style .sqlproj
 
 > The folder to place the rules in will vary for each update, so this may easily break.
+
+Place the extracted .dll files in this folder:
 
 `C:\Users\<username>\.nuget\packages\microsoft.build.sql\0.1.14-preview\tools\netstandard2.1`
 
