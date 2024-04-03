@@ -5,8 +5,9 @@ date:   2024-04-04 18:28:49 +0100
 categories: dacfx dotnet
 ---
 
-This walkthrough demonstrates the steps used to create a SQL Server Code Analysis rule. The rule created in this walkthrough is used to avoid WAITFOR DELAY statements in stored procedures, triggers, and functions.  
-  
+This walkthrough demonstrates the steps used to create a SQL Server Code Analysis rule. The rule created in this walkthrough is used to avoid WAITFOR DELAY statements in stored procedures, triggers, and functions.
+
+
 In this walkthrough, you will create a custom rule for Transact-SQL static code analysis by using the following processes:  
   
 1. Create a class library, enable signing for that project, and add the necessary NuGet package references.  
