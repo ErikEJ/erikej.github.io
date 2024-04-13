@@ -10,11 +10,11 @@ This walkthrough demonstrates the steps used to create a SQL Server Code Analysi
 
 In this walkthrough, you will create a custom rule for Transact-SQL static code analysis by using the following processes:  
   
-1. Create a class library, enable signing for that project, and add the necessary NuGet package references.  
-  
-2. Create a Visual C\# custom rule class.  
-  
-3. Create two helper Visual C\# classes.  
+1. Create a class library, enable signing for that project, and add the necessary NuGet package references.
+
+2. Create a helper Visual C\# class.
+
+3. Create a Visual C\# custom rule class.
   
 4. To use the rule with either Visual Studio or other tools/pipelines, see my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html)
 
@@ -42,7 +42,7 @@ First create a class library. To create a class library project:
 
 Next you will add supporting classes that will be used by the rule.  
   
-## Creating the Custom Code Analysis Rule Supporting Classes
+## Creating the Custom Code Analysis Rule Supporting Class
 
 Before you create the class for the rule itself, you will add a visitor class. This class might be useful for creating additional custom rules.  
   
