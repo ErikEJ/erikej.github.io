@@ -19,7 +19,7 @@ The DacFX library (and .sqlproj) includes a number of built-in Microsoft authore
 - [T-SQL Naming Issues](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd193246(v=vs.100))
 - [T-SQL Performance Issues](https://learn.microsoft.com/en-us/previous-versions/visualstudio/visual-studio-2010/dd172117(v=vs.100))
 
-You can also create your own rules. In a future blog post, I will show how you can create your own rules using modern .NET and C#. In the meantime there is a sample [walkthrough for .NET Framework here](https://learn.microsoft.com/sql/ssdt/walkthrough-author-custom-static-code-analysis-rule-assembly). 
+You can also create your own rules. In my [next blog post](https://erikej.github.io/dacfx/dotnet/2024/04/04/dacfx-rules.html), I show how you can create your own rules using modern .NET and C#.
 
 ## Use MSBuild.SDK.Sqlproj with Visual Studio
 
@@ -111,7 +111,7 @@ Any rule violations found during build are reported as build warnings and can be
 
 ### Add additional rules
 
-To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .ddl in a read only Visual Studio folder.
+To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .dll in a read only Visual Studio folder.
 
 For your convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
 
