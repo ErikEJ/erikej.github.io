@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "What's new in Entity Framework 6.5 'Classic'"
+title:  "What is new in Entity Framework 6.5 Classic"
 date:   2024-16-05 18:28:49 +0100
 categories: ef6 dotnet
 ---
