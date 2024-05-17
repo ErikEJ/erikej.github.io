@@ -17,12 +17,14 @@ order by increasing impact.
 
 4: You can use DateOnly / TimeOnly
 
-5: Consider explicitly updating the driver to get performance and feature benefits
+5: Consider explicitly updating the driver to get performance and feature benefits (EF Core 6 uses 2.x, EF Core 8 uses 5.1)
 
 6: You can gain performance if you have many parameters 
     https://github.com/dotnet/SqlClient/blob/main/release-notes/4.0/4.0.0.md#enable-optimized-parameter-binding
 
 7: Gain performance with the SqlBulkCopy ORDER hint https://github.com/dotnet/SqlClient/issues/23
+
+8: Gain performance by saving network roudntrips with SqlBatch
 
 8: From version 4, Encrypt is now true by default (also affects EF Core 7)
 
@@ -30,4 +32,4 @@ order by increasing impact.
 
 10: SSMS, ADS, DacFX all uses Microsoft.Data.SqlClient
 
-11: explain difference between managed sni and native sni. how to enable managed on Windows
+11: Explain difference between managed sni and native sni. How to enable managed on Windows
