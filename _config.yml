@@ -1,12 +1,12 @@
 # Site settings
 title: ErikEJ's blog
-author: Erik Ejlskov Jensen
+author: ErikEJ
 #email: your-email@example.com
 description: .NET Data Access and more
 baseurl: "" # the subpath of your site, e.g. /blog
 url: https://erikej.github.io
 twitter_username: erikej
-github_username:  erikej
+github_username: erikej
 stackoverflow_username: "183934"
 twitter:
   username: erikej
