@@ -17,7 +17,7 @@ Provided that you already have an existing Azure SQL, SQL Server, Postgres or My
 
 ## Generate dab command file
 
-First step is to point to an existing database and generate a `dab-build.cmd` file with the commands to install and run the `dab` CLI. *Is there a better name for this file?*
+First step is to point to an existing database and generate a `dab-build.cmd` file with the commands to install and run the `dab` CLI.
 
 From the project context menu, select `EF Core Power Tools`, then `Data API Builder Scaffold (preview)`.
 
