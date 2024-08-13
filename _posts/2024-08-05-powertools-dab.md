@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Create a CRUD Web API in minutes with Data API Builder and EF Core Power Tools"
-date:   2024-08-05 18:28:49 +0100
+date:   2024-08-13 18:28:49 +0100
 categories: dotnet sqlserver powertools
 ---
 
@@ -11,13 +11,13 @@ The app is .NET 8 cross platform, [open source](https://github.com/Azure/data-ap
 
 But even creating the command line statements to expose an existing database as a Web API can be complex and error prone.
 
-Thanks to the database reverse engineering capabilities of EF Core Power Tools, you can now scaffold these commands in seconds, and run the API via the `dab start` command on your developer machine.
+Thanks to the database reverse engineering capabilities of EF Core Power Tools, you can now scaffold these command line statements in seconds, and run the API via the `dab start` command on your developer machine.
 
-Provided that you already have an existing Azure SQL, SQL Server, Postgres or MySQL database, that you want to expose as a CRUD API, a Visual Studio 2022 project for storing the configuration files in source control, and [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&ssr=false#overview) installed, let's have a look at the three step process to get the API defined and running.
+Provided that you already have an existing Azure SQL, SQL Server, Postgres or MySQL database, that you want to expose as a CRUD API, a Visual Studio 2022 project for storing the configuration files in source control, and the latest version of [EF Core Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools&ssr=false#overview) installed, let's have a look at the three step process to get the API defined and running.
 
 ## Generate dab command file
 
-First step is to point to an existing database and generate a `dab-config.cmd` file with the commands to install and run the `dab` CLI. *Is there a better name for this file?*
+First step is to point to an existing database and generate a `dab-build.cmd` file with the commands to install and run the `dab` CLI. *Is there a better name for this file?*
 
 From the project context menu, select `EF Core Power Tools`, then `Data API Builder Scaffold (preview)`.
 
@@ -37,7 +37,11 @@ Press OK to generate the .cmd file, that will open in the Visual Studio editor.
 
 ## Create .env file
 
-In the same folder as the `dab-config.cmd` file, create a file called `.env` with the following contents - this file is referenced by the `dab` CLI in order connect to the database. *Replace the connection string below with your own.*
+You will now be promoted to create an `.env` file with your connection string, this is needed to run the `dab` CLI, as it must be able to connect to your database. 
+
+![]({{ site.url }}/assets/dab6.png)
+
+The `.env` file will look similar to this:
 
 ```dos
 dab-connection-string=Data Source=.\SQLEXPRESS;Initial Catalog=Chinook;Integrated Security=True;Encrypt=false
@@ -53,10 +57,10 @@ To do this, add this line to your .gitignore file:
 
 ## 'Build' and run the API
 
-Right click the project and select "Open in Terminal" to open the Developer PowerShell window and run the `dab-config.cmd` file to install the DAB CLI and build the Data API Builder configuration.
+Right click the project and select "Open in Terminal" to open the Developer PowerShell window and run the `dab-build.cmd` file to install the DAB CLI and build the Data API Builder configuration, which is stored in the `dab-config.json` file.
 
 ```dos
- .\dab-config.cmd
+ .\dab-build.cmd
 ```
 You can then validate the generated configuration.
 
@@ -70,14 +74,14 @@ If validation passes, you can now run the API locally.
 dab start
 ```
 
-Finally, navigate to `http://localhost:5000/swagger` to interact with the API via Swagger UI.
+Finally, navigate to `http://localhost:5000/swagger` to interact with the REST API via Swagger UI. The app also exposes a GraphQL endpoint, read more in [the documentation](https://learn.microsoft.com/azure/data-api-builder/graphql).
 
 ![]({{ site.url }}/assets/dab5.png)
 
-Have a look at the [deployment guide](https://learn.microsoft.com/azure/data-api-builder/deployment/) for advice on how to deploy the Data API container with your configuration.
+Have a look at the [deployment guide](https://learn.microsoft.com/azure/data-api-builder/deployment/) for advice on how to deploy the Data API Builder container with your configuration.
 
 ## Plans for this feature
 
-This EF Core Power Tools feature is currently in preview. One of the goals of the preview is to determine what additional features and options are needed to avoid having to hand-edit the generated `dab.config.cmd` file, so it can be re-generated if the source schema changes.
+This EF Core Power Tools feature is currently in preview. One of the goals of the preview is to determine what additional features and options are needed to avoid having to hand-edit the generated `dab-build.cmd` file, so it can be re-generated if the source schema changes.
 
 So please, try out the preview and submit your feedback and bug reports on [GitHub](https://github.com/ErikEJ/EFCorePowerTools/issues).
