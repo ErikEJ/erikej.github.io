@@ -278,10 +278,6 @@ Now that you have added the helper class that the custom Code Analysis rule will
 
 You can publish the rules .dll for consumption to variuos build SDKs, include MsBuild.SDK.Sqlproj and Microsoft.Build.Sql. To do this, pack your .dll in a special folder in the NuGet package as shown below.
 
-```xml
-<TargetFramework>net8.0</TargetFramework>
-```
-
 Your project file could now look like this (with NuGet package metadata added)
 
 ```xml
