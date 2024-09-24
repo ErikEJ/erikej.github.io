@@ -7,6 +7,7 @@ categories: dacfx dotnet
 
 This walkthrough demonstrates the steps used to create a SQL Server Code Analysis rule. The rule created in this walkthrough is used to avoid WAITFOR DELAY statements in stored procedures, triggers, and functions.
 
+**Updated September 2024 with better support for NuGet publishing**
 
 In this walkthrough, you will create a custom rule for Transact-SQL static code analysis by using the following processes:  
   
@@ -16,7 +17,7 @@ In this walkthrough, you will create a custom rule for Transact-SQL static code 
 
 3. Create a Visual C\# custom rule class.
   
-4. To use the rule with either Visual Studio or other tools/pipelines, see my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html)
+4. To use the rule other tools/pipelines, see my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html)
 
 **Prerequisites**
   
@@ -32,13 +33,17 @@ You need the following components to complete this walkthrough:
 
 First create a class library. To create a class library project:  
   
-1. Create a Visual C\# class library project named SampleRules. Target .NET 8.
-  
+1. Create a Visual C\# class library project named SampleRules. 
+
+Set target framework to .NET Standard 2.1.
+
+```xml
+<TargetFramework>netstandard2.1</TargetFramework>
+```
+
 2. Rename the file Class1.cs to AvoidWaitForDelayRule.cs.  
-  
-3. In Solution Explorer, right-click the project node and then click **Manage NuGet Packages**. Locate and install the `System.Composition` NuGet package.
-  
-4. In Solution Explorer, right-click the project node and then click **Manage NuGet Packages**. Locate and install the `Microsoft.SqlServer.DacFx` NuGet package - the selected version must be `162.x.x`(for example `162.2.111`) with Visual Studio 2022.
+
+3. In Solution Explorer, right-click the project node and then click **Manage NuGet Packages**. Locate and install the `Microsoft.SqlServer.DacFx` NuGet package - the selected version must be `162.x.x`(for example `162.4.92`) with Visual Studio 2022.
 
 Next you will add supporting classes that will be used by the rule.  
   
@@ -269,68 +274,48 @@ Now that you have added the helper class that the custom Code Analysis rule will
   
 10. Click **File** > **Save**.
 
-### Add multiple target frameworks
+### Add support for consumption
 
-To use the .dll with Visual Studio, you must build a .NET Framework 4.7.2 file, and to use it with .NET cross platform tools, it must be a .NET 8.0 file.
-
-In order to build both .NET and a .NET Framework .dll files, you can update the target framworks in your project file. Open the SampleRules project file (.csproj) and change:
+You can publish the rules .dll for consumption to variuos build SDKs, include MsBuild.SDK.Sqlproj and Microsoft.Build.Sql. To do this, pack your .dll in a special folder in the NuGet package as shown below.
 
 ```xml
 <TargetFramework>net8.0</TargetFramework>
 ```
-to
 
-```xml
-<TargetFrameworks>net8.0;net472</TargetFrameworks>
-```
-
-To build for .NET 4.7.2, **remove** these two lines from your .csproj:
-
-```xml
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-```
-
-Your project file should now look like this:
+Your project file could now look like this (with NuGet package metadata added)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net8.0;net472</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
+	<PackageId>SampleRules</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+ 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+ 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SqlServer.DacFx" Version="162.4.92" PrivateAssets="All" />
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SqlServer.DacFx" Version="162.2.111" />
-    <PackageReference Include="System.Composition" Version="8.0.0" />
-  </ItemGroup>
+    <None Include="../SampleRules/bin/$(Configuration)/netstandard2.1/SampleRules.dll" 
+        Pack="true"
+        PackagePath="analyzers/dotnet/cs"
+        Visible="false" />
+  </ItemGroup>	
 
 </Project>
 ```
 
 ### Building the Class Library  
   
-1. On the **Project** menu, click **SampleRules Properties**.  
-  
-2. Click the **Signing** tab.  
-  
-3. Click **Sign the assembly**.  
-  
-4. In **Choose a strong name key file**, click **\<New\>**.  
-  
-5. In the **Create Strong Name Key** dialog box, in **Key file name**, type MyRefKey.  
-   
-6. Click **OK**.  
-  
-7. On the **File** menu, click **Save All**.  
-  
-8. On the **Build** menu, click **Build Solution**.
+1. On the **Build** menu, click **Build Solution**.
 
-The rules SampleRules.dll assemblies will be located in the `bin/Debug/net8.0` and `bin/Debug/net472`folder under your project file.
+The rules SampleRules.dll assemblies will be located in the `bin/Debug/netstandard2.1` folder under your project file.
 
 ### Using the assembly files
 
-Next, you must install the assembly so that it will be loaded when you build and deploy SQL Server projects. Refer to my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html).
-
+Next, you must install/copy the assembly so that it will be loaded when you build and deploy SQL Server projects. Refer to my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html).
 
 > This is a simplified and updated version of the walkthrough in the official docs [here](https://learn.microsoft.com/sql/ssdt/walkthrough-author-custom-static-code-analysis-rule-assembly)
