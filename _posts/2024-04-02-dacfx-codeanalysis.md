@@ -67,8 +67,9 @@ Any rule violations found during build are reported as build warnings.
 Individual rule violations can be configured to be reported as build errors as shown below.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
   <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
     <CodeAnalysisRules>+!SqlServer.Rules.SRN0005</CodeAnalysisRules>
   </PropertyGroup>
@@ -77,13 +78,21 @@ Individual rule violations can be configured to be reported as build errors as s
 
 ### Add additional rules
 
-To use custom rules, place the rule .dll files in a `Rules` folder in the project, and add them as Content items:
+You can also build your own rules. For an example of how to build a custom rule and pack it as a NuGet package, see [this blog post](https://erikej.github.io/dacfx/dotnet/2024/04/04/dacfx-rules.html).
+
+We know of the following public rules NuGet packages, that you can add to your project. 
 
 ```xml
   <ItemGroup>
-    <Content Include="Rules\My.Own.Rules.dll" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
   </ItemGroup>
 ```
+
+They are based on these older repositories:
+
+- [SqlServer.Rules](https://github.com/tcartwright/SqlServer.Rules/blob/master/docs/table_of_contents.md)
+- [Smells](https://github.com/davebally/TSQL-Smells)
 
 The additional rules will automatically be discovered and run during analysis.
 

@@ -276,18 +276,18 @@ Now that you have added the helper class that the custom Code Analysis rule will
 
 ### Add support for consumption
 
-You can publish the rules .dll for consumption to variuos build SDKs, include MsBuild.SDK.Sqlproj and Microsoft.Build.Sql. To do this, pack your .dll in a special folder in the NuGet package as shown below.
+You can publish the rules .dll for consumption to variuos build SDKs, including `MsBuild.SDK.Sqlproj` and `Microsoft.Build.Sql`. To do this, pack your .dll in a special folder in the NuGet package as shown below.
 
-Your project file could now look like this (with NuGet package metadata added)
+Your project file could now look similar to this (with NuGet package metadata added)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-	<PackageId>SampleRules</PackageId>
+    <PackageId>SampleRules</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
- 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
  
   <ItemGroup>
@@ -312,6 +312,6 @@ The rules SampleRules.dll assemblies will be located in the `bin/Debug/netstanda
 
 ### Using the assembly files
 
-Next, you must install/copy the assembly so that it will be loaded when you build and deploy SQL Server projects. Refer to my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html).
+Next, you must consume the Nuget package or copy the assembly so that it will be loaded when you build and deploy SQL Server projects. Refer to my previous blog post [here](https://erikej.github.io/dacfx/codeanalysis/sqlserver/2024/04/02/dacfx-codeanalysis.html).
 
 > This is a simplified and updated version of the walkthrough in the official docs [here](https://learn.microsoft.com/sql/ssdt/walkthrough-author-custom-static-code-analysis-rule-assembly)
