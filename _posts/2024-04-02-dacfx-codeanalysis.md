@@ -27,7 +27,14 @@ To learn more about the cross platform SDK for building .dacpac files, read more
 
 ### Enable analysis
 
-In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK includes the following rule sets:  
+In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK let's you add additional rule sets:
+
+```xml
+  <ItemGroup>
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
+  </ItemGroup>
+```
 
 - [SqlServer.Rules](https://github.com/tcartwright/SqlServer.Rules/blob/master/docs/table_of_contents.md)
 - [T-SQL Smells](https://github.com/davebally/TSQL-Smells)
