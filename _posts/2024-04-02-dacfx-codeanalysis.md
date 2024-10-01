@@ -37,8 +37,9 @@ You can watch a "review" of the SqlServer.Rules rule set [here](https://www.yout
 Static code analysis can be enabled by adding the `RunSqlCodeAnalysis` property to the project file:
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
   <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
   </PropertyGroup>
 </Project>
@@ -48,8 +49,9 @@ The analysis will then include the rules from all of the rule sets listed above.
 The optional `CodeAnalysisRules` property allows you to disable individual rules or groups of rules.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.7.1">
+<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
   <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
     <CodeAnalysisRules>-SqlServer.Rules.SRD0006;-Smells.*</CodeAnalysisRules>
   </PropertyGroup>
@@ -80,7 +82,7 @@ Individual rule violations can be configured to be reported as build errors as s
 
 You can also build your own rules. For an example of how to build a custom rule and pack it as a NuGet package, see [this blog post](https://erikej.github.io/dacfx/dotnet/2024/04/04/dacfx-rules.html).
 
-We know of the following public rules NuGet packages, that you can add to your project. 
+We know of the following public NuGet packages containing additional rules, that you can add to your project. 
 
 ```xml
   <ItemGroup>
