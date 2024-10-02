@@ -133,9 +133,9 @@ To add additional rules (your own or the third party rules listed above), you mu
 
 For your convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
 
-[SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/)
+[SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/1.0.0)
 
-[T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/)
+[T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/1.0.0)
 
 Once downloaded and unzipped, locate the rules .dll files in the `lib\net462` folder.
 
@@ -151,7 +151,7 @@ You can run the Microsoft rules during build on your own PC and any Windows buil
 
 ## Custom rules with Azure Data Studio/VS Code
 
-It is also possible to add .NET 6 (or later) based rule .dll files to your Database Project in Azure Data Studio and VS Code.
+It is also possible to add .NET Standard 2.1 based rule .dll files (or Nuget Package) to your Database Project in Azure Data Studio and VS Code.
 
 Azure Data Studio supports two flavors of Database Projects - the classic SDK project and a "SDK-style" project type (in preview).
 
@@ -161,9 +161,9 @@ Enable code analysis by editing the .sqlproj file - add this to a PropertyGroup:
 <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
 ```
 
-You can use the rules .dll files I have published, locate the .NET compatible rules files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
-
 ### Classic .sqlproj
+
+You can use the rules .dll files I have published, locate the .NET compatible rules files in the `lib\netstandard2.1` folder in the NuGet packages, as described above.
 
 > The folder to place the rules in will vary for each update, so this may easily break.
 
@@ -173,11 +173,27 @@ Place the extracted .dll files in this folder (you may have to create it):
 
 ### SDK style .sqlproj
 
-> The folder to place the rules in will vary for each update, so this may easily break.
+With version `0.2.3-preview` or later of the `Microsoft.Build.Sql` SDK you can use NuGet based analyzers.
 
-Place the extracted .dll files in this folder:
+So you can use analyzers like this:
 
-`C:\Users\<username>\.nuget\packages\microsoft.build.sql\0.1.14-preview\tools\netstandard2.1`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build">
+  <Sdk Name="Microsoft.Build.Sql" Version="0.2.3-preview" />
+  <PropertyGroup>
+    <Name>TestCA</Name>
+    <ProjectGuid>{F6384BD0-0462-45C9-90FF-80BF08AB39CA}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <ModelCollation>1033, CI</ModelCollation>
+    <RunSqlCodeAnalysis>true</RunSqlCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
+  </ItemGroup>
+</Project>
+```
 
 ## Final words
 
