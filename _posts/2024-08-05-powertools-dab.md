@@ -80,6 +80,10 @@ Finally, navigate to `http://localhost:5000/swagger` to interact with the REST A
 
 Have a look at the [deployment guide](https://learn.microsoft.com/azure/data-api-builder/deployment/) for advice on how to deploy the Data API Builder container with your configuration.
 
+## Starting Data API Builder once configured
+
+Simply right click the `dab-config.json` file in your project, and select the `Start Data API Builder` menu item to start the API.
+
 ## Plans for this feature
 
 This EF Core Power Tools feature is currently in preview. One of the goals of the preview is to determine what additional features and options are needed to avoid having to hand-edit the generated `dab-build.cmd` file, so it can be re-generated if the source schema changes.
