@@ -31,8 +31,8 @@ In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK let
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.2" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.2"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -44,7 +44,7 @@ You can watch a "review" of the SqlServer.Rules rule set [here](https://www.yout
 Static code analysis can be enabled by adding the `RunSqlCodeAnalysis` property to the project file:
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
@@ -56,7 +56,7 @@ The analysis will then include the rules from all of the rule sets listed above.
 The optional `CodeAnalysisRules` property allows you to disable individual rules or groups of rules.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
@@ -76,7 +76,7 @@ Any rule violations found during build are reported as build warnings.
 Individual rule violations can be configured to be reported as build errors as shown below.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/2.9.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
@@ -93,8 +93,8 @@ We know of the following public NuGet packages containing additional rules, that
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.2" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.2"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -136,6 +136,8 @@ For your convenience, I have published two NuGet packages with precompiled rule 
 [SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/1.0.0)
 
 [T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/1.0.0)
+
+> You must use version `1.0.0` of these packages to get the files in the `lib\net462`folder
 
 Once downloaded and unzipped, locate the rules .dll files in the `lib\net462` folder.
 
@@ -183,7 +185,6 @@ So you can use analyzers like this:
   <Sdk Name="Microsoft.Build.Sql" Version="0.2.3-preview" />
   <PropertyGroup>
     <Name>TestCA</Name>
-    <ProjectGuid>{F6384BD0-0462-45C9-90FF-80BF08AB39CA}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
     <RunSqlCodeAnalysis>true</RunSqlCodeAnalysis>
