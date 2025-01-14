@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducing MSBuild.Sdk.SqlProj 3.0 - create, build, validate, analyze, pack and deploy SQL database projects with .NET 9"
-date:   2024-01-13 18:28:49 +0100
+date:   2024-01-14 18:28:49 +0100
 categories: dotnet dacfx azuresql
 ---
 
@@ -9,7 +9,7 @@ In this blog post I will introduce you to a [.NET build SDK](https://github.com/
 
 The SDK helps you manage SQL projects on any .NET supported platform.
 
-A [SQL database project](https://learn.microsoft.com/sql/tools/sql-database-projects/sql-database-projects) is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. The development cycle of a SQL database project enables database development to be integrated into continuous integration and continuous deployment (CI/CD) workflows.
+A [SQL database project](https://learn.microsoft.com/sql/tools/sql-database-projects/sql-database-projects?WT.mc_id=DT-MVP-4025156) is a local representation of SQL objects that comprise the schema for a single database, such as tables, stored procedures, or functions. The development cycle of a SQL database project enables database development to be integrated into continuous integration and continuous deployment (CI/CD) workflows.
 
 The SDK GitHub project has an [extensive readme](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/blob/master/README.md) with detailed documentation, I consider this blog post more of a 'quick start guide'.
 
@@ -73,7 +73,7 @@ dotnet build
 
 ### sqlpackage /a:Publish
 
-Publish your `.dacpac` to a database with `sqlpackage` - learn more [here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-publish)
+Publish your `.dacpac` to a database with `sqlpackage` - learn more [here](https://learn.microsoft.com/sql/tools/sqlpackage/sqlpackage-publish?WT.mc_id=DT-MVP-4025156)
 
 ```bash
 sqlpackage /Action:Publish /SourceFile:"MyDatabase.dacpac" /TargetConnectionString:"Server=tcp:{yourserver}.database.windows.net,1433;Initial Catalog=MyDatabase;User ID=sqladmin;Password={your_password};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
@@ -105,9 +105,9 @@ builder.AddSqlProject<Projects.MySqlProj>("mysqlproj")
        .WithReference(sqlDatabase);
 ```
 
-Now when you run your .NET Aspire app host project you see the SQL Database Project being published to the specified SQL Server.
+Now when you run your .NET Aspire app host project you see the SQL Database Project being published to the specified SQL Server container.
 
-Read more [here](https://learn.microsoft.com/dotnet/aspire/community-toolkit/hosting-sql-database-projects).
+Read more [here](https://learn.microsoft.com/dotnet/aspire/community-toolkit/hosting-sql-database-projects?WT.mc_id=DT-MVP-4025156).
 
 ### Next steps 
 
