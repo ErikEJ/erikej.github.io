@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducing MSBuild.Sdk.SqlProj 3.0 - create, build, validate, analyze, pack and deploy SQL database projects with .NET 9"
-date:   2024-01-14 18:28:49 +0100
+date:   2025-01-14 18:28:49 +0100
 categories: dotnet dacfx azuresql
 ---
 
