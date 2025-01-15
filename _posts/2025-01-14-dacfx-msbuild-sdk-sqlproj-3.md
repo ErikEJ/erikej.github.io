@@ -27,7 +27,7 @@ dotnet tool install Microsoft.SqlPackage -g
 
 ### dotnet new install
 
-This simplest way to get started is to install the .NET project and item templates that we have made available:
+This simplest way to get started is to install the project and item templates that we have made available:
 
 ```bash
 dotnet new install MSBuild.Sdk.SqlProj.Templates
@@ -64,7 +64,7 @@ sqlpackage /Action:Extract /Properties:ExtractTarget=Flat /SourceConnectionStrin
 Once you have added objects to the project, run build to:
 
 - Validate the syntax and consistency of your database objects
-- Run static code analysis with more than 70 Microsoft and community supplied rules
+- Run static code analysis with more than 140 Microsoft and community supplied rules
 - Create a `.dacpac`build output for use with deployment of your database schema 
 
 ```bash
@@ -79,9 +79,9 @@ Publish your `.dacpac` to a database with `sqlpackage` - learn more [here](https
 sqlpackage /Action:Publish /SourceFile:"MyDatabase.dacpac" /TargetConnectionString:"Server=tcp:{yourserver}.database.windows.net,1433;Initial Catalog=MyDatabase;User ID=sqladmin;Password={your_password};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 ```
 
-### .NET ASpire 9 Integration
+### .NET Aspire 9 Integration
 
-Add our integration to your .NET Aspire App Host project:
+Add our integration to your .NET Aspire app host project:
 
 ```bash
 dotnet add package CommunityToolkit.Aspire.Hosting.SqlDatabaseProjects
@@ -118,4 +118,4 @@ There is so much more you can do, refer to the detailed  [readme on GitHub](http
 - Add references to other databases 
 - Customize database properties
 - Add pre- and post deployment scripts
-- Share your datbase model as a NuGet package
+- Share your database model as a NuGet package
