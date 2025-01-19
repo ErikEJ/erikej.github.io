@@ -111,7 +111,7 @@ Read more [here](https://learn.microsoft.com/dotnet/aspire/community-toolkit/hos
 
 ### Next steps 
 
-There is so much more you can do, refer to the detailed  [readme on GitHub](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/README.md)
+There is so much more you can do, refer to the detailed  [readme on GitHub](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/blob/master/README.md)
 
 - Customize code analysis
 - Create, publish and use you own code analysis rules
