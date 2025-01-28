@@ -60,25 +60,25 @@ I assume that your SQL Server database is created and configured to allow SQL CL
 
 The `sqlpackage` .NET global tool is used to deploy the .dacpac files to the SQL Server.
 
-1. First deploy the DatabaseSQLCLR project to the SQL Server database.
+- First deploy the DatabaseSqlCLR project to the SQL Server database.
 
 ```shell
-sqlpackage /Action:Publish /sf:DatabaseSQLCLR.dacpac /tcs:"Data Source=.\SQL2022;Initial Catalog=SQLCLRTest;Encrypt=False;Trusted_Connection=True"
+sqlpackage /Action:Publish /sf:DatabaseSqlCLR.dacpac /tcs:"Data Source=.\SQL2022;Initial Catalog=SQLCLRTest;Encrypt=False;Trusted_Connection=True"
 ```
 
-1. Next deploy the SdkProj project to the SQL Server database.
+- Next deploy the SdkProj project to the SQL Server database.
 
 ```shell
 sqlpackage /Action:Publish /sf:SdkProj.dacpac /tcs:"Data Source=.\SQL2022;Initial Catalog=SQLCLRTest;Encrypt=False;Trusted_Connection=True"
 ```
 
-1. Verify that the SQL CLR object is deployed to the SQL Server.
+- Verify that the SQL CLR object is deployed to the SQL Server.
 
 ```sql
 SELECT * FROM sys.assemblies
 ```
 
-1. Execute the table valued function that is defined in the SQL CLR object.
+- Execute the table valued function that is defined in the SQL CLR object.
 
 ```sql
 SELECT * FROM dbo.sayHello(1)
