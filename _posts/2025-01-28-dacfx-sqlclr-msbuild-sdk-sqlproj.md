@@ -5,8 +5,6 @@ date:   2025-01-28 18:28:49 +0100
 categories: dacfx sqlclr
 ---
 
-# Use SQL Server CLR objects with SDK based cross platform .dacpac builds
-
 SQL CLR objects are assemblies that are created in .NET Framework languages and deployed to the SQL Server. The SQL CLR objects can be used to extend the functionality of the SQL Server by creating stored procedures, functions, triggers, and user-defined types. The SQL CLR objects are deployed to the SQL Server as .dll files. The .dll files are created by compiling the .NET code and then deploying the .dll files to the SQL Server.
 
 You can read more about SQL CLR objects in the [Microsoft documentation](https://learn.microsoft.com/sql/relational-databases/clr-integration/database-objects/building-database-objects-with-common-language-runtime-clr-integration).
