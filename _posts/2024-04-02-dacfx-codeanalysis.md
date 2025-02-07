@@ -130,6 +130,8 @@ Any rule violations found during build are reported as build warnings and can be
 
 ### Add additional rules to VS
 
+<a id='addrules'></a>
+
 To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .dll in a read only Visual Studio folder.
 
 For your convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
