@@ -31,8 +31,8 @@ In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK let
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.2.1" PrivateAssets="all" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.2.1"  PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.3.0" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.3.0"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -94,8 +94,8 @@ We know of the following public NuGet packages containing additional rules, that
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.2.1" PrivateAssets="all" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.2.1"  PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.3.0" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.3.0"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -134,11 +134,11 @@ To add additional rules (your own or the third party rules listed above), you mu
 
 For your convenience, I have published two NuGet packages with precompiled rule .dll files, that you can download, unzip and manually copy to the correct location. 
 
-[SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/1.0.0)
+[SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/)
 
-[T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/1.0.0)
+[T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/)
 
-> You must use version `1.0.0` of these packages to get the files in the `lib\net462`folder. Make sure that the files have been [unblocked](https://github.com/ErikEJ/erikej.github.io/issues/55#issuecomment-2642572601) before you copy them.
+> Make sure that the files have been [unblocked](https://github.com/ErikEJ/erikej.github.io/issues/55#issuecomment-2642572601) before you copy them.
 
 Once downloaded and unzipped, locate the rules .dll files in the `lib\net462` folder.
 
@@ -176,14 +176,14 @@ Place the extracted .dll files in this folder (you may have to create it):
 
 ### SDK style .sqlproj
 
-With version `0.2.3-preview` or later of the `Microsoft.Build.Sql` SDK you can use NuGet based analyzers.
+With version `1.0.0-rc1` or later of the `Microsoft.Build.Sql` SDK you can use NuGet based analyzers.
 
 So you can use analyzers like this:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build">
-  <Sdk Name="Microsoft.Build.Sql" Version="0.2.3-preview" />
+  <Sdk Name="Microsoft.Build.Sql" Version="1.0.0-rc1" />
   <PropertyGroup>
     <Name>TestCA</Name>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
@@ -191,8 +191,8 @@ So you can use analyzers like this:
     <RunSqlCodeAnalysis>true</RunSqlCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.0" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.0" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.3.0" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.3.0" />
   </ItemGroup>
 </Project>
 ```
