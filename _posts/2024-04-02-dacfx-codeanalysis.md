@@ -5,9 +5,9 @@ date:   2024-04-02 18:28:49 +0100
 categories: dacfx codeanalysis sqlserver
 ---
 
-Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common mistakes and potential bugs. 
+Maybe you already take advantage of the C# code analyzers built into the .NET SDK, that help you improve code consistency, quality, security and avoid common mistakes and potential bugs.
 
-But did you know that is is also possible to run analyzer rules against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)? 
+But did you know that is is also possible to run analyzer rules against your SQL Server T-SQL object definitions (DDL) and stored procedures (DML)?
 
 By storing all your T-SQL scripts under source control in a Visual Studio Database Project (.sqlproj) or in a MSBuild.SDK.Sqlproj project, you can take advantage of this little known feature. To learn more about Database Projects in general and how to use them with EF Core, see [my previous blog post](https://erikej.github.io/efcore/dacpac/2024/02/11/powertools-dacpac.html).
 
@@ -31,8 +31,8 @@ In addition to the Microsoft rules listed above, the MSBuild.SDK.Sqlproj SDK let
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.2" PrivateAssets="all" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.2"  PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.2.1" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.2.1"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -44,19 +44,20 @@ You can watch a "review" of the SqlServer.Rules rule set [here](https://www.yout
 Static code analysis can be enabled by adding the `RunSqlCodeAnalysis` property to the project file:
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.1.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
   </PropertyGroup>
 </Project>
 ```
+
 The analysis will then include the rules from all of the rule sets listed above.
 
 The optional `CodeAnalysisRules` property allows you to disable individual rules or groups of rules.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.1.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
@@ -76,7 +77,7 @@ Any rule violations found during build are reported as build warnings.
 Individual rule violations can be configured to be reported as build errors as shown below.
 
 ```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/3.0.0">
+<Project Sdk="MSBuild.Sdk.SqlProj/3.1.0">
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
@@ -89,12 +90,12 @@ Individual rule violations can be configured to be reported as build errors as s
 
 You can also build your own rules. For an example of how to build a custom rule and pack it as a NuGet package, see [this blog post](https://erikej.github.io/dacfx/dotnet/2024/04/04/dacfx-rules.html).
 
-We know of the following public NuGet packages containing additional rules, that you can add to your project. 
+We know of the following public NuGet packages containing additional rules, that you can add to your project.
 
 ```xml
   <ItemGroup>
-    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.1.2" PrivateAssets="all" />
-    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.1.2"  PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.SqlServer.Rules" Version="1.2.1" PrivateAssets="all" />
+    <PackageReference Include="ErikEJ.DacFX.TSQLSmellSCA" Version="1.2.1"  PrivateAssets="all" />
   </ItemGroup>
 ```
 
@@ -111,7 +112,7 @@ With MSBuild.SDK.Sqlproj, you can easily use both the included and your own rule
 
 You can learn more about this project type [here](https://visualstudio.microsoft.com/vs/features/ssdt/).
 
-### Enable analysis
+### Enable VS analysis
 
 To enable and manage code analysis, you can use the project properties:
 
@@ -121,13 +122,13 @@ As you can see, enabling and managing the rules is quite simple.
 
 Out of the box, only the Microsoft rules listed above are available.
 
-### Run analysis
+### Run VS analysis
 
 To run the actual analysis against your database, you build your project.
 
 Any rule violations found during build are reported as build warnings and can be marked as errors as seen in the screenshot above.
 
-### Add additional rules
+### Add additional rules to VS
 
 To add additional rules (your own or the third party rules listed above), you must manually place the .NET Framework rules .dll in a read only Visual Studio folder.
 
@@ -137,7 +138,7 @@ For your convenience, I have published two NuGet packages with precompiled rule 
 
 [T-SQL Smells](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/1.0.0)
 
-> You must use version `1.0.0` of these packages to get the files in the `lib\net462`folder
+> You must use version `1.0.0` of these packages to get the files in the `lib\net462`folder. Make sure that the files have been [unblocked](https://github.com/ErikEJ/erikej.github.io/issues/55#issuecomment-2642572601) before you copy them.
 
 Once downloaded and unzipped, locate the rules .dll files in the `lib\net462` folder.
 
