@@ -59,7 +59,7 @@ CREATE TABLE [dbo].[Table3]
 )
 ```
 
-![Sample](https://github.com/ErikEJ/SqlServer.Rules/blob/master/docs/cli.png)
+![]({{ site.url }}/assets/analyzecli.png)
 
 ## Feedback
 
