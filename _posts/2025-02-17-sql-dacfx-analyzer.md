@@ -1,5 +1,6 @@
 ---
 layout: post
+image: /assets/analyzecli.png
 title:  "Presenting T-SQL Analyzer CLI - identify anti-patterns in SQL Server scripts with 140+ rules"
 date:   2025-02-17 18:28:49 +0100
 categories: sql dacfx
