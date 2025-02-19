@@ -18,10 +18,10 @@ This tool is for ad-hoc, commandline based analysis of individual scripts.
 
 The tool runs on any system with the .NET 8.0 runtime installed.
 
-### Installing the tool (currently in preview)
+### Installing the tool
 
 ```bash
-dotnet tool install --global ErikEJ.DacFX.TSQLAnalyzer.Cli --version *-*
+dotnet tool install --global ErikEJ.DacFX.TSQLAnalyzer.Cli
 ```
 
 ### Usage
