@@ -27,16 +27,19 @@ dotnet tool install --global ErikEJ.DacFX.TSQLAnalyzer.Cli
 ### Usage
 
 ```bash
-## Analyze a single file
+# Analyze all scripts in current folder and sub-folders
+tsqlanalyze
+
+## Analyze a single script
 tsqlanalyze -i C:\scripts\sproc.sql
 
-## Analyze a folder
+## Analyze scripts in a folder
 tsqlanalyze -i "c:\database scripts"
 
-## Analyze a folder with a wildcard path andand a full folder path
+## Analyze scripts in folders with a wildcard path and a full folder path
 tsqlanalyze -i c:\database_scripts\sp_*.sql "c:\old scripts"
 
-## Analyze a script with a rule settings filter
+## Analyze a script with a rule filter
 tsqlanalyze -i C:\scripts\sproc.sql -r Rules:-SqlServer.Rules.SRD0004
 
 ## Analyze a script for a specific SQL Server version
