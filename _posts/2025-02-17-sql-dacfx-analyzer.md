@@ -27,23 +27,26 @@ dotnet tool install --global ErikEJ.DacFX.TSQLAnalyzer.Cli
 ### Usage
 
 ```bash
-# Analyze all scripts in current folder and sub-folders
+# Analyze all .sql scripts in current folder and sub-folders
 tsqlanalyze
 
-## Analyze a single script
+## Analyze a single file
 tsqlanalyze -i C:\scripts\sproc.sql
 
-## Analyze scripts in a folder
+## Analyze a folder
 tsqlanalyze -i "c:\database scripts"
 
-## Analyze scripts in folders with a wildcard path and a full folder path
+## Analyze a folder with a filter and a full folder path
 tsqlanalyze -i c:\database_scripts\sp_*.sql "c:\old scripts"
 
-## Analyze a script with a rule filter
-tsqlanalyze -i C:\scripts\sproc.sql -r Rules:-SqlServer.Rules.SRD0004
+## Analyze a script with a rule settings filter and for a specific SQL Server version
+tsqlanalyze -i C:\scripts\sproc.sql -r Rules:-SqlServer.Rules.SRD0004 -s SqlAzure
 
-## Analyze a script for a specific SQL Server version
-tsqlanalyze -i C:\scripts\sproc.sql -s SqlAzure
+## Analyze a .dacpac
+tsqlanalyze -i C:\scripts\Chinook.dacpac
+
+## Analyze a live database
+tsqlanalyze -c "Data Source=.\SQLEXPRESS;Initial Catalog=Chinook;Integrated Security=True;Encrypt=false"
 ```
 
 You can exclude individual rules and rule categories with a "Rules:" statement, you can read more about the syntax for this [here](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj?tab=readme-ov-file#static-code-analysis).
