@@ -1,7 +1,7 @@
 ---
 layout: post
 image: /assets/analyzecli.png
-title:  "Manage your SQL Server database lifecycle with .NET Aspire and SQL Database Projects"
+title:  "Manage your SQL Server database schema with .NET Aspire and a SQL Database Projects"
 date:   2025-04-17 18:28:49 +0100
 categories: sql dacfx aspire
 ---
