@@ -10,9 +10,9 @@ Analyze your SQL CREATE scripts for best practices relating to design, naming an
 
 ### Background
 
-I maintain a collection of over 140 [open source](https://github.com/ErikEJ/SqlServer.Rules) static code analyisis rules based on the DacFX API for T-SQL based best pratices analyzers.
+I maintain a collection of over 140 [open source](https://github.com/ErikEJ/SqlServer.Rules) static code analysis rules based on the DacFX API for T-SQL based best practices analyzers.
 
-To make the most of the rules, I publish them on NuGet in various forms, so you can take advantage of them in variuos contexts:
+To make the most of the rules, I publish them on NuGet in various forms, so you can take advantage of them in various contexts:
 
 - The base analyzer rules, [SqlServer.Rules](https://www.nuget.org/packages/ErikEJ.DacFX.SqlServer.Rules/) and [TSQLSmellSCA](https://www.nuget.org/packages/ErikEJ.DacFX.TSQLSmellSCA/) , for use in both modern SQL projects, [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) and [Microsoft.Build.Sql](https://github.com/microsoft/DacFx/tree/main/src/Microsoft.Build.Sql) and in legacy Visual Studio [SQL database projects](https://learn.microsoft.com/sql/tools/sql-database-projects/get-started?view=sql-server-ver17&pivots=sq1-visual-studio).
 
@@ -20,7 +20,7 @@ To make the most of the rules, I publish them on NuGet in various forms, so you 
 
 ## Presenting T-SQL Analyzer
 
-The latest member of the familiy is a Visual Studio extension, that provides live analysis of your script as you work with it in the Visual Studio SQL editor.
+The latest member of the family is a Visual Studio extension, that provides live analysis of your script as you work with it in the Visual Studio SQL editor.
 
 It supports projects based on our [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) build SDK as well as [Microsoft.Build.Sql](https://github.com/microsoft/DacFx/tree/main/src/Microsoft.Build.Sql) projects.
 
