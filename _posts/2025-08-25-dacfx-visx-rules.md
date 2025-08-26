@@ -22,7 +22,7 @@ To make the most of the rules, I publish them on NuGet in various forms, so you 
 
 The latest member of the family is a Visual Studio extension, that provides live analysis of your script as you work with it in the Visual Studio SQL editor.
 
-It supports projects based on our [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) build SDK as well as [Microsoft.Build.Sql](https://github.com/microsoft/DacFx/tree/main/src/Microsoft.Build.Sql) projects.
+It supports projects based on our [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) build SDK as well as [Microsoft.Build.Sql](https://github.com/microsoft/DacFx/tree/main/src/Microsoft.Build.Sql) projects, and legacy Visual Studio [SQL database projects](https://learn.microsoft.com/sql/tools/sql-database-projects/get-started?view=sql-server-ver17&pivots=sq1-visual-studio).
 
 ![editor](https://raw.githubusercontent.com/ErikEJ/SqlServer.Rules/master/tools/SqlAnalyzerVsix/Images/editor.png)
 
