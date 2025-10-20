@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Reduce SQL Database Project deployment time from minutes to seconds with DacDeploySkip"
+title: "Reduce SQL Database Project deployment time from minutes to single digit seconds with DacDeploySkip"
 date: 2025-10-22 18:28:49 +0100
 categories: dacfx performance
 ---
 
-Using SQL Database Projects for deployment of schema changes with a .dacpac file to SQL Server and Azure SQL Database is a great, free solution, supported by many tools, like SSDT in Visual Studio, and the mssql extension in VS Code and backed by extensions like my [SQL Database Projects Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SqlProjectPowerTools).
+Using SQL Database Projects for deployment of schema changes with a .dacpac file to SQL Server and Azure SQL Database is a great, free solution, supported by many tools, like SQL Server Data Tools (SSDT) in Visual Studio, and the SQL Database Projects/mssql extensions in VS Code and backed by  community extensions like my [SQL Database Projects Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SqlProjectPowerTools) and [static T-SQL code analysis tools](https://github.com/ErikEJ/SqlServer.Rules).
 
-But if you use them in continuous deployment with multiple databases with large and complex schemas, deployment time soon becomes an annoyance, taking minutes to do nothing (as normally there are no schema changes).
+But if you use them in continuous deployment with multiple databases with large and complex schemas, deployment time soon becomes an annoyance, taking minutes to do nothing (as in a high percentage of runs there are no schema changes).
 
 ## Inctroducing DacDeploySkip
 
@@ -110,3 +110,5 @@ Then use the condition on subsequent tasks:
 ```yaml
  condition: and(succeeded(), eq(variables['DeployDacPac'], true))
 ```
+
+If you have any questions or other feedback relating to this tool, please provide [feedback via GiHub](https://github.com/ErikEJ/DacDeploySkip/issues).
