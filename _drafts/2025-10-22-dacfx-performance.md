@@ -89,13 +89,10 @@ steps:
 
 ```
 
-You can find a [complete example here](/sample).
-
 You can also use the tool to set a condition in your pipeline based on whether a deployment is needed or not. This can be useful if you use a task like `SqlAzureDacpacDeployment` or `SqlDacpacDeploymentOnMachineGroup`.
 
 ```yaml
 - powershell: |
-
     dacdeployskip check "$(dacpacPath)" "$(ConnectionString)"
     if (!$?)
     {
