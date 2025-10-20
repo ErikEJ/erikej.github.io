@@ -1,19 +1,19 @@
 ---
 layout: post
-title:  "Get a 180% speed increase on large async reads with Microsoft.Data.SqlClient - here is how to turn it on!"
+title:  "Get a 180% speed increase on large async reads with Microsoft.Data.SqlClient (and EF Core) - here is how to turn it on!"
 date:   2025-10-20 18:28:49 +0100
 categories: sqlclient dotnet performance
 ---
 
-tl;dr - Enable a new feature in the latest .NET SqlClient driver with a couple of switches to get a 180% increase in speed when reading large binary and text data using async methods.
+**tl;dr** - Enable a new feature in the latest .NET SqlClient driver with a couple of switches to get a 180% increase in speed when reading large binary and text data using async methods.
 
 ## Background
 
 One of the highest voted issues for Microsoft.Data.SqlClient, the ADO.NET provider for SQL Server and Azure SQL, is [Reading large data (binary, text) asynchronously is extremely slow](https://github.com/dotnet/SqlClient/issues/593).
 
-EF Core is particularly affected by this, as it always uses the async APIs for reading data, so no simple way for the developer to take advantage of the sync APIs.
+EF Core is particularly affected by this, as it always uses the async APIs for reading data, so no simple way for the developer to take advantage of the sync APIs that perform better in this scenario.
 
-Community contributor [Wraith2](https://github.com/Wraith2) started work on this more than 5 years ago, and the fix is now finally - after many attempts [even failed ones](https://techcommunity.microsoft.com/blog/sqlserver/released-general-availability-of-microsoft-data-sqlclient-6-1/4453101) - available in Microsoft.Data.SqlClient 7.0 preview 2.
+Community contributor [Wraith2](https://github.com/Wraith2) started work on fixing this more than 5 years ago, and the fix is now finally - after many attempts [even failed ones](https://techcommunity.microsoft.com/blog/sqlserver/released-general-availability-of-microsoft-data-sqlclient-6-1/4453101) - available in Microsoft.Data.SqlClient 7.0 preview 2.
 
 After the failed attempt in version 6.1.0, the community stepped up and helped [Wraith2](https://github.com/Wraith2) iron out any remaining bugs.
 
