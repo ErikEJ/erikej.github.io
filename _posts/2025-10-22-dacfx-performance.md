@@ -9,7 +9,7 @@ Using SQL Database Projects for deployment of schema changes with a .dacpac file
 
 But if you use them in continuous deployment with multiple databases with large and complex schemas, deployment time soon becomes an annoyance, taking minutes to do nothing (as in a high percentage of runs there are no schema changes).
 
-## Inctroducing DacDeploySkip
+## Introducing DacDeploySkip
 
 To solve that problem, while enabling you to continue to benefit from continuous deployment, I have created a tool to determine if a deployment of a specific .dacpac file is required based on metadata present in the target database.
 
