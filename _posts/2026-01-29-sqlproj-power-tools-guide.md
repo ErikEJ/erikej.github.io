@@ -2,7 +2,7 @@
 layout: post
 title:  "Getting Started with SQL Database Project Power Tools"
 image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/menu.png
-date:   2026-01-26 18:28:49 +0100
+date:   2026-01-29 18:28:49 +0100
 categories: dotnet dacfx sqlserver visualstudio
 ---
 SQL Database Project Power Tools is a free Visual Studio extension that makes working with SQL database projects easier and more productive. This guide will help you get started with the key features.
