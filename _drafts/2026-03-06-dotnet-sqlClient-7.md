@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Microsoft.Data.SqlClient 7.0 Preview: Finally, Azure.Identity is Optional! 🎉"
-date:   2026-03-05 18:28:49 +0100
+date:   2026-03-06 18:28:49 +0100
 categories: sqlclient dotnet
 --- 
 
