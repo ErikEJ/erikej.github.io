@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "8 New T-SQL Analysis Rules to Catch Bugs Before They Reach Production"
-date:   2026-03-05 18:28:49 +0100
-categories: sqlclient dotnet
+date:   2026-03-04 18:28:49 +0100
+categories: dacfx dotnet
 --- 
 
 Static analysis catches an entire class of bugs and anti patterns during the build process, long before code ever runs in production. The SqlServer.Rules library has just grown with 8 new rules — 7 design rules and 1 performance rule — each targeting a real category of mistake found in T-SQL stored procedures, functions, and views.
