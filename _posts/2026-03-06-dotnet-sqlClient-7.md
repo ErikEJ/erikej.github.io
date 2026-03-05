@@ -164,8 +164,8 @@ For containerized deployments, this can mean **reductions in image size** and **
 SqlClient 7.0 preview is available now on NuGet:
 
 ```bash
-dotnet add package Microsoft.Data.SqlClient --version 7.0.0-preview4
-dotnet add package Microsoft.Data.SqlClient.Extensions.Azure --version 1.0.0-preview4
+dotnet add package Microsoft.Data.SqlClient --version 7.0.0-preview4.26064.3
+dotnet add package Microsoft.Data.SqlClient.Extensions.Azure --version 1.0.0-preview4.26064.3
 ```
 
 ## Feedback Welcome
