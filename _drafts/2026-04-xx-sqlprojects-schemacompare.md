@@ -2,10 +2,10 @@
 layout: post
 title:  "Visual Schema Compare for SDK Style SQL Database Projects in Visual Studio"
 image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/menu.png
-date:   2026-01-29 18:28:49 +0100
+date:   2026-03-05 18:28:49 +0100
 categories: dotnet dacfx sqlserver visualstudio
 ---
-Keeping your SQL database project in sync with a live database is one of the most common — and most tedious — challenges in database development. If you have ever manually compared `CREATE TABLE` scripts line by line, or tried to figure out which stored procedures drifted out of sync between your sorce code and dev or production environments, **Visual Schema Compare** was built for you.
+Keeping your SQL database project in sync with a live database is one of the most common — and most tedious — challenges in database development. If you have ever manually compared `CREATE TABLE` scripts line by line, or tried to figure out which stored procedures drifted out of sync between your source code and development or production environments, **Visual Schema Compare** was built for you.
 
 ## What is Visual Schema Compare?
 
