@@ -33,6 +33,8 @@ The Entity Framework team [does not rule out](https://github.com/ErikEJ/EntityFr
 
 To try out the provider, simply install the new  [ErikEJ.EntityFramework.SqlServer](https://www.nuget.org/packages/ErikEJ.EntityFramework.SqlServer) package available on NuGet. The package is currently in preview, but my plan is to release a supported version soon.
 
+> **UPDATE** An official provider based on my effort is now available - please use it, as my provider is deprecated: [Microsoft.EntityFramework.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFramework.SqlServer/)
+
 ```plaintext
 Install-Package ErikEJ.EntityFramework.SqlServer -Version 1.0.0-rc5
 ```
