@@ -5,7 +5,7 @@ date:   2026-03-24 12:00:00 +0100
 categories: sqlserver ssms dacfx
 ---
 
-Microsoft recently announced an exciting new feature in SQL Server Management Studio 22.4.1: [Database DevOps Preview](https://techcommunity.microsoft.com/blog/azuresqlblog/database-devops-preview-in-ssms-22-4-1/4503858). This brings SQL Database Projects directly into SSMS, enabling developers and DBAs to adopt modern database DevOps practices without leaving their favorite tool.
+Microsoft recently announced an exciting new feature in SQL Server Management Studio 22.4.1: [Database DevOps Preview](https://techcommunity.microsoft.com/blog/azuresqlblog/database-devops-preview-in-ssms-22-4-1/4503858). This brings SQL Database Projects directly into SSMS, enabling DBAs and database developers to adopt modern database DevOps practices without leaving their favorite tool.
 
 To complement this awesome new capability, I've created **SQL Database Project Power Tools for SSMS** - a free extension that adds powerful features to enhance your SQL Database Projects workflow in SSMS.
 
