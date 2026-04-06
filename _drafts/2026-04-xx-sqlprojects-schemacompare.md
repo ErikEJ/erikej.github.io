@@ -1,15 +1,15 @@
 ---
 layout: post
 title:  "Visual Schema Compare for SDK Style SQL Database Projects in Visual Studio"
-image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/menu.png
+image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/SchemaCompare.png
 date:   2026-03-05 18:28:49 +0100
-categories: dotnet dacfx sqlserver visualstudio
+categories: dotnet dacfx sqlserver ssms visualstudio
 ---
 Keeping your SQL database project in sync with a live database is one of the most common — and most tedious — challenges in database development. If you have ever manually compared `CREATE TABLE` scripts line by line, or tried to figure out which stored procedures drifted out of sync between your source code and development or production environments, **Visual Schema Compare** was built for you.
 
 ## What is Visual Schema Compare?
 
-Visual Schema Compare is a built-in feature of the [SQL Database Project Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools) Visual Studio extension. It surfaces the full power of the [Microsoft DacFx](https://learn.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) schema comparison engine — the same engine used by SQL Server Data Tools — directly inside Visual Studio, in a purpose-built tool window.
+Visual Schema Compare is a built-in feature of the [SQL Database Project Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools) Visual Studio extension and the [SQL Database Project Power Tools for SSMS](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D) extension. It surfaces the full power of the [Microsoft DacFx](https://learn.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications) schema comparison engine — the same engine used by SQL Server Data Tools — directly inside SSMS and Visual Studio, in a purpose-built tool window.
 
 With a single right-click on your database project, you can:
 
@@ -18,7 +18,7 @@ With a single right-click on your database project, you can:
 - Review **per-object T-SQL diffs** side by side
 - Copy the **generated deployment script** ready for review or execution
 
-No extra tooling, no manual diffing, and no leaving Visual Studio.
+No extra tooling, no manual diffing, and no leaving Visual Studio / SSMS.
 
 ## Why You Need This
 
@@ -49,8 +49,9 @@ Visual Schema Compare gives you a first-class schema diff experience without lea
 
 ### Prerequisites
 
-- Visual Studio 2022 (any edition)
-- [SQL Database Project Power Tools](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools) installed
+- Visual Studio 2022 (any edition) or SSMS 22
+- [SQL Database Project Power Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools) installed
+- or [SQL Database Project Power Tools for SSMS](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D) installed
 - An SDK-style SQL Database Project in your solution
 
 ### Running a Comparison
@@ -84,7 +85,7 @@ Visual Schema Compare is just one of the features in SQL Database Project Power 
 | **Script Table Data** | Generate `MERGE` statements for seed data directly from live tables |
 | **Scaffold Data API Builder** | Generate a Data API Builder configuration file from your project |
 | **.dacpac Explorer** | Browse the contents of a `.dacpac` file in Solution Explorer |
-| **Project Templates** | Quickly create new SQL database projects from ready-made templates |
+| **Project Templates** | Quickly create new SQL database projects from ready-made templates (Visual Studio only) |
 
 Together, these features make SQL database projects a viable choice for teams that want to apply software engineering best practices — source control, code review, CI/CD — to their database schemas while enabling peformant, cross platform build and deployment processes.
 

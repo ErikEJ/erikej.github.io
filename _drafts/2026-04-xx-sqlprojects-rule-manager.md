@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "New Visual Rule Manager: Configure SQL Code Analysis Without Editing XML"
+image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/rulemanager.png
 date:   2026-04-28 18:28:49 +0100
 categories: dacfx dotnet sqlserver ssms visualstudio
 ---
@@ -18,7 +19,7 @@ But configuring which rules to enable or disable has always meant manually editi
 ```xml
 <PropertyGroup>
   <RunSqlCodeAnalysis>True</RunSqlCodeAnalysis>
-  <SqlCodeAnalysisRules>-SqlServer.Rules.SRD0004;+SqlServer.Rules.SRN0005!2</SqlCodeAnalysisRules>
+  <SqlCodeAnalysisRules>-SqlServer.Rules.SRD0004;+!SqlServer.Rules.SRN0005</SqlCodeAnalysisRules>
 </PropertyGroup>
 ```
 
@@ -35,6 +36,7 @@ To open it: right-click your SQL database project in Solution Explorer → **SQL
 From the dialog you can:
 
 - **Enable or disable code analysis on build** — a checkbox at the top controls whether analysis runs as part of your build
+- **Install community analyzers** - If these packages, that add more than 130 additional rules, are not present, add them to the project.
 - **Search for rules** — find rules by ID, description, or category using the search box
 - **Filter by severity** — quickly see which rules are configured as errors vs. warnings
 - **Enable or disable individual rules** — toggle rules with checkboxes
@@ -48,9 +50,10 @@ Select **OK** to save your changes to the project file, or **Cancel** to discard
 
 If you're not familiar with the extension, SQL Database Project Power Tools is a free, open-source Visual Studio (and SSMS) extension that enhances your experience when working with SQL Server database projects. Key features include:
 
+- **Templates** - for Visual Studio, project and item templates to get you started quickly.
 - **Database Import** — Import an existing database schema into your project, automatically generating all necessary SQL scripts organized by object type
 - **Visual Schema Compare** — Compare your project with a database to see what needs to be deployed, or compare a database with your project to update your files
-- **Static Code Analysis** — Find potential issues before deployment using 140+ rules covering design, naming, performance, and security
+- **Static Code Analysis** — Find potential issues before deployment using 150+ rules covering design, naming, performance, and security
 - **E/R Diagrams** — Generate Mermaid diagrams showing relationships between your tables, perfect for documentation
 - **Table Data Scripting** — Generate INSERT statements for seed data
 - **dacpac Explorer** — Browse the contents of your built .dacpac files directly in Solution Explorer
@@ -61,9 +64,9 @@ If you're not familiar with the extension, SQL Database Project Power Tools is a
 
 1. **Install the extension**: From Visual Studio, go to Extensions → Manage Extensions, search for "SQL Database Project Power Tools", and click Install. Or download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools).
 
-2. **For SSMS**: Download from the [Open VSIX Gallery](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D).
+2. **For SSMS**: Download from the [Open VSIX Gallery](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D). Once downloaded, double click to install.
 
-3. **Open the Rule Manager**: Right-click your SQL database project → SQL Project Power Tools → Manage code analysis rules.
+3. **Open the Rule Manager**: Right-click your SQL database project → SQL Project Power Tools → Manage Code Analysis Rules.
 
 4. **Configure your rules**: Enable the rules that matter to your team, set appropriate severity levels, and save.
 
