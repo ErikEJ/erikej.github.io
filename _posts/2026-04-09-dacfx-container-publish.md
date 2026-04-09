@@ -1,15 +1,15 @@
 ---
 layout: post
-title:  "Publishing SQL Database Projects as Container Images with MSBuild.Sdk.SqlProj"
+title:  "Publish SQL Database Projects as Container Images with MSBuild.Sdk.SqlProj"
+image: https://raw.githubusercontent.com/ErikEJ/erikej.github.io/master/assets/preloaded_database.png
 date:   2026-03-06 18:28:49 +0100
-categories: sqlclient dotnet
+categories: sqlclient dotnet dacfx
 --- 
-
-## Introduction
-
 Database deployments have traditionally been one of the trickier parts of a CI/CD pipeline. You need the right tools installed, the right permissions configured, and the right SQL Server instance reachable—all at deploy time. **MSBuild.Sdk.SqlProj** simplifies this by letting you manage your SQL Server schema as code and build a `.dacpac` file just like any other .NET project. Starting with version 4.0.0, it goes one step further by letting you package the `.dacpac` and the deployment tool into a self-contained container image that can be run anywhere containers can run.
 
 This post covers the general advantages of using MSBuild.Sdk.SqlProj and then dives into the container publishing workflow.
+
+![]({{ site.url }}/assets/preloaded_database.png)
 
 ## What is MSBuild.Sdk.SqlProj?
 
@@ -108,6 +108,7 @@ Or set them in your project file:
 ```
 
 > **Note:** By default, the published container will contain the latest version of SqlPackage available at the time of publishing. To pin a specific version, set the `SqlPackageDownloadUrl` property to the download URL for the Linux .NET 8 version from the [SqlPackage release notes](https://learn.microsoft.com/en-us/sql/tools/sqlpackage/release-notes-sqlpackage). For example:
+
 > ```xml
 > <SqlPackageDownloadUrl>https://go.microsoft.com/fwlink/?linkid=2338525</SqlPackageDownloadUrl>
 > ```

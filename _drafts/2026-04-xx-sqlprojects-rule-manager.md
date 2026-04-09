@@ -38,6 +38,7 @@ From the dialog you can:
 - **Enable or disable code analysis on build** — a checkbox at the top controls whether analysis runs as part of your build
 - **Install community analyzers** - If these packages, that add more than 130 additional rules, are not present, add them to the project.
 - **Search for rules** — find rules by ID, description, or category using the search box
+- **Link to detailed documentation** - to better understand the rules, with examples and more
 - **Filter by severity** — quickly see which rules are configured as errors vs. warnings
 - **Enable or disable individual rules** — toggle rules with checkboxes
 - **Change rule severity** — set individual rules to Warning or Error using a drop-down
