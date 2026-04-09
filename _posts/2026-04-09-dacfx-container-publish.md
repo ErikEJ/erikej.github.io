@@ -2,7 +2,7 @@
 layout: post
 title:  "Publish SQL Database Projects as Container Images with MSBuild.Sdk.SqlProj"
 image: https://raw.githubusercontent.com/ErikEJ/erikej.github.io/master/assets/preloaded_database.png
-date:   2026-03-06 18:28:49 +0100
+date:   2026-04-09 18:28:49 +0100
 categories: sqlclient dotnet dacfx
 --- 
 Database deployments have traditionally been one of the trickier parts of a CI/CD pipeline. You need the right tools installed, the right permissions configured, and the right SQL Server instance reachable—all at deploy time. **MSBuild.Sdk.SqlProj** simplifies this by letting you manage your SQL Server schema as code and build a `.dacpac` file just like any other .NET project. Starting with version 4.0.0, it goes one step further by letting you package the `.dacpac` and the deployment tool into a self-contained container image that can be run anywhere containers can run.
