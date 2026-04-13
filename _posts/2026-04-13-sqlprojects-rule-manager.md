@@ -2,19 +2,19 @@
 layout: post
 title:  "New Visual Rule Manager: Configure SQL Code Analysis Without Editing XML"
 image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/rulemanager.png
-date:   2026-04-28 18:28:49 +0100
+date:   2026-04-13 18:28:49 +0100
 categories: dacfx dotnet sqlserver ssms visualstudio
 ---
 
 Configuring SQL static code analysis rules just got easier. The latest release of SQL Database Project Power Tools includes a visual **Rule Manager** — a settings dialog that lets you enable, disable, and configure rule severity without manually editing your SQL Database project file.
 
-If you've used the new [Code Analysis Settings dialog in VS Code](https://devblogs.microsoft.com/azure-sql/sql-code-analysis-in-vs-code-configure-rules-without-editing-your-project-file/), this brings the same experience to Visual Studio and SQL Server Management Studio (SSMS).
+If you've used the new [Code Analysis Settings dialog in VS Code](https://devblogs.microsoft.com/azure-sql/sql-code-analysis-in-vs-code-configure-rules-without-editing-your-project-file/), this brings an even better experience to Visual Studio and SQL Server Management Studio (SSMS).
 
 ## Why This Matters
 
 SQL code analysis has been part of the SSDT workflow for years. Before deploying schema changes, you can run static analysis rules against your project to catch potential issues — things like missing primary keys, deprecated syntax, or performance anti-patterns.
 
-But configuring which rules to enable or disable has always meant manually editing XML in your project file:
+But configuring which rules to disable or set warning levels has always meant manually editing XML in your project file:
 
 ```xml
 <PropertyGroup>
@@ -38,7 +38,7 @@ From the dialog you can:
 - **Enable or disable code analysis on build** — a checkbox at the top controls whether analysis runs as part of your build
 - **Install community analyzers** - If these packages, that add more than 130 additional rules, are not present, add them to the project.
 - **Search for rules** — find rules by ID, description, or category using the search box
-- **Link to detailed documentation** - to better understand the rules, with examples and more
+- **Link to detailed documentation** - use the `?` link to better understand the rules, with examples and more
 - **Filter by severity** — quickly see which rules are configured as errors vs. warnings
 - **Enable or disable individual rules** — toggle rules with checkboxes
 - **Change rule severity** — set individual rules to Warning or Error using a drop-down
@@ -63,15 +63,15 @@ If you're not familiar with the extension, SQL Database Project Power Tools is a
 
 ## Getting Started
 
-1. **Install the extension**: From Visual Studio, go to Extensions → Manage Extensions, search for "SQL Database Project Power Tools", and click Install. Or download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools).
+1. **Install the extension in Visual Studio**: In Visual Studio, go to Extensions → Manage Extensions, search for "SQL Database Project Power Tools", and click Install. Or download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ErikEJ.SQLProjectPowerTools).
 
-2. **For SSMS**: Download from the [Open VSIX Gallery](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D). Once downloaded, double click to install.
+2. **Install the extension in SSMS**: Download from the [Open VSIX Gallery](https://www.vsixgallery.com/extension/SqlProjectsPowerTools.SSMS.D7DABDC8-FE46-4DA4-BED8-2EAF1A2A578D). Once downloaded, double click to install.
 
 3. **Open the Rule Manager**: Right-click your SQL database project → SQL Project Power Tools → Manage Code Analysis Rules.
 
 4. **Configure your rules**: Enable the rules that matter to your team, set appropriate severity levels, and save.
 
-The Rule Manager works with SDK-style SQL database projects using the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) SDK or the Microsoft SDK.
+The Rule Manager works with SDK-style SQL database projects using the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj) community SDK or the Microsoft [https://learn.microsoft.com/sql/tools/sql-database-projects/get-started?view=sql-server-ver17&pivots=sq1-visual-studio-sdk](Microsoft.Build.Sql) SDK.
 
 ## Also Available in SSMS
 
