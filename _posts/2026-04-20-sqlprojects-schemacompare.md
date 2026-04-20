@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Visual Schema Compare for SDK Style SQL Database Projects in Visual Studio"
+title:  "Visual Schema Compare for SDK Style SQL Database Projects in Visual Studio and SSMS"
 image: https://raw.githubusercontent.com/ErikEJ/SQLProjectPowerTools/main/img/SchemaCompare.png
-date:   2026-03-05 18:28:49 +0100
+date:   2026-04-20 18:28:49 +0100
 categories: dotnet dacfx sqlserver ssms visualstudio
 ---
 Keeping your SQL database project in sync with a live database is one of the most common — and most tedious — challenges in database development. If you have ever manually compared `CREATE TABLE` scripts line by line, or tried to figure out which stored procedures drifted out of sync between your source code and development or production environments, **Visual Schema Compare** was built for you.
@@ -81,6 +81,7 @@ Visual Schema Compare is just one of the features in SQL Database Project Power 
 | **Import Database** | Bootstrap a new database project from an existing schema in seconds |
 | **Visual Schema Compare** | Keep project and database in sync with a visual diff tool |
 | **Static Code Analysis** | Catch design, naming, and performance issues before deployment |
+| **Rule Manager** | Manage static code analysis rules and get documentation links via an intuitive visual interface |
 | **E/R Diagrams** | Auto-generate Mermaid entity/relationship diagrams from your project |
 | **Script Table Data** | Generate `MERGE` statements for seed data directly from live tables |
 | **Scaffold Data API Builder** | Generate a Data API Builder configuration file from your project |
