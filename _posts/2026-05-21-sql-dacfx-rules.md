@@ -1,12 +1,12 @@
 ---
 layout: post
 title:  "SqlServer.Rules 5.0.0 is out 🎉"
-date:   2026-05-xx 18:28:49 +0100
+date:   2026-05-21 18:28:49 +0100
 categories: sqlserver dacfx
 ---
 `SqlServer.Rules` **v5.0.0** is [now available](https://github.com/ErikEJ/SqlServer.Rules/releases/tag/v5.0.0)
 
-SqlServer.Rules is an open-source static code analysis library and toolset for SQL Server database projects, command line, and Visual Studio, that helps teams catch design flaws, naming inconsistencies, performance anti-patterns, and risky T-SQL constructs early—during development and build time instead of in production.
+SqlServer.Rules is an open-source static code analysis library and toolset for SQL Server database projects, command line, and Visual Studio, that helps teams catch design flaws, naming inconsistencies, performance anti-patterns, and risky T-SQL constructs early — during development and build time instead of in production.
 
 The value is straightforward: it shifts SQL quality checks left, gives fast and repeatable feedback in CI/CD and local workflows, and helps improve reliability, maintainability, and performance of database code with clear, actionable rule-based guidance.
 
@@ -14,7 +14,7 @@ This major release expands rule coverage significantly and continues consolidati
 
 ## Highlights
 
-- Large set of new design and performance rules
+- Large set of new and migrated design and performance rules
 - New SQL project/database option checks
 - Completed migration from legacy TSQLSmells packaging
 - Tooling and repository improvements
