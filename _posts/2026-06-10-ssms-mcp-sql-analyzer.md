@@ -2,7 +2,7 @@
 layout: post
 title: "Deterministic SQL Bad Practice Detection in SSMS 22.7 with T-SQL Analyzer MCP Server and Copilot"
 image: https://raw.githubusercontent.com/ErikEJ/erikej.github.io/master/assets/ssmsagent.png
-date:   2025-06-10 18:28:49 +0100
+date:   2026-06-10 18:28:49 +0100
 categories: sql ssms mcp dacfx
 ---
 
