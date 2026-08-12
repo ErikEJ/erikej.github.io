@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Launch: T-SQL Analyzer live analysis now in VS Code"
+image: https://raw.githubusercontent.com/ErikEJ/SqlServer.Rules/master/vscode-extension/images/screenshot.png
 date: 2026-08-12 18:00:00 +0000
 categories: sql dacfx vscode
 ---
